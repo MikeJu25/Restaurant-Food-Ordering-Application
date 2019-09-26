@@ -5,7 +5,7 @@ package ui;
 // try
 import java.util.ArrayList;
 
-public class menu {
+public class Menu {
 
 
 
