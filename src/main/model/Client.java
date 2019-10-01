@@ -6,8 +6,12 @@ import ui.Menu;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Client implements Consumer {
+public class Client extends Customer {
 
+
+    public Client(String name, double balance) {
+        super(name, balance);
+    }
 
     @Override
     public void startOrder() {
