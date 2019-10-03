@@ -3,6 +3,9 @@ package model;
 import java.util.ArrayList;
 
 public interface Consumer {
+    String name = null;
+    int balance = 0;
+
 
 
     //MODIFIES: this

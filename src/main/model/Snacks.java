@@ -1,18 +1,46 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Snacks implements Food {
+
+    private static ArrayList<String> order = new ArrayList<String>();
 
     public void chickenStripes() {
         printPrice1();
         printIngredient1();
+        printPopularity1();
     }
 
     public void chickenWings() {
         printPrice2();
         printIngredient2();
+        printPopularity2();
     }
 
+    public static void makeOrder() {
+        Food chickenStripes = new Snacks();
+        String operation = "";
+        System.out.println("Do you want a chickenStripes?(Yes or No)");
+        chickenStripes.printPrice1();
+        chickenStripes.printIngredient1();
+        chickenStripes.printPopularity1();
+        Scanner scanner = new Scanner(System.in);
+        operation = scanner.nextLine();
 
+        if (operation.equals("Yes")) {
+            printOrder();
+            order.add("chickenStripes");
+        } else {
+            makeOrder();
+        }
+
+    }
+
+    public static void printOrder() {
+        System.out.println("You've successfully ordered chicken stripes!");
+    }
 
     @Override
     public void printPrice1() {
