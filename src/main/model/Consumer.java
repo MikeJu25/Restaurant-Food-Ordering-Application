@@ -1,5 +1,6 @@
 package model;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public interface Consumer {
@@ -10,7 +11,7 @@ public interface Consumer {
 
     //MODIFIES: this
     //EFFECTS: begin ordering
-    void startOrder();
+    void startOrder() throws IOException;
 
     //REQUIRES: the consumer's bill is 1 buck or more
     //MODIFIES: consumer, moneySpent

@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-public class Customer implements Consumer, Loadable {
+public class Customer implements Consumer, Loadable, Savable {
     private String name;
     private double balance = 0;
     private ArrayList<Customer> customers = new ArrayList<Customer>();
@@ -56,13 +56,14 @@ public class Customer implements Consumer, Loadable {
 
     @Override
     //EFFECTS: scan the user input name, create customer object and pass it to checkName
-    public void startOrder() {
+    public void startOrder() throws IOException {
         Customer customer;
         ArrayList<String> order = new ArrayList<String>();
         Scanner scanner = new Scanner(System.in);
         Menu.print();
         String operation = scanner.nextLine();
         customer = new Customer(operation, 0);
+        save(operation);
         checkName(customer, customers);
         Snacks.makeOrder();
 
@@ -104,11 +105,41 @@ public class Customer implements Consumer, Loadable {
             names.add(c.name);
         }
     }
+
+    @Override
+    public void load() throws IOException {
+        List<String> lines = Files.readAllLines(Paths.get("inputfile"));
+        PrintWriter writer = new PrintWriter("outputfile", "UTF-8");
+//        lines.add("Mike 8.99");
+        for (String line : lines) {
+            ArrayList<String> partsOfLine = splitOnSpace(line);
+            System.out.print("Customer: " + partsOfLine.get(0) + "  ");
+      //      System.out.println("Balance: " + partsOfLine.get(1));
+            writer.println(line);
+        }
+        writer.close();
+    }
+
+    public static ArrayList<String> splitOnSpace(String line) throws IOException {
+        String[] splits = line.split(" ");
+        return new ArrayList<>(Arrays.asList(splits));
+
+    }
+
+    @Override
+    public void save(String s) throws IOException {
+        List<String> lines = Files.readAllLines(Paths.get("inputfile"));
+        PrintWriter writer = new PrintWriter("outputfile", "UTF-8");
+        lines.add(s);
+        for (String line : lines) {
+            ArrayList<String> partsOfLine = splitOnSpace(line);
+            System.out.print("Customer: " + partsOfLine.get(0) + "  ");
+        //    System.out.println("Balance: " + partsOfLine.get(1));
+            writer.println(line);
+        }
+        writer.close();
+    }
 }
-
-
-
-
 
 
 //    public boolean contain(Customer customer, ArrayList<Customer> customers) {
