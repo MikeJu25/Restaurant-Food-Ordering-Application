@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Scanner;
-
 public class BeefBurger extends Burger {
 
 //    public void angusBeefBurger() {
@@ -13,8 +11,8 @@ public class BeefBurger extends Burger {
 
 
     @Override
-    public void printPrice1() {
-        System.out.println("$23.99");
+    public String printPrice1() {
+        return ("$23.99");
     }
 
 //    @Override
@@ -24,8 +22,8 @@ public class BeefBurger extends Burger {
 
 
     @Override
-    public void printIngredient1() {
-        System.out.println("Angus beef, butter, exclusive chess, oat bread cover");
+    public String printIngredient1() {
+        return "Angus beef, butter, exclusive chess, oat bread cover";
     }
 
 //    @Override
@@ -34,8 +32,8 @@ public class BeefBurger extends Burger {
 //    }
 
     @Override
-    public void printPopularity1() {
-        System.out.println("****");
+    public String printPopularity1() {
+        return ("****");
     }
 
 //    @Override
@@ -63,15 +61,15 @@ public class BeefBurger extends Burger {
 //
 //    }
 
-    public void printName1() {
-        System.out.println("Angus Beef Burger");
+    public String printName1() {
+        return "Angus Beef Burger";
     }
 
-    public static void printOrder() {
-        System.out.println("Choose one beef burger from below");
+    public static String printOrder() {
+        return "Choose one beef burger from below";
     }
 
-    public static void printOrder1() {
-        System.out.println("You've successfully ordered angus beef burgers");
+    public static String printOrder1() {
+        return "You've successfully ordered angus beef burgers";
     }
 }

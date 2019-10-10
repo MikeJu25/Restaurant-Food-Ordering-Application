@@ -2,13 +2,13 @@ package model;
 
 public class Combo implements Food, Drinks {
     @Override
-    public void printTips() {
-        System.out.println("Grab a cup at the front desk");
+    public String printTips() {
+        return ("Grab a cup near the front desk");
     }
 
     @Override
-    public void printPrice1() {
-        System.out.println("$12.99");
+    public String printPrice1() {
+        return ("$12.99");
     }
 
 //    @Override
@@ -17,8 +17,8 @@ public class Combo implements Food, Drinks {
 //    }
 
     @Override
-    public void printIngredient1() {
-        System.out.println("Chicken Stripes + Chicken Wings + Coke Zero");
+    public String printIngredient1() {
+        return ("Chicken Stripes + Chicken Wings + Coke Zero");
     }
 
 //    @Override
@@ -27,8 +27,8 @@ public class Combo implements Food, Drinks {
 //    }
 
     @Override
-    public void printPopularity1() {
-        System.out.println("**");
+    public String printPopularity1() {
+        return ("**");
     }
 
 //    @Override

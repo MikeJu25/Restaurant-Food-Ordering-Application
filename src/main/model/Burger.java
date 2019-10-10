@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public abstract class Burger implements Food {
 
@@ -15,13 +14,13 @@ public abstract class Burger implements Food {
 
 
     @Override
-    public abstract void printPrice1();
+    public abstract String printPrice1();
 
 //    @Override
 //    public abstract void printPrice2();
 
     @Override
-    public abstract void printIngredient1();
+    public abstract String printIngredient1();
 
 //    @Override
 //    public abstract void printIngredient2();
@@ -47,9 +46,9 @@ public abstract class Burger implements Food {
 //
 //    }
 
-    public abstract void printName1();
+    public abstract String printName1();
 
-    public static void printOrder() {
-        System.out.println("Choose one burger below");
+    public static String printOrder() {
+        return "Choose one burger below";
     }
 }

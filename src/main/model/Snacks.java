@@ -1,8 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-
 public class Snacks implements Food {
 
 
@@ -37,13 +34,13 @@ public class Snacks implements Food {
 //
 //    }
 
-    public static void printOrder() {
-        System.out.println("You've successfully ordered chicken stripes!");
+    public static String printOrder() {
+        return ("You've successfully ordered chicken stripes!");
     }
 
     @Override
-    public void printPrice1() {
-        System.out.println("Price: $5.99");
+    public String printPrice1() {
+        return ("Price: $5.99");
     }
 
 //    @Override
@@ -52,8 +49,8 @@ public class Snacks implements Food {
 //    }
 
     @Override
-    public void printIngredient1() {
-        System.out.println("Ingredient: High-quality Chicken Tenders, Salt, Plant Oil");
+    public String printIngredient1() {
+        return ("Ingredient: High-quality Chicken Tenders, Salt, Plant Oil");
     }
 
 //    @Override
@@ -62,8 +59,8 @@ public class Snacks implements Food {
 //    }
 
     @Override
-    public void printPopularity1() {
-        System.out.println("Star: ***");
+    public String printPopularity1() {
+        return ("Star: ***");
     }
 }
 

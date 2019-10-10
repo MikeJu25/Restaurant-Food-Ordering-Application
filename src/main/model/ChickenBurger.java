@@ -2,8 +2,8 @@ package model;
 
 public class ChickenBurger extends Burger {
     @Override
-    public void printPrice1() {
-        System.out.println("$17.39");
+    public String printPrice1() {
+        return ("$17.39");
     }
 
 //    @Override
@@ -12,8 +12,8 @@ public class ChickenBurger extends Burger {
 //    }
 
     @Override
-    public void printIngredient1() {
-        System.out.println("Free run chicken, organic plant oil, oat or white bread");
+    public String printIngredient1() {
+        return ("Free run chicken, organic plant oil, oat or white bread");
     }
 
 //    @Override
@@ -22,8 +22,8 @@ public class ChickenBurger extends Burger {
 //    }
 
     @Override
-    public void printPopularity1() {
-        System.out.println("*****");
+    public String printPopularity1() {
+        return ("*****");
     }
 
 //    @Override
@@ -32,12 +32,12 @@ public class ChickenBurger extends Burger {
 //    }
 
     @Override
-    public void printName1() {
-        System.out.println("Classical Chicken Burger");
+    public String printName1() {
+        return ("Classical Chicken Burger");
     }
 
-    public static void printOrder() {
-        System.out.println("Choose one chicken burgers from below");
+    public static String printOrder() {
+        return ("Choose one burger below");
     }
 
     public static void printOrder1() {

@@ -1,5 +1,3 @@
-package test;
-
 import model.Customer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -43,9 +41,9 @@ public class CustomerTest {
         assertEquals(100, customer2.checkBalance(customer2));
     }
 
-    @Test
-    public void testAddCustomerToList() {
-        customers.add(customer1);
-        assertTrue(customers.contains(customer1));
-    }
+//    @Test
+//    public void testAddCustomerToList() {
+//        customer1.addCustomerToList(customer1);
+//        assertTrue(customers.contains(customer1));
+//    }
 }
