@@ -65,7 +65,7 @@ public class Customer implements Consumer, Loadable, Savable {
         customer = new Customer(operation, 0);
         save(operation);
         checkName(customer, customers);
-        Snacks.makeOrder();
+        Burger.makeOrder();
 
     }
 
