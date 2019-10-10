@@ -32,20 +32,20 @@ public abstract class Burger implements Food {
     @Override
     public abstract void printPopularity2();
 
-    public static void makeOrder() {
-        String operation = "";
-        System.out.println("Do you want some burgers?(Yes or No)");
-        Scanner scanner = new Scanner(System.in);
-        operation = scanner.nextLine();
-
-        if (operation.equals("Yes")) {
-            printOrder();
-            BeefBurger.makeOrder();
-        } else {
-            Snacks.makeOrder();
-        }
-
-    }
+//    public static void makeOrder() {
+//        String operation = "";
+//        System.out.println("Do you want some burgers?(Yes or No)");
+//        Scanner scanner = new Scanner(System.in);
+//        operation = scanner.nextLine();
+//
+//        if (operation.equals("Yes")) {
+//            printOrder();
+//            BeefBurger.makeOrder();
+//        } else {
+//            Snacks.makeOrder();
+//        }
+//
+//    }
 
     public abstract void printName1();
 

@@ -11,11 +11,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
+import static ui.Main.makeOrderBurger;
+
 public class Customer implements Consumer, Loadable, Savable {
-    private String name;
+    public String name;
     private double balance = 0;
-    private ArrayList<Customer> customers = new ArrayList<Customer>();
-    private ArrayList<String> names = new ArrayList<String>();
+    public ArrayList<Customer> customers = new ArrayList<Customer>();
+    public ArrayList<String> names = new ArrayList<String>();
 
 
     //EFFECT: construct customer object
@@ -26,21 +28,21 @@ public class Customer implements Consumer, Loadable, Savable {
 
 
     //EFFECTS: check customer name to see if the customer is new or a client
-    public void checkName(Customer customer, ArrayList<Customer> customers) {
-        extractName(customers);
-        if (customers.size() == 0) {
-            addCustomerToList(customer);
-            System.out.println("First time? Continue to oder with user name: " + customer.getName(customer));
-        } else {
-
-            if (names.contains(customer.name)) {
-                System.out.println("Continue to oder with user name: " + customer.getName(customer));
-            } else {
-                addCustomerToList(customer);
-                System.out.println("First time? Continue to oder with user name: " + customer.getName(customer));
-            }
-        }
-    }
+//    public void checkName(Customer customer, ArrayList<Customer> customers) {
+//        extractName(customers);
+//        if (customers.size() == 0) {
+//            addCustomerToList(customer);
+//            System.out.println("First time? Continue to oder with user name: " + customer.getName(customer));
+//        } else {
+//
+//            if (names.contains(customer.name)) {
+//                System.out.println("Continue to oder with user name: " + customer.getName(customer));
+//            } else {
+//                addCustomerToList(customer);
+//                System.out.println("First time? Continue to oder with user name: " + customer.getName(customer));
+//            }
+//        }
+//    }
 
 //        if (customers.contains(customer)) {
 //            System.out.println("Continue to oder with user name: " + customer.getName(customer));
@@ -57,15 +59,15 @@ public class Customer implements Consumer, Loadable, Savable {
     @Override
     //EFFECTS: scan the user input name, create customer object and pass it to checkName
     public void startOrder() throws IOException {
-        Customer customer;
-        ArrayList<String> order = new ArrayList<String>();
-        Scanner scanner = new Scanner(System.in);
-        Menu.print();
-        String operation = scanner.nextLine();
-        customer = new Customer(operation, 0);
-        save(operation);
-        checkName(customer, customers);
-        Burger.makeOrder();
+//        Customer customer;
+//        ArrayList<String> order = new ArrayList<String>();
+//        Scanner scanner = new Scanner(System.in);
+//        Menu.print();
+//        String operation = scanner.nextLine();
+//        customer = new Customer(operation, 0);
+//        save(operation);
+//        checkName(customer, customers);
+//        makeOrderBurger();
 
     }
 

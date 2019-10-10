@@ -43,25 +43,25 @@ public class BeefBurger extends Burger {
 
     }
 
-    public static void makeOrder() {
-        Food beefBurger = new BeefBurger();
-        String operation = "";
-        System.out.println("Do you want some beef burgers?(Yes or No)");
-        Scanner scanner = new Scanner(System.in);
-        operation = scanner.nextLine();
-
-        if (operation.equals("Yes")) {
-            printOrder();
-            System.out.println("Do you want angus beef burgers?(Yes or No)");
-            operation = scanner.nextLine();
-            if (operation.equals("Yes")) {
-                printOrder1();
-            }
-        } else {
-            ChickenBurger.makeOrder();
-        }
-
-    }
+//    public static void makeOrder() {
+//        Food beefBurger = new BeefBurger();
+//        String operation = "";
+//        System.out.println("Do you want some beef burgers?(Yes or No)");
+//        Scanner scanner = new Scanner(System.in);
+//        operation = scanner.nextLine();
+//
+//        if (operation.equals("Yes")) {
+//            printOrder();
+//            System.out.println("Do you want angus beef burgers?(Yes or No)");
+//            operation = scanner.nextLine();
+//            if (operation.equals("Yes")) {
+//                printOrder1();
+//            }
+//        } else {
+//            ChickenBurger.makeOrder();
+//        }
+//
+//    }
 
     public void printName1() {
         System.out.println("Angus Beef Burger");
