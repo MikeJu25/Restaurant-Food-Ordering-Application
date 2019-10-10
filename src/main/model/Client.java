@@ -1,11 +1,5 @@
 package model;
 
-import ui.Main;
-import ui.Menu;
-
-import java.util.ArrayList;
-import java.util.Scanner;
-
 public class Client extends Customer {
 
 
