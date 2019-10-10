@@ -105,36 +105,37 @@ public class Customer implements Consumer, Loadable, Savable {
 
     @Override
     public void load() throws IOException {
-        List<String> lines = Files.readAllLines(Paths.get("inputfile"));
-        PrintWriter writer = new PrintWriter("outputfile", "UTF-8");
-//        lines.add("Mike 8.99");
-        for (String line : lines) {
-            ArrayList<String> partsOfLine = splitOnSpace(line);
-            System.out.print("Customer: " + partsOfLine.get(0) + "  ");
-      //      System.out.println("Balance: " + partsOfLine.get(1));
-            writer.println(line);
-        }
-        writer.close();
-    }
-
-    public static ArrayList<String> splitOnSpace(String line) throws IOException {
-        String[] splits = line.split(" ");
-        return new ArrayList<>(Arrays.asList(splits));
-
+//        List<String> lines = Files.readAllLines(Paths.get("inputfile"));
+//        PrintWriter writer = new PrintWriter("outputfile", "UTF-8");
+////        lines.add("Mike 8.99");
+//        for (String line : lines) {
+//            ArrayList<String> partsOfLine = splitOnSpace(line);
+//            System.out.print("Customer: " + partsOfLine.get(0) + "  ");
+//      //      System.out.println("Balance: " + partsOfLine.get(1));
+//            writer.println(line);
+//        }
+//        writer.close();
+//    }
+//
+//    public static ArrayList<String> splitOnSpace(String line) throws IOException {
+//        String[] splits = line.split(" ");
+//        return new ArrayList<>(Arrays.asList(splits));
+//
     }
 
     @Override
     public void save(String s) throws IOException {
-        List<String> lines = Files.readAllLines(Paths.get("inputfile"));
-        PrintWriter writer = new PrintWriter("outputfile", "UTF-8");
-        lines.add(s);
-        for (String line : lines) {
-            ArrayList<String> partsOfLine = splitOnSpace(line);
-            System.out.print("Customer: " + partsOfLine.get(0) + "  ");
-        //    System.out.println("Balance: " + partsOfLine.get(1));
-            writer.println(line);
-        }
-        writer.close();
+//        List<String> lines = Files.readAllLines(Paths.get("inputfile"));
+//        PrintWriter writer = new PrintWriter("outputfile", "UTF-8");
+//        lines.add(s);
+//        for (String line : lines) {
+//            ArrayList<String> partsOfLine = splitOnSpace(line);
+//            System.out.print("Customer: " + partsOfLine.get(0) + "  ");
+//        //    System.out.println("Balance: " + partsOfLine.get(1));
+//            writer.println(line);
+//        }
+//        writer.close();
+//    }
     }
 }
 

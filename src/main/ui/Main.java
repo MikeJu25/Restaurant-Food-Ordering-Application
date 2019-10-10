@@ -4,17 +4,24 @@ package ui;
 import model.*;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
 
     private static ArrayList<String> order = new ArrayList<String>();
+    public ArrayList<Customer> customers = new ArrayList<Customer>();
+    public ArrayList<String> names = new ArrayList<String>();
 
 
     public static void main(String[] args) throws IOException {
         Customer customer = new Customer("", 21);
-        customer.load();
+        load();
         startOrder();
     }
 
@@ -38,7 +45,6 @@ public class Main {
             customer.addCustomerToList(customer);
             System.out.println("First time? Continue to oder with user name: " + customer.getName(customer));
         } else {
-
             if (customer.names.contains(customer.name)) {
                 System.out.println("Continue to oder with user name: " + customer.getName(customer));
             } else {
@@ -122,6 +128,41 @@ public class Main {
 
 
     }
+
+    public static void load() throws IOException {
+        List<String> lines = Files.readAllLines(Paths.get("inputfile"));
+        PrintWriter writer = new PrintWriter("outputfile", "UTF-8");
+//        lines.add("Mike 8.99");
+        for (String line : lines) {
+            ArrayList<String> partsOfLine = splitOnSpace(line);
+            System.out.print("Customer: " + partsOfLine.get(0) + "  ");
+            //      System.out.println("Balance: " + partsOfLine.get(1));
+            writer.println(line);
+        }
+        writer.close();
+    }
+
+    public static ArrayList<String> splitOnSpace(String line) throws IOException {
+        String[] splits = line.split(" ");
+        return new ArrayList<>(Arrays.asList(splits));
+
+    }
+
+    public static void save(String s) throws IOException {
+        List<String> lines = Files.readAllLines(Paths.get("inputfile"));
+        PrintWriter writer = new PrintWriter("outputfile", "UTF-8");
+        lines.add(s);
+        for (String line : lines) {
+            ArrayList<String> partsOfLine = splitOnSpace(line);
+            System.out.print("Customer: " + partsOfLine.get(0) + "  ");
+            //    System.out.println("Balance: " + partsOfLine.get(1));
+            writer.println(line);
+        }
+        writer.close();
+    }
+
+
+
 
     public static void print() {
         System.out.println("Welcome! Please input your name here");

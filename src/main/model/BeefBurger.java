@@ -4,12 +4,12 @@ import java.util.Scanner;
 
 public class BeefBurger extends Burger {
 
-    public void angusBeefBurger() {
-        printName1();
-        printPrice1();
-        printIngredient1();
-        printPopularity1();
-    }
+//    public void angusBeefBurger() {
+//        printName1();
+//        printPrice1();
+//        printIngredient1();
+//        printPopularity1();
+//    }
 
 
     @Override

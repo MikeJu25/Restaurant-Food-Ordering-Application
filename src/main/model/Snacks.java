@@ -7,17 +7,17 @@ public class Snacks implements Food {
 
 
 
-    public void chickenStripes() {
-        printPrice1();
-        printIngredient1();
-        printPopularity1();
-    }
-
-    public void chickenWings() {
-        printPrice2();
-        printIngredient2();
-        printPopularity2();
-    }
+//    public void chickenStripes() {
+////        printPrice1();
+////        printIngredient1();
+////        printPopularity1();
+////    }
+////
+////    public void chickenWings() {
+////        printPrice2();
+////        printIngredient2();
+////        printPopularity2();
+////    }
 
 //    public static void makeOrder() {
 //        Food chickenStripes = new Snacks();
