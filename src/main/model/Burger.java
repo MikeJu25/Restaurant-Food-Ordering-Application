@@ -17,20 +17,20 @@ public abstract class Burger implements Food {
     @Override
     public abstract void printPrice1();
 
-    @Override
-    public abstract void printPrice2();
+//    @Override
+//    public abstract void printPrice2();
 
     @Override
     public abstract void printIngredient1();
 
-    @Override
-    public abstract void printIngredient2();
-
-    @Override
-    public abstract void printPopularity1();
-
-    @Override
-    public abstract void printPopularity2();
+//    @Override
+//    public abstract void printIngredient2();
+//
+//    @Override
+//    public abstract void printPopularity1();
+//
+//    @Override
+//    public abstract void printPopularity2();
 
 //    public static void makeOrder() {
 //        String operation = "";

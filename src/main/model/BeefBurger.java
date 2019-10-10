@@ -17,10 +17,10 @@ public class BeefBurger extends Burger {
         System.out.println("$23.99");
     }
 
-    @Override
-    public void printPrice2() {
-
-    }
+//    @Override
+//    public void printPrice2() {
+//
+//    }
 
 
     @Override
@@ -28,20 +28,20 @@ public class BeefBurger extends Burger {
         System.out.println("Angus beef, butter, exclusive chess, oat bread cover");
     }
 
-    @Override
-    public void printIngredient2() {
-
-    }
+//    @Override
+//    public void printIngredient2() {
+//
+//    }
 
     @Override
     public void printPopularity1() {
         System.out.println("****");
     }
 
-    @Override
-    public void printPopularity2() {
-
-    }
+//    @Override
+//    public void printPopularity2() {
+//
+//    }
 
 //    public static void makeOrder() {
 //        Food beefBurger = new BeefBurger();

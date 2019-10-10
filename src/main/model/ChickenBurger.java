@@ -6,30 +6,30 @@ public class ChickenBurger extends Burger {
         System.out.println("$17.39");
     }
 
-    @Override
-    public void printPrice2() {
-
-    }
+//    @Override
+//    public void printPrice2() {
+//
+//    }
 
     @Override
     public void printIngredient1() {
         System.out.println("Free run chicken, organic plant oil, oat or white bread");
     }
 
-    @Override
-    public void printIngredient2() {
-
-    }
+//    @Override
+//    public void printIngredient2() {
+//
+//    }
 
     @Override
     public void printPopularity1() {
         System.out.println("*****");
     }
 
-    @Override
-    public void printPopularity2() {
-
-    }
+//    @Override
+//    public void printPopularity2() {
+//
+//    }
 
     @Override
     public void printName1() {
