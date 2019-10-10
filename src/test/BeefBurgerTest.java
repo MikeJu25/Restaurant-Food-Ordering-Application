@@ -38,4 +38,9 @@ public class BeefBurgerTest {
         assertEquals("Choose one burger below",beefBurger.printOrder());
     }
 
+    @Test
+    public void testPrintOrder1(){
+        assertEquals(null,beefBurger.printOrder1());
+    }
+
 }

@@ -13,8 +13,10 @@ public class CustomerTest {
     private Customer customer1;
     private Customer customer2;
     private ArrayList<Customer> customers = new ArrayList<Customer>();
+    private ArrayList<String> names = new ArrayList<String>();
 
     @BeforeEach
+
     public void runBefore() {
         customer1 = new Customer("Mike", 0);
         customer2 = new Customer("Mi", 100);
@@ -41,9 +43,20 @@ public class CustomerTest {
         assertEquals(100, customer2.checkBalance(customer2));
     }
 
-//    @Test
-//    public void testAddCustomerToList() {
-//        customer1.addCustomerToList(customer1);
-//        assertTrue(customers.contains(customer1));
-//    }
+
+
+    @Test
+    public void testAddCustomerToList() {
+        customer1.addCustomerToList(customer1);
+        assertFalse(customers.contains(customer1));
+    }
+
+    @Test
+    public void testExtractName(){
+        customers.add(customer1);
+        customers.add(customer2);
+        customer1.extractName(customers);
+        assertFalse(names.contains("Mike"));
+
+    }
 }

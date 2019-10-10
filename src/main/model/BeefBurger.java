@@ -69,6 +69,7 @@ public class BeefBurger extends Burger {
         return "Choose one beef burger from below";
     }
 
+
     public static String printOrder1() {
         return "You've successfully ordered angus beef burgers";
     }

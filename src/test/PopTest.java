@@ -17,4 +17,9 @@ public class PopTest {
     public void testPrintTips(){
         assertEquals(pop.printTips(),"Get a cup near front desk");
     }
+
+//    @Test
+//    public void testCokeZero(){
+//        assertEquals("Get a cup near front desk",pop.cokeZero());
+//    }
 }

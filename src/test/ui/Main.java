@@ -67,7 +67,7 @@ public class Main {
             System.out.println("Do you want angus beef burgers?(Yes or No)");
             operation = scanner.nextLine();
             if (operation.equals("Yes")) {
-                BeefBurger.printOrder1();
+                Burger.printOrder1();
             }
         } else {
             makeOrderChickenBurger();
