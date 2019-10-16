@@ -17,6 +17,7 @@ public class Main {
     private static ArrayList<String> order = new ArrayList<String>();
     public ArrayList<Customer> customers = new ArrayList<Customer>();
     public ArrayList<String> names = new ArrayList<String>();
+    private static Scanner input;
 
 
     public static void main(String[] args) throws IOException {
@@ -28,15 +29,48 @@ public class Main {
     public static void startOrder() throws IOException {
         Customer customer;
         ArrayList<String> order = new ArrayList<String>();
-        Scanner scanner = new Scanner(System.in);
+        input = new Scanner(System.in);
         print();
-        String operation = scanner.nextLine();
+        String operation = input.nextLine();
         customer = new Customer(operation, 0);
         customer.save(operation);
         ArrayList<Customer> customers = new ArrayList<Customer>();
         checkName(customer, customers);
-        makeOrderBurger();
+        makeOrderMainMenu();
+    }
 
+    public static void makeOrderMainMenu(){
+        boolean keepGoing = true;
+        String command = null;
+       // init();
+        while(keepGoing) {
+            displayMenu();
+            command = input.next();
+            command = command.toLowerCase();
+
+            if(command.equals("b"))
+                makeOrderBurger();
+            else if(command.equals("s"))
+                makeOrderSnacks();
+//            else if(command.equals("d"))
+//                ();
+            else if(command.equals("q"))
+                keepGoing = false;
+            else
+                System.out.println("Selection not valid...");
+        }
+
+        System.out.println("\nThank you for ordering with automatic machine, goodbye!");
+    }
+
+
+    private static void displayMenu() {
+        System.out.println("\nSelect from:");
+        System.out.println("\tb -> Burger");
+        System.out.println("\ts -> Snacks");
+       // System.out.println("\td -> Drinks");
+       // System.out.println("\tc -> Combo");
+        System.out.println("\tq -> quit");
     }
 
     public static void checkName(Customer customer, ArrayList<Customer> customers) {
@@ -56,38 +90,131 @@ public class Main {
 
 
     public static void makeOrderBeefBurger() {
-        Food beefBurger = new BeefBurger();
-        String operation = "";
-        System.out.println("Do you want some beef burgers?(Yes or No)");
-        Scanner scanner = new Scanner(System.in);
-        operation = scanner.nextLine();
+        boolean keepGoing = true;
+        String command = null;
 
-        if (operation.equals("Yes")) {
-            BeefBurger.printOrder();
-            System.out.println("Do you want angus beef burgers?(Yes or No)");
-            operation = scanner.nextLine();
-            if (operation.equals("Yes")) {
-                Burger.printOrder1();
-            }
-        } else {
-            makeOrderChickenBurger();
+        while(keepGoing) {
+            displayBeefBurgerMenu();
+            command = input.next();
+            command = command.toLowerCase();
+
+            if(command.equals("a"))
+                angusBeefBurger();
+//            else if(command.equals("c"))
+//                makeOrderChickenBurger();
+            else if(command.equals("q"))
+                keepGoing = false;
+            else if(command.equals("r"))
+                makeOrderBurger();
+            else if(command.equals("p"))
+                printOrderMain();
+            else
+                System.out.println("Selection not valid...");
         }
+        System.out.println("\nThank you for ordering with automatic machine, goodbye!");
+       // Food beefBurger = new BeefBurger();
+
+//        String operation = "";
+//        System.out.println("Do you want some beef burgers?(Yes or No)");
+//        Scanner scanner = new Scanner(System.in);
+//        operation = scanner.nextLine();
+//
+//        if (operation.equals("Yes")) {
+//            BeefBurger.printOrder();
+//            System.out.println("Do you want angus beef burgers?(Yes or No)");
+//            operation = scanner.nextLine();
+//            if (operation.equals("Yes")) {
+//                Burger.printOrder1();
+//            }
+//        } else {
+//            makeOrderChickenBurger();
+//        }
 
     }
 
-    public static void makeOrderBurger() {
-        String operation = "";
-        System.out.println("Do you want some burgers?(Yes or No)");
-        Scanner scanner = new Scanner(System.in);
-        operation = scanner.nextLine();
+        public static void angusBeefBurger() {
+            BeefBurger beefBurger = new BeefBurger();
+            beefBurger.printName1();
+            beefBurger.printPrice1();
+            beefBurger.printIngredient1();
+            beefBurger.printPopularity1();
+            boolean keepGoing = true;
+            String command = null;
 
-        if (operation.equals("Yes")) {
-            Burger.printOrder();
+            while(keepGoing) {
+                System.out.println("price: $23.99");
+                System.out.println("Do you want Angus Beef Burger?( y or n )");
+                command = input.next();
+                command = command.toLowerCase();
+
+                if(command.equals("y")) {
+                    System.out.println("you've successfully ordered Angus Beef Burger");
+                    order.add("Angus Beef Burger");
+                    makeOrderBeefBurger();
+//            else if(command.equals("c"))
+//                makeOrderChickenBurger();
+                } else if(command.equals("n")) {
+                    keepGoing = false;
+//                else if(command.equals("r"))
+//                    makeOrderBeefBurger();
+                } else
+                    System.out.println("Selection not valid...");
+            }
             makeOrderBeefBurger();
-        } else {
-            makeOrderSnacks();
-        }
+            }
 
+
+
+
+
+    private static void displayBeefBurgerMenu() {
+        System.out.println("\nSelect from:");
+        System.out.println("\ta -> Angus Beef Burger");
+        System.out.println("\tr -> Return");
+        System.out.println("\tp -> Ready to pay");
+        System.out.println("\tq -> quit");
+        // System.out.println("\tq -> quit");
+    }
+
+    public static void makeOrderBurger() {
+        boolean keepGoing = true;
+        String command = null;
+
+        while(keepGoing) {
+            displayBurgerMenu();
+            command = input.next();
+            command = command.toLowerCase();
+
+            if(command.equals("b"))
+                makeOrderBeefBurger();
+            else if(command.equals("c"))
+                makeOrderChickenBurger();
+            else if(command.equals("q"))
+                keepGoing = false;
+            else if(command.equals("r"))
+                makeOrderMainMenu();
+            else if(command.equals("p"))
+                printOrderMain();
+            else
+                System.out.println("Selection not valid...");
+        }
+        System.out.println("\nThank you for ordering with automatic machine, goodbye!");
+    }
+
+    public static void printOrderMain(){
+        for (String str: order) {
+            System.out.println("your order is " + str);
+        }
+    }
+
+    private static void displayBurgerMenu() {
+        System.out.println("\nSelect from:");
+        System.out.println("\tb -> Beef Burger");
+        System.out.println("\tc -> Chicken Burger");
+        System.out.println("\tr -> Return");
+        System.out.println("\tp -> Ready to pay");
+        // System.out.println("\tc -> Combo");
+        System.out.println("\tq -> quit");
     }
 
     public static void makeOrderSnacks() {
