@@ -1,3 +1,5 @@
+package model;
+
 import model.BeefBurger;
 import model.Burger;
 import model.ChickenBurger;

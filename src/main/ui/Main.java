@@ -20,18 +20,27 @@ public class Main {
     private static Scanner input;
 
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, TooLongName {
         Customer customer = new Customer("", 21);
         load();
-        startOrder();
+        try {
+            startOrder();
+        } catch (TooLongName tooLongName) {
+            System.out.println("Please input your user name less than 10 characters");
+        } finally {
+            startOrder();
+        }
     }
 
-    public static void startOrder() throws IOException {
+    public static void startOrder() throws IOException, TooLongName {
         Customer customer;
         ArrayList<String> order = new ArrayList<String>();
         input = new Scanner(System.in);
         print();
         String operation = input.nextLine();
+        if (operation.length() > 10) {
+            throw new TooLongName();
+        }
         customer = new Customer(operation, 0);
         customer.save(operation);
         ArrayList<Customer> customers = new ArrayList<Customer>();
@@ -39,25 +48,26 @@ public class Main {
         makeOrderMainMenu();
     }
 
-    public static void makeOrderMainMenu(){
+    public static void makeOrderMainMenu() {
         boolean keepGoing = true;
         String command = null;
-       // init();
-        while(keepGoing) {
+        // init();
+        while (keepGoing) {
             displayMenu();
             command = input.next();
             command = command.toLowerCase();
 
-            if(command.equals("b"))
+            if (command.equals("b")) {
                 makeOrderBurger();
-            else if(command.equals("s"))
+            } else if (command.equals("s")) {
                 makeOrderSnacks();
 //            else if(command.equals("d"))
 //                ();
-            else if(command.equals("q"))
+            } else if (command.equals("q")) {
                 keepGoing = false;
-            else
+            } else {
                 System.out.println("Selection not valid...");
+            }
         }
 
         System.out.println("\nThank you for ordering with automatic machine, goodbye!");
@@ -68,8 +78,8 @@ public class Main {
         System.out.println("\nSelect from:");
         System.out.println("\tb -> Burger");
         System.out.println("\ts -> Snacks");
-       // System.out.println("\td -> Drinks");
-       // System.out.println("\tc -> Combo");
+        // System.out.println("\td -> Drinks");
+        // System.out.println("\tc -> Combo");
         System.out.println("\tq -> quit");
     }
 
@@ -77,13 +87,13 @@ public class Main {
         customer.extractName(customers);
         if (customers.size() == 0) {
             customer.addCustomerToList(customer);
-            System.out.println("First time? Continue to oder with user name: " + customer.getName(customer));
+            System.out.println("First time? Continue to order with user name: " + customer.getName(customer));
         } else {
             if (customer.names.contains(customer.name)) {
-                System.out.println("Continue to oder with user name: " + customer.getName(customer));
+                System.out.println("Continue to order with user name: " + customer.getName(customer));
             } else {
                 customer.addCustomerToList(customer);
-                System.out.println("First time? Continue to oder with user name: " + customer.getName(customer));
+                System.out.println("First time? Continue to order with user name: " + customer.getName(customer));
             }
         }
     }
@@ -91,28 +101,26 @@ public class Main {
 
     public static void makeOrderBeefBurger() {
         boolean keepGoing = true;
-        String command = null;
-
-        while(keepGoing) {
+        while (keepGoing) {
             displayBeefBurgerMenu();
-            command = input.next();
+            String command = input.next();
             command = command.toLowerCase();
-
-            if(command.equals("a"))
+            if (command.equals("a")) {
                 angusBeefBurger();
-//            else if(command.equals("c"))
-//                makeOrderChickenBurger();
-            else if(command.equals("q"))
+            } else if (command.equals("q")) {
                 keepGoing = false;
-            else if(command.equals("r"))
+            } else if (command.equals("r")) {
                 makeOrderBurger();
-            else if(command.equals("p"))
+            } else if (command.equals("p")) {
                 printOrderMain();
-            else
+            } else {
                 System.out.println("Selection not valid...");
+            }
         }
         System.out.println("\nThank you for ordering with automatic machine, goodbye!");
-       // Food beefBurger = new BeefBurger();
+    }
+
+    // Food beefBurger = new BeefBurger();
 
 //        String operation = "";
 //        System.out.println("Do you want some beef burgers?(Yes or No)");
@@ -130,41 +138,33 @@ public class Main {
 //            makeOrderChickenBurger();
 //        }
 
-    }
 
-        public static void angusBeefBurger() {
-            BeefBurger beefBurger = new BeefBurger();
-            beefBurger.printName1();
-            beefBurger.printPrice1();
-            beefBurger.printIngredient1();
-            beefBurger.printPopularity1();
-            boolean keepGoing = true;
-            String command = null;
-
-            while(keepGoing) {
-                System.out.println("price: $23.99");
-                System.out.println("Do you want Angus Beef Burger?( y or n )");
-                command = input.next();
-                command = command.toLowerCase();
-
-                if(command.equals("y")) {
-                    System.out.println("you've successfully ordered Angus Beef Burger");
-                    order.add("Angus Beef Burger");
-                    makeOrderBeefBurger();
-//            else if(command.equals("c"))
-//                makeOrderChickenBurger();
-                } else if(command.equals("n")) {
-                    keepGoing = false;
-//                else if(command.equals("r"))
-//                    makeOrderBeefBurger();
-                } else
-                    System.out.println("Selection not valid...");
+    public static void angusBeefBurger() {
+        boolean keepGoing = true;
+        String command = null;
+        while (keepGoing) {
+            System.out.println("price: $23.99");
+            System.out.println("Do you want Angus Beef Burger?( y or n )");
+            command = input.next();
+            command = command.toLowerCase();
+            if (command.equals("y")) {
+                System.out.println("you've successfully ordered Angus Beef Burger");
+                order.add("Angus Beef Burger");
+                makeOrderBeefBurger();
+            } else if (command.equals("n")) {
+                keepGoing = false;
+            } else {
+                System.out.println("Selection not valid...");
             }
             makeOrderBeefBurger();
-            }
+        }
+    }
 
-
-
+//    BeefBurger beefBurger = new BeefBurger();
+//        beefBurger.printName1();
+//        beefBurger.printPrice1();
+//        beefBurger.printIngredient1();
+//        beefBurger.printPopularity1();
 
 
     private static void displayBeefBurgerMenu() {
@@ -176,33 +176,33 @@ public class Main {
         // System.out.println("\tq -> quit");
     }
 
+
     public static void makeOrderBurger() {
         boolean keepGoing = true;
-        String command = null;
-
-        while(keepGoing) {
+        while (keepGoing) {
             displayBurgerMenu();
-            command = input.next();
+            String command = input.next();
             command = command.toLowerCase();
-
-            if(command.equals("b"))
+            if (command.equals("b")) {
                 makeOrderBeefBurger();
-            else if(command.equals("c"))
-                makeOrderChickenBurger();
-            else if(command.equals("q"))
+            } else if (command.equals("q")) {
                 keepGoing = false;
-            else if(command.equals("r"))
+            } else if (command.equals("r")) {
                 makeOrderMainMenu();
-            else if(command.equals("p"))
+            } else if (command.equals("p")) {
                 printOrderMain();
-            else
+            } else {
                 System.out.println("Selection not valid...");
+            }
         }
         System.out.println("\nThank you for ordering with automatic machine, goodbye!");
     }
+//} else if (command.equals("c")) {
+//        makeOrderChickenBurger();
 
-    public static void printOrderMain(){
-        for (String str: order) {
+
+    public static void printOrderMain() {
+        for (String str : order) {
             System.out.println("your order is " + str);
         }
     }
@@ -287,8 +287,6 @@ public class Main {
         }
         writer.close();
     }
-
-
 
 
     public static void print() {

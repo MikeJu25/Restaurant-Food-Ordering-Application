@@ -1,3 +1,5 @@
+package model;
+
 import model.Drinks;
 import model.Pop;
 import org.junit.jupiter.api.BeforeEach;

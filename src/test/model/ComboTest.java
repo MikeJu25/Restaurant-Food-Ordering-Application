@@ -1,3 +1,5 @@
+package model;
+
 import model.Combo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
