@@ -5,6 +5,7 @@ import model.*;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.ReadOnlyBufferException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -16,36 +17,49 @@ public class Main {
 
     private static ArrayList<String> order = new ArrayList<String>();
     public ArrayList<Customer> customers = new ArrayList<Customer>();
-    public ArrayList<String> names = new ArrayList<String>();
+    public static ArrayList<String> names = new ArrayList<String>();
     private static Scanner input;
 
 
-    public static void main(String[] args) throws IOException, TooLongName {
+    public static void main(String[] args) throws IOException, TooLongName, RepeatedName {
         Customer customer = new Customer("", 21);
         load();
         try {
             startOrder();
         } catch (TooLongName tooLongName) {
             System.out.println("Please input your user name less than 10 characters");
+        } catch (RepeatedName repeatedName) {
+            System.out.println("This name has been used");
         } finally {
             startOrder();
         }
     }
 
-    public static void startOrder() throws IOException, TooLongName {
+    public static void startOrder() throws IOException, TooLongName, RepeatedName {
         Customer customer;
         ArrayList<String> order = new ArrayList<String>();
         input = new Scanner(System.in);
         print();
         String operation = input.nextLine();
-        if (operation.length() > 10) {
-            throw new TooLongName();
+        if (checkNameLegal(operation)) {
+            customer = new Customer(operation, 0);
+            customer.save(operation);
+            ArrayList<Customer> customers = new ArrayList<Customer>();
+            checkName(customer, customers);
+            makeOrderMainMenu();
         }
-        customer = new Customer(operation, 0);
-        customer.save(operation);
-        ArrayList<Customer> customers = new ArrayList<Customer>();
-        checkName(customer, customers);
-        makeOrderMainMenu();
+    }
+
+    public static boolean checkNameLegal(String s) throws TooLongName, RepeatedName {
+        names = new ArrayList<String>();
+        if (s.length() > 10) {
+            throw new TooLongName();
+        } else {
+            if (names.contains(s)) {
+                throw new RepeatedName();
+            }
+        }
+        return true;
     }
 
     public static void makeOrderMainMenu() {

@@ -1,4 +1,4 @@
 package model;
 
-public class TooLongName extends Exception {
+public class TooLongName extends NameException {
 }
