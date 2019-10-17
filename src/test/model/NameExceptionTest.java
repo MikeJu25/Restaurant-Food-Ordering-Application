@@ -19,7 +19,7 @@ public class NameExceptionTest {
         str = new String();
         str = "Jack";
         try {
-            assertTrue(checkNameLegal(str));
+            checkNameLegal(str);
         } catch (TooLongName tooLongName) {
             fail("The name is legal");
         } catch (RepeatedName repeatedName) {
@@ -32,7 +32,8 @@ public class NameExceptionTest {
         operation = new String();
         operation = "sdfasfdsafdsf";
         try {
-            assertTrue(checkNameLegal(operation));
+            checkNameLegal(operation);
+            fail("exception not thrown");
         } catch (TooLongName tooLongName) {
             //expected;
         } catch (RepeatedName repeatedName) {
@@ -44,10 +45,11 @@ public class NameExceptionTest {
     public void testCheckNameLegalUsed() {
         operation = new String();
         operation = "sd";
+        str = new String();
         str = "sd";
         names.add(operation);
         try {
-            assertTrue(checkNameLegal(str));
+            checkNameLegal(str);
         } catch (TooLongName tooLongName) {
             fail("The name is legal");
         } catch (RepeatedName repeatedName) {

@@ -51,7 +51,7 @@ public class Main {
     }
 
     public static boolean checkNameLegal(String s) throws TooLongName, RepeatedName {
-        names = new ArrayList<String>();
+       // names = new ArrayList<String>();
         if (s.length() > 10) {
             throw new TooLongName();
         } else {
