@@ -188,13 +188,14 @@ public class MakeOrder {
                 makeOrderMainMenu();
             } else if (command.equals("p")) {
                 printOrderMain();
-                keepGoing = false;
             } else {
                 System.out.println("Selection not valid...");
             }
         }
         System.out.println("\nThank you for ordering with automatic machine, goodbye!");
     }
+
+    //    keepGoing = false;
 //} else if (command.equals("c")) {
 //        makeOrderChickenBurger();
 
