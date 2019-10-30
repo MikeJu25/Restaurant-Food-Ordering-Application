@@ -1,14 +1,13 @@
 package model;
 
-import org.junit.jupiter.api.BeforeEach;
+import exception.RepeatedName;
+import exception.TooLongName;
 import org.junit.jupiter.api.Test;
-import ui.Main;
-
-import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 import static ui.Main.*;
+import static ui.MakeOrder.checkNameLegal;
 
 public class NameExceptionTest {
     private String operation;
@@ -47,9 +46,10 @@ public class NameExceptionTest {
         operation = "sd";
         str = new String();
         str = "sd";
-        names.add(operation);
+        names.add("sd");
         try {
             checkNameLegal(str);
+            fail("exception not thrown");
         } catch (TooLongName tooLongName) {
             fail("The name is legal");
         } catch (RepeatedName repeatedName) {

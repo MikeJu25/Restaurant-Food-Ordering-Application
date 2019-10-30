@@ -1,31 +1,16 @@
 package model;
 
-public class BurgerMenu extends Menu {
-    @Override
-    public void getIntoMenu() {
-//        boolean keepGoing = true;
-//        String command = null;
-//
-//        // init();
-//
-//        while (keepGoing) {
-//            displayMenu();
-//            command = input.next();
-//            command = command.toLowerCase();
-//
-//            if (command.equals("b"))
-//                makeOrderBurger();
-//            else if (command.equals("s"))
-//                makeOrderSnacks();
-////            else if(command.equals("d"))
-////                ();
-//            else if (command.equals("q"))
-//                keepGoing = false;
-//            else
-//                System.out.println("Selection not valid...");
-//        }
-//
-//        System.out.println("\nThank you for ordering with automatic machine, goodbye!");
-//    }
+public class BurgerMenu implements Menu {
+
+    public static void displayMenu() {
+        System.out.println("\nSelect from:");
+        System.out.println("\tb -> Beef Burger");
+        System.out.println("\tc -> Chicken Burger");
+        System.out.println("\tr -> Return");
+        System.out.println("\tp -> Ready to pay");
+        // System.out.println("\tc -> Combo");
+        System.out.println("\tq -> quit");
     }
 }
+
+

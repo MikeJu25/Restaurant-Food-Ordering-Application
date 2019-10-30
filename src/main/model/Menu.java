@@ -1,5 +1,7 @@
 package model;
 
-public abstract class Menu {
-    public abstract void getIntoMenu();
+public interface Menu {
+    static void displayMenu() {
+        System.out.println("\nSelect from:");
+    }
 }

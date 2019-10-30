@@ -26,7 +26,7 @@ public abstract class Burger implements Food {
 //    public abstract void printIngredient2();
 //
 //    @Override
-//    public abstract void printPopularity1();
+//    public abstract printPopularity1();
 //
 //    @Override
 //    public abstract void printPopularity2();
