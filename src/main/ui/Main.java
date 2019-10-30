@@ -19,14 +19,15 @@ public class Main {
     public static void main(String[] args) throws IOException, TooLongName, RepeatedName {
         Customer customer = new Customer("", 21);
         MakeOrder.load();
+        MakeOrder makeOrder = new MakeOrder();
         try {
-            MakeOrder.startOrder();
+            makeOrder.startOrder();
         } catch (TooLongName tooLongName) {
             System.out.println("Please input your user name less than 10 characters");
         } catch (RepeatedName repeatedName) {
             System.out.println("This name has been used");
         } finally {
-            MakeOrder.startOrder();
+            makeOrder.startOrder();
         }
     }
 

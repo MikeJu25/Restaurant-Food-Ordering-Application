@@ -14,9 +14,9 @@ public class MakeOrder {
     private static ArrayList<String> order = new ArrayList<String>();
     public static ArrayList<String> names = new ArrayList<String>();
     private static Scanner input;
-   // private Map<String, Double> customer;
+    // private Map<String, Double> customer;
 
-    public static void startOrder() throws IOException, TooLongName, RepeatedName {
+    public void startOrder() throws IOException, TooLongName, RepeatedName {
         Customer customer;
         ArrayList<String> order = new ArrayList<String>();
         input = new Scanner(System.in);
@@ -43,7 +43,7 @@ public class MakeOrder {
         return true;
     }
 
-    public static void makeOrderMainMenu() {
+    public void makeOrderMainMenu() {
         boolean keepGoing = true;
         String command = null;
         // init();
@@ -95,7 +95,7 @@ public class MakeOrder {
     }
 
 
-    public static void makeOrderBeefBurger() {
+    public void makeOrderBeefBurger() {
         boolean keepGoing = true;
         while (keepGoing) {
             displayBeefBurgerMenu();
@@ -116,6 +116,7 @@ public class MakeOrder {
         System.out.println("\nThank you for ordering with automatic machine, goodbye!");
     }
 
+
     // Food beefBurger = new BeefBurger();
 
 //        String operation = "";
@@ -135,19 +136,16 @@ public class MakeOrder {
 //        }
 
 
-    public static void angusBeefBurger() {
+    public void angusBeefBurger() {
         boolean keepGoing = true;
         String command = null;
         while (keepGoing) {
-            System.out.println("$23.99");
-           // System.out.println("price: $23.99");
+            printAngusBeefBurgerInfo();
             System.out.println("Do you want Angus Beef Burger?( y or n )");
             command = input.next();
             command = command.toLowerCase();
             if (command.equals("y")) {
-                System.out.println("you've successfully ordered Angus Beef Burger");
-                order.add("Angus Beef Burger");
-                makeOrderBeefBurger();
+                pressY();
             } else if (command.equals("n")) {
                 keepGoing = false;
             } else {
@@ -155,6 +153,19 @@ public class MakeOrder {
             }
             makeOrderBeefBurger();
         }
+    }
+
+    public void printAngusBeefBurgerInfo() {
+        BeefBurger bb = new BeefBurger();
+        System.out.println(bb.printPrice1());
+        System.out.println(bb.printIngredient1());
+        System.out.println(bb.printPopularity1());
+    }
+
+    public void pressY() {
+        System.out.println("you've successfully ordered Angus Beef Burger");
+        order.add("Angus Beef Burger");
+        makeOrderBeefBurger();
     }
 
 //    BeefBurger beefBurger = new BeefBurger();
@@ -174,7 +185,8 @@ public class MakeOrder {
     }
 
 
-    public static void makeOrderBurger() {
+    public void makeOrderBurger() {
+        Burger b = new BeefBurger();
         boolean keepGoing = true;
         while (keepGoing) {
             BurgerMenu.displayMenu();
@@ -189,7 +201,7 @@ public class MakeOrder {
             } else if (command.equals("p")) {
                 printOrderMain();
             } else {
-                System.out.println("Selection not valid...");
+               // System.out.println("Selection not valid...");
             }
         }
         System.out.println("\nThank you for ordering with automatic machine, goodbye!");

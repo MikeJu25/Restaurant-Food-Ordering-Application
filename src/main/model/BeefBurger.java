@@ -12,7 +12,7 @@ public class BeefBurger extends Burger {
 
     @Override
     public String printPrice1() {
-        return ("$23.99");
+        return ("price: $23.99");
     }
 
 //    @Override

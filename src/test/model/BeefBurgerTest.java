@@ -26,7 +26,8 @@ public class BeefBurgerTest {
     }
 
     @Test
-    public void testPopularity1(){
+    public void testPopularity1() {
+        BurgerMenu.displayMenu();
         assertEquals("****",beefBurger.printPopularity1());
     }
 
