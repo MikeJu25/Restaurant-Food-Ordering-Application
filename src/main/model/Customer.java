@@ -4,16 +4,47 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+
+import static ui.MakeOrder.splitOnSpace;
 
 public class Customer implements Consumer, Loadable, Savable {
     public String name;
     private double balance = 0;
-    public ArrayList<Customer> customers = new ArrayList<Customer>();
     public ArrayList<String> names = new ArrayList<String>();
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Customer customer = (Customer) o;
+        return Objects.equals(name, customer.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
+
+    public void addBeefBurger(BeefBurger beefBurger) {
+        ArrayList<BeefBurger> beefBurgers = new ArrayList<>();
+        if (!beefBurgers.contains(beefBurger)) {
+            beefBurgers.add(beefBurger);
+            beefBurger.addCustomer(this);
+        }
+    }
+
+    public void removeBeefBurger(BeefBurger beefBurger) {
+        HashSet<BeefBurger> beefBurgers = new HashSet<>();
+        if (beefBurgers.contains(beefBurger)) {
+            beefBurgers.remove(beefBurger);
+            beefBurger.removeCustomer(this);
+        }
+    }
 
     //EFFECT: construct customer object
     public Customer(String name, double balance) {
@@ -92,7 +123,7 @@ public class Customer implements Consumer, Loadable, Savable {
     //MODIFIES: customers
     //EFFECTS: add customer to customers
     public void addCustomerToList(Customer customer) {
-
+        ArrayList<Customer> customers = new ArrayList<Customer>();
         customers.add(customer);
     }
 
@@ -125,19 +156,19 @@ public class Customer implements Consumer, Loadable, Savable {
 
     @Override
     public void save(String s) throws IOException {
-//        List<String> lines = Files.readAllLines(Paths.get("inputfile"));
-//        PrintWriter writer = new PrintWriter("outputfile", "UTF-8");
-//        lines.add(s);
-//        for (String line : lines) {
-//            ArrayList<String> partsOfLine = splitOnSpace(line);
-//            System.out.print("Customer: " + partsOfLine.get(0) + "  ");
-//        //    System.out.println("Balance: " + partsOfLine.get(1));
-//            writer.println(line);
-//        }
-//        writer.close();
-//    }
+        List<String> lines = Files.readAllLines(Paths.get("inputfile"));
+        PrintWriter writer = new PrintWriter("outputfile", "UTF-8");
+        lines.add(s);
+        for (String line : lines) {
+            ArrayList<String> partsOfLine = splitOnSpace(line);
+            System.out.print("Customer: " + partsOfLine.get(0) + "  ");
+            //    System.out.println("Balance: " + partsOfLine.get(1));
+            writer.println(line);
+        }
+        writer.close();
     }
 }
+
 
 
 //    public boolean contain(Customer customer, ArrayList<Customer> customers) {

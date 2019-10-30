@@ -1,6 +1,11 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+
 public class BeefBurger extends Burger {
+
+    public ArrayList<Customer> customers = new ArrayList<>();
 
 //    public void angusBeefBurger() {
 //        printName1();
@@ -9,6 +14,19 @@ public class BeefBurger extends Burger {
 //        printPopularity1();
 //    }
 
+    public void addCustomer(Customer customer) {
+        if (!customers.contains(customer)) {
+            customers.add(customer);
+            customer.addBeefBurger(this);
+        }
+    }
+
+    public void removeCustomer(Customer customer) {
+        if (customers.contains(customer)) {
+            customers.remove(customer);
+            customer.removeBeefBurger(this);
+        }
+    }
 
     @Override
     public String printPrice1() {

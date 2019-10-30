@@ -10,15 +10,10 @@ import java.util.*;
 
 public class Main {
 
-    private static ArrayList<String> order = new ArrayList<String>();
     public static ArrayList<String> names = new ArrayList<String>();
-    private static Scanner input;
-    private Map<String, Double> customer;
-
 
     public static void main(String[] args) throws IOException, TooLongName, RepeatedName {
-        Customer customer = new Customer("", 21);
-        MakeOrder.load();
+       // MakeOrder.load();
         MakeOrder makeOrder = new MakeOrder();
         try {
             makeOrder.startOrder();

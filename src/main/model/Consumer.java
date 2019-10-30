@@ -7,8 +7,6 @@ public interface Consumer {
     String name = null;
     int balance = 0;
 
-
-
     //MODIFIES: this
     //EFFECTS: begin ordering
     void startOrder() throws IOException;

@@ -11,14 +11,14 @@ import java.nio.file.Paths;
 import java.util.*;
 
 public class MakeOrder {
-    private static ArrayList<String> order = new ArrayList<String>();
+    private Order order = new Order();
     public static ArrayList<String> names = new ArrayList<String>();
     private static Scanner input;
+    private Customer customer;
     // private Map<String, Double> customer;
 
     public void startOrder() throws IOException, TooLongName, RepeatedName {
-        Customer customer;
-        ArrayList<String> order = new ArrayList<String>();
+        names.add("Mike");
         input = new Scanner(System.in);
         print();
         String operation = input.nextLine();
@@ -32,7 +32,7 @@ public class MakeOrder {
     }
 
     public static boolean checkNameLegal(String s) throws TooLongName, RepeatedName {
-        // names = new ArrayList<String>();
+        //names = new ArrayList<String>();
         if (s.length() > 10) {
             throw new TooLongName();
         } else {
@@ -79,11 +79,13 @@ public class MakeOrder {
         System.out.println("\tq -> quit");
     }
 
-    public static void checkName(Customer customer, ArrayList<Customer> customers) {
+    public void checkName(Customer customer, ArrayList<Customer> customers) throws IOException {
         customer.extractName(customers);
+        order.addCustomer(customer);
         if (customers.size() == 0) {
             customer.addCustomerToList(customer);
             System.out.println("First time? Continue to order with user name: " + customer.getName(customer));
+            save(customer.getName(customer));
         } else {
             if (customer.names.contains(customer.name)) {
                 System.out.println("Continue to order with user name: " + customer.getName(customer));
@@ -108,7 +110,7 @@ public class MakeOrder {
             } else if (command.equals("r")) {
                 makeOrderBurger();
             } else if (command.equals("p")) {
-                printOrderMain();
+                order.printOrder(customer);
             } else {
                 System.out.println("Selection not valid...");
             }
@@ -164,7 +166,8 @@ public class MakeOrder {
 
     public void pressY() {
         System.out.println("you've successfully ordered Angus Beef Burger");
-        order.add("Angus Beef Burger");
+        order.addOrderedFood(customer,"Angus Beef Burger");
+
         makeOrderBeefBurger();
     }
 
@@ -199,7 +202,7 @@ public class MakeOrder {
             } else if (command.equals("r")) {
                 makeOrderMainMenu();
             } else if (command.equals("p")) {
-                printOrderMain();
+                order.printOrder(customer);
             } else {
                // System.out.println("Selection not valid...");
             }
@@ -212,11 +215,11 @@ public class MakeOrder {
 //        makeOrderChickenBurger();
 
 
-    public static void printOrderMain() {
-        for (String str : order) {
-            System.out.println("your order is " + str);
-        }
-    }
+//    public void printOrderMain() {
+//        for (String str : order) {
+//            System.out.println("your order is " + str);
+//        }
+//    }
 
 //    private static void displayBurgerMenu() {
 //        System.out.println("\nSelect from:");
@@ -228,7 +231,7 @@ public class MakeOrder {
 //        System.out.println("\tq -> quit");
 //    }
 
-    public static void makeOrderSnacks() {
+    public void makeOrderSnacks() {
         Food chickenStripes = new Snacks();
         String operation = "";
         System.out.println("Do you want a chickenStripes?(Yes or No)");
@@ -240,14 +243,14 @@ public class MakeOrder {
 
         if (operation.equals("Yes")) {
             Snacks.printOrder();
-            order.add("chickenStripes");
+            order.addOrderedFood(customer,"chickenStripes");
         } else {
             say();
         }
 
     }
 
-    public static void makeOrderChickenBurger() {
+    public void makeOrderChickenBurger() {
         String operation = "";
         System.out.println("Do you want some chicken burgers?(Yes or No)");
         Scanner scanner = new Scanner(System.in);
