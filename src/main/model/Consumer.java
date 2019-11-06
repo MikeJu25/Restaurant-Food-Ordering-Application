@@ -22,6 +22,5 @@ public interface Consumer {
     //MODIFIES: consumer
     //EFFECTS: get the name of the consumer
     String getName(Customer customer);
-
-    double getBalance(Customer customer);
 }
+

@@ -29,12 +29,12 @@ public class Customers {
         return customers.contains(customer);
     }
 
-    public void load() throws IOException {
-        List<String> lines = Files.readAllLines(Paths.get("inputfile"));
-        PrintWriter writer = new PrintWriter("inputfile", "UTF-8");
-        for (String line : lines) {
-            ArrayList<String> partsOfLine = splitOnSpace(line);
-            addCustomerToList(new Customer(partsOfLine.get(0),0));
-        }
-    }
+//    public void load() throws IOException {
+//        List<String> lines = Files.readAllLines(Paths.get("inputfile"));
+//        PrintWriter writer = new PrintWriter("inputfile", "UTF-8");
+//        for (String line : lines) {
+//            ArrayList<String> partsOfLine = splitOnSpace(line);
+//            addCustomerToList(new Customer(partsOfLine.get(0),0));
+//        }
+//    }
 }

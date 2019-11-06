@@ -12,7 +12,8 @@ import static ui.MakeOrder.splitOnSpace;
 public class Customer implements Consumer, Loadable, Savable {
     public String name;
     private double balance = 0;
-    private Customers customers;
+    private ArrayList<BeefBurger> beefBurgers;
+
 
     @Override
     public boolean equals(Object o) {
@@ -33,7 +34,6 @@ public class Customer implements Consumer, Loadable, Savable {
     }
 
     public void addBeefBurger(BeefBurger beefBurger) {
-        ArrayList<BeefBurger> beefBurgers = new ArrayList<>();
         if (!beefBurgers.contains(beefBurger)) {
             beefBurgers.add(beefBurger);
             beefBurger.addCustomer(this);
@@ -41,7 +41,6 @@ public class Customer implements Consumer, Loadable, Savable {
     }
 
     public void removeBeefBurger(BeefBurger beefBurger) {
-        HashSet<BeefBurger> beefBurgers = new HashSet<>();
         if (beefBurgers.contains(beefBurger)) {
             beefBurgers.remove(beefBurger);
             beefBurger.removeCustomer(this);
@@ -52,6 +51,7 @@ public class Customer implements Consumer, Loadable, Savable {
     public Customer(String name, double balance) {
         this.name = name;
         this.balance = balance;
+        beefBurgers = new ArrayList<>();
     }
 
 
@@ -107,10 +107,6 @@ public class Customer implements Consumer, Loadable, Savable {
         return customer.name;
     }
 
-    @Override
-    public double getBalance(Customer customer) {
-        return customer.balance;
-    }
 
 //    //MODIFIES: customers
 //    //EFFECTS: add customer to customers

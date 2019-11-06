@@ -16,6 +16,7 @@ public class ComboTest {
 
     @Test
     public void testPrintTips(){
+        combo.combo1();
         assertEquals(combo.printTips(),"Grab a cup near the front desk");
     }
 

@@ -7,8 +7,8 @@ public class Pop implements Drinks {
     }
 
 
-    public void cokeZero() {
-        printTips();
-    }
+   // public void cokeZero() {
+       // printTips();
+   // }
 
 }

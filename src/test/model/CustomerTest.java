@@ -9,19 +9,23 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class CustomerTest {
     private Customer customer1;
     private Customer customer2;
-    private ArrayList<Customer> customers = new ArrayList<Customer>();
-    private ArrayList<String> names = new ArrayList<String>();
+    private BeefBurger beefBurger;
+    private ArrayList<BeefBurger> beefBurgers;
+
 
     @BeforeEach
 
     public void runBefore() {
         customer1 = new Customer("Mike", 0);
         customer2 = new Customer("Mi", 100);
+        beefBurger = new BeefBurger();
+        beefBurgers = new ArrayList<>();
     }
 
     @Test
@@ -44,6 +48,29 @@ public class CustomerTest {
         assertEquals(0, customer1.checkBalance(customer1));
         assertEquals(100, customer2.checkBalance(customer2));
     }
+
+    @Test
+    public void testGetBalance() {
+        customer1.addBeefBurger(beefBurger);
+        customer1.removeBeefBurger(beefBurger);
+        customer1.hashCode();
+        customer1.equals(customer1);
+        assertEquals(0, customer1.checkBalance(customer1));
+        assertEquals(100, customer2.checkBalance(customer2));
+    }
+
+    @Test
+    public void testSave(){
+        try {
+            customer1.load();
+            customer1.save("Mike");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
 
 
 

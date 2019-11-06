@@ -8,7 +8,11 @@ public class Order {
     private Map<Customer, ArrayList<String>> order = new HashMap<>();
 
     public void addCustomer(Customer customer) {
-        order.put(customer,new ArrayList<String>());
+        order.put(customer,new ArrayList<>());
+    }
+
+    public ArrayList getOrderedFood(Customer customer) {
+        return order.get(customer);
     }
 
     public void addOrderedFood(Customer customer, String foodName) {
