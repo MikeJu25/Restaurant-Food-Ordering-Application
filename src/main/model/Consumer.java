@@ -7,9 +7,6 @@ public interface Consumer {
     String name = null;
     int balance = 0;
 
-    //MODIFIES: this
-    //EFFECTS: begin ordering
-    void startOrder() throws IOException;
 
     //REQUIRES: the consumer's bill is 1 buck or more
     //MODIFIES: consumer, moneySpent
@@ -26,5 +23,5 @@ public interface Consumer {
     //EFFECTS: get the name of the consumer
     String getName(Customer customer);
 
-
+    double getBalance(Customer customer);
 }

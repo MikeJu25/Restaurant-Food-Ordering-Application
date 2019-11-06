@@ -1,5 +1,6 @@
 package model;
 
+import java.beans.Customizer;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
@@ -11,7 +12,7 @@ import static ui.MakeOrder.splitOnSpace;
 public class Customer implements Consumer, Loadable, Savable {
     public String name;
     private double balance = 0;
-    public ArrayList<String> names = new ArrayList<String>();
+    private Customers customers;
 
     @Override
     public boolean equals(Object o) {
@@ -27,7 +28,8 @@ public class Customer implements Consumer, Loadable, Savable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name);
+        int result = name.hashCode();
+        return result * 31;
     }
 
     public void addBeefBurger(BeefBurger beefBurger) {
@@ -82,21 +84,6 @@ public class Customer implements Consumer, Loadable, Savable {
 //        startOrder();
 
 
-    @Override
-    //EFFECTS: scan the user input name, create customer object and pass it to checkName
-    public void startOrder() throws IOException {
-//        Customer customer;
-//        ArrayList<String> order = new ArrayList<String>();
-//        Scanner scanner = new Scanner(System.in);
-//        Menu.print();
-//        String operation = scanner.nextLine();
-//        customer = new Customer(operation, 0);
-//        save(operation);
-//        checkName(customer, customers);
-//        makeOrderBurger();
-
-    }
-
 
     @Override
     //MODIFIES: this
@@ -120,44 +107,48 @@ public class Customer implements Consumer, Loadable, Savable {
         return customer.name;
     }
 
-    //MODIFIES: customers
-    //EFFECTS: add customer to customers
-    public void addCustomerToList(Customer customer) {
-        ArrayList<Customer> customers = new ArrayList<Customer>();
-        customers.add(customer);
+    @Override
+    public double getBalance(Customer customer) {
+        return customer.balance;
     }
 
-    public void extractName(ArrayList<Customer> customers) {
+//    //MODIFIES: customers
+//    //EFFECTS: add customer to customers
+//    public void addCustomerToList(Customer customer) {
+//        customers.add(customer);
+//    }
 
-        for (Customer c : customers) {
-            names.add(c.name);
-        }
-    }
+//    public void extractName(Customers customers) {
+//        ArrayList<String> names = new ArrayList<String>();
+//        for (Customer c : customers) {
+//            names.add(c.name);
+//        }
+//    }
 
     @Override
     public void load() throws IOException {
-//        List<String> lines = Files.readAllLines(Paths.get("inputfile"));
-//        PrintWriter writer = new PrintWriter("outputfile", "UTF-8");
-////        lines.add("Mike 8.99");
-//        for (String line : lines) {
-//            ArrayList<String> partsOfLine = splitOnSpace(line);
-//            System.out.print("Customer: " + partsOfLine.get(0) + "  ");
-//      //      System.out.println("Balance: " + partsOfLine.get(1));
-//            writer.println(line);
-//        }
-//        writer.close();
-//    }
-//
-//    public static ArrayList<String> splitOnSpace(String line) throws IOException {
-//        String[] splits = line.split(" ");
-//        return new ArrayList<>(Arrays.asList(splits));
-//
+        List<String> lines = Files.readAllLines(Paths.get("inputfile"));
+        PrintWriter writer = new PrintWriter("inputfile", "UTF-8");
+//        lines.add("Mike 8.99");
+        for (String line : lines) {
+            ArrayList<String> partsOfLine = splitOnSpace(line);
+            System.out.print("Customer: " + partsOfLine.get(0) + "  ");
+      //      System.out.println("Balance: " + partsOfLine.get(1));
+            writer.println(line);
+        }
+        writer.close();
+    }
+
+    public static ArrayList<String> splitOnSpace(String line) throws IOException {
+        String[] splits = line.split(" ");
+        return new ArrayList<>(Arrays.asList(splits));
+
     }
 
     @Override
     public void save(String s) throws IOException {
         List<String> lines = Files.readAllLines(Paths.get("inputfile"));
-        PrintWriter writer = new PrintWriter("outputfile", "UTF-8");
+        PrintWriter writer = new PrintWriter("inputfile", "UTF-8");
         lines.add(s);
         for (String line : lines) {
             ArrayList<String> partsOfLine = splitOnSpace(line);

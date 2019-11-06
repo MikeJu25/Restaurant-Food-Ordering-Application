@@ -15,17 +15,20 @@ public class MakeOrder {
     public static ArrayList<String> names = new ArrayList<String>();
     private static Scanner input;
     private Customer customer;
+    private Customers customers;
     // private Map<String, Double> customer;
 
+    public MakeOrder() {
+        customers = new Customers();
+    }
+
     public void startOrder() throws IOException, TooLongName, RepeatedName {
-        names.add("Mike");
         input = new Scanner(System.in);
         print();
         String operation = input.nextLine();
         if (checkNameLegal(operation)) {
             customer = new Customer(operation, 0);
             customer.save(operation);
-            ArrayList<Customer> customers = new ArrayList<Customer>();
             checkName(customer, customers);
             makeOrderMainMenu();
         }
@@ -79,18 +82,20 @@ public class MakeOrder {
         System.out.println("\tq -> quit");
     }
 
-    public void checkName(Customer customer, ArrayList<Customer> customers) throws IOException {
-        customer.extractName(customers);
+    public void checkName(Customer customer, Customers customers) throws IOException {
+       // ArrayList<String> names = new ArrayList<String>();
+       // customer.extractName(customers);
         order.addCustomer(customer);
-        if (customers.size() == 0) {
-            customer.addCustomerToList(customer);
+       // customers.load();
+        if (customers.getSize() == 0) {
+            customers.addCustomerToList(customer);
             System.out.println("First time? Continue to order with user name: " + customer.getName(customer));
             save(customer.getName(customer));
         } else {
-            if (customer.names.contains(customer.name)) {
+            if (customers.checkIfContains(customer)) {
                 System.out.println("Continue to order with user name: " + customer.getName(customer));
             } else {
-                customer.addCustomerToList(customer);
+                customers.addCustomerToList(customer);
                 System.out.println("First time? Continue to order with user name: " + customer.getName(customer));
             }
         }

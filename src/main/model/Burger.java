@@ -52,9 +52,9 @@ public abstract class Burger implements Food {
         return "Choose one burger below";
     }
 
-    public static String printOrder1() {
-        return null;
-    }
+//   // public static String printOrder1() {
+//        return null;
+//    }
 
 
 }

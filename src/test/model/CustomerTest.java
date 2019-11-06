@@ -47,18 +47,18 @@ public class CustomerTest {
 
 
 
-    @Test
-    public void testAddCustomerToList() {
-        customer1.addCustomerToList(customer1);
-        assertFalse(customers.contains(customer1));
-    }
-
-    @Test
-    public void testExtractName(){
-        customers.add(customer1);
-        customers.add(customer2);
-        customer1.extractName(customers);
-        assertFalse(names.contains("Mike"));
-
-    }
+//    @Test
+//    public void testAddCustomerToList() {
+//        customer1.addCustomerToList(customer1);
+//        assertFalse(customers.contains(customer1));
+//    }
+//
+//    @Test
+//    public void testExtractName(){
+//        customers.add(customer1);
+//        customers.add(customer2);
+//        customer1.extractName(customers);
+//        assertFalse(names.contains("Mike"));
+//
+//    }
 }

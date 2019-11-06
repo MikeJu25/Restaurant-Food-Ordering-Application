@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class BeefBurgerTest {
     private BeefBurger beefBurger1;
-    private BeefBurger beefBurger2;
+    private Burger beefBurger2;
     private Customer customer1;
     private Customer customer2;
     private ArrayList<Customer> customers;
@@ -27,9 +27,10 @@ public class BeefBurgerTest {
         beefBurgers = new ArrayList<>();
     }
 
+
     @Test
     public void testPrintPrice1(){
-        assertEquals("$23.99",beefBurger1.printPrice1());
+        assertEquals("price: $23.99",beefBurger1.printPrice1());
     }
 
     @Test
@@ -51,18 +52,23 @@ public class BeefBurgerTest {
     }
 
     @Test
-    public void testPrintName1(){
+    public void testRemoveCustomer(){
+        beefBurger1.addCustomer(customer1);
+        beefBurger1.removeCustomer(customer1);
+        assertFalse(customers.contains(customer1));
+        assertFalse(beefBurgers.contains(beefBurger1));
+    }
+
+    @Test
+    public void testPrintName1() {
         assertEquals("Angus Beef Burger",beefBurger1.printName1());
     }
 
-    @Test
-    public void testPrintOrder(){
-        assertEquals("Choose one burger below",beefBurger1.printOrder());
-    }
+
 
     @Test
     public void testPrintOrder1(){
-        assertEquals(null,beefBurger1.printOrder1());
+        assertEquals("You've successfully ordered angus beef burgers",beefBurger1.printOrder1());
     }
 
 }
