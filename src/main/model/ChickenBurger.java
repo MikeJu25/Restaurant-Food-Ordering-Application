@@ -40,7 +40,7 @@ public class ChickenBurger extends Burger {
         return ("Choose one burger below");
     }
 
-//    public static String printOrder1() {
-////        return ("You've successfully ordered classical chicken burger");
-////    }
+    public static String printOrder1() {
+        return ("You've successfully ordered classical chicken burger");
+    }
 }
