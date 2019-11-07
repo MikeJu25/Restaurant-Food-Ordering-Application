@@ -16,6 +16,7 @@ public class BeefBurgerTest {
     private Customer customer2;
     private ArrayList<Customer> customers;
     private ArrayList<BeefBurger> beefBurgers;
+    private Menu burgerMenu;
 
     @BeforeEach
     public void runBefore(){
@@ -25,6 +26,7 @@ public class BeefBurgerTest {
         customer2 = new Customer("Mi",0);
         customers = new ArrayList<>();
         beefBurgers = new ArrayList<>();
+        burgerMenu = new BeefBurgerMenu();
     }
 
 
@@ -40,7 +42,7 @@ public class BeefBurgerTest {
 
     @Test
     public void testPopularity1() {
-        BurgerMenu.displayMenu();
+        burgerMenu.displayMenu();
         assertEquals("****",beefBurger1.printPopularity1());
     }
 

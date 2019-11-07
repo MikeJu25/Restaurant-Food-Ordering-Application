@@ -10,16 +10,24 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
+import static model.BeefBurger.printAngusBeefBurgerInfo;
+
 public class MakeOrder {
     private Order order = new Order();
     public static ArrayList<String> names = new ArrayList<String>();
     private static Scanner input;
     private Customer customer;
     private Customers customers;
+    private Menu mainMenu;
+    private Menu burgerMenu;
+    private Menu beefBurgerMenu;
     // private Map<String, Double> customer;
 
     public MakeOrder() {
         customers = new Customers();
+        mainMenu = new MainMenu();
+        burgerMenu = new BurgerMenu();
+        beefBurgerMenu = new BeefBurgerMenu();
     }
 
     public void startOrder() throws IOException, TooLongName, RepeatedName {
@@ -51,7 +59,7 @@ public class MakeOrder {
         String command = null;
         // init();
         while (keepGoing) {
-            displayMenu();
+            mainMenu.displayMenu();
             command = input.next();
             command = command.toLowerCase();
 
@@ -73,14 +81,14 @@ public class MakeOrder {
     }
 
 
-    private static void displayMenu() {
-        System.out.println("\nSelect from:");
-        System.out.println("\tb -> Burger");
-        System.out.println("\ts -> Snacks");
-        // System.out.println("\td -> Drinks");
-        // System.out.println("\tc -> Combo");
-        System.out.println("\tq -> quit");
-    }
+//    private static void displayMenu() {
+//        System.out.println("\nSelect from:");
+//        System.out.println("\tb -> Burger");
+//        System.out.println("\ts -> Snacks");
+//        // System.out.println("\td -> Drinks");
+//        // System.out.println("\tc -> Combo");
+//        System.out.println("\tq -> quit");
+//    }
 
     public void checkName(Customer customer, Customers customers) throws IOException {
        // ArrayList<String> names = new ArrayList<String>();
@@ -105,11 +113,11 @@ public class MakeOrder {
     public void makeOrderBeefBurger() {
         boolean keepGoing = true;
         while (keepGoing) {
-            displayBeefBurgerMenu();
+            beefBurgerMenu.displayMenu();
             String command = input.next();
             command = command.toLowerCase();
             if (command.equals("a")) {
-                angusBeefBurger();
+                makeOrderAngusBeefBurger();
             } else if (command.equals("q")) {
                 keepGoing = false;
             } else if (command.equals("r")) {
@@ -143,7 +151,7 @@ public class MakeOrder {
 //        }
 
 
-    public void angusBeefBurger() {
+    public void makeOrderAngusBeefBurger() {
         boolean keepGoing = true;
         String command = null;
         while (keepGoing) {
@@ -162,12 +170,12 @@ public class MakeOrder {
         }
     }
 
-    public void printAngusBeefBurgerInfo() {
-        BeefBurger bb = new BeefBurger();
-        System.out.println(bb.printPrice1());
-        System.out.println(bb.printIngredient1());
-        System.out.println(bb.printPopularity1());
-    }
+//    public void printAngusBeefBurgerInfo() {
+//        BeefBurger bb = new BeefBurger();
+//        System.out.println(bb.printPrice1());
+//        System.out.println(bb.printIngredient1());
+//        System.out.println(bb.printPopularity1());
+//    }
 
     public void pressY() {
         System.out.println("you've successfully ordered Angus Beef Burger");
@@ -183,21 +191,21 @@ public class MakeOrder {
 //        beefBurger.printPopularity1();
 
 
-    private static void displayBeefBurgerMenu() {
-        System.out.println("\nSelect from:");
-        System.out.println("\ta -> Angus Beef Burger");
-        System.out.println("\tr -> Return");
-        System.out.println("\tp -> Ready to pay");
-        System.out.println("\tq -> quit");
-        // System.out.println("\tq -> quit");
-    }
+//    private static void displayBeefBurgerMenu() {
+//        System.out.println("\nSelect from:");
+//        System.out.println("\ta -> Angus Beef Burger");
+//        System.out.println("\tr -> Return");
+//        System.out.println("\tp -> Ready to pay");
+//        System.out.println("\tq -> quit");
+//        // System.out.println("\tq -> quit");
+//    }
 
 
     public void makeOrderBurger() {
         Burger b = new BeefBurger();
         boolean keepGoing = true;
         while (keepGoing) {
-            BurgerMenu.displayMenu();
+            burgerMenu.displayMenu();
             String command = input.next();
             command = command.toLowerCase();
             if (command.equals("b")) {

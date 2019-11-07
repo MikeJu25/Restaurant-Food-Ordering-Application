@@ -21,6 +21,13 @@ public class BeefBurger extends Burger {
         }
     }
 
+    public static void printAngusBeefBurgerInfo() {
+        BeefBurger bb = new BeefBurger();
+        System.out.println(bb.printPrice1());
+        System.out.println(bb.printIngredient1());
+        System.out.println(bb.printPopularity1());
+    }
+
     public void removeCustomer(Customer customer) {
         if (customers.contains(customer)) {
             customers.remove(customer);
