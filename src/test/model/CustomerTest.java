@@ -53,8 +53,8 @@ public class CustomerTest {
     public void testGetBalance() {
         customer1.addBeefBurger(beefBurger);
         customer1.removeBeefBurger(beefBurger);
-        customer1.hashCode();
-        customer1.equals(customer1);
+//        customer1.hashCode();
+//        customer1.equals(customer1);
         assertEquals(0, customer1.checkBalance(customer1));
         assertEquals(100, customer2.checkBalance(customer2));
     }

@@ -15,23 +15,23 @@ public class Customer implements Consumer, Loadable, Savable {
     private ArrayList<BeefBurger> beefBurgers;
 
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Customer customer = (Customer) o;
-        return Objects.equals(name, customer.name);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = name.hashCode();
-        return result * 31;
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) {
+//            return true;
+//        }
+//        if (o == null || getClass() != o.getClass()) {
+//            return false;
+//        }
+//        Customer customer = (Customer) o;
+//        return Objects.equals(name, customer.name);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        int result = name.hashCode();
+//        return result * 31;
+//    }
 
     public void addBeefBurger(BeefBurger beefBurger) {
         if (!beefBurgers.contains(beefBurger)) {
@@ -84,7 +84,6 @@ public class Customer implements Consumer, Loadable, Savable {
 //        startOrder();
 
 
-
     @Override
     //MODIFIES: this
     //EFFECTS: add moneySpent to the account balance
@@ -123,16 +122,16 @@ public class Customer implements Consumer, Loadable, Savable {
 
     @Override
     public void load() throws IOException {
-        List<String> lines = Files.readAllLines(Paths.get("inputfile"));
-        PrintWriter writer = new PrintWriter("inputfile", "UTF-8");
-//        lines.add("Mike 8.99");
-        for (String line : lines) {
-            ArrayList<String> partsOfLine = splitOnSpace(line);
-            System.out.print("Customer: " + partsOfLine.get(0) + "  ");
-      //      System.out.println("Balance: " + partsOfLine.get(1));
-            writer.println(line);
-        }
-        writer.close();
+//        List<String> lines = Files.readAllLines(Paths.get("inputfile"));
+//        PrintWriter writer = new PrintWriter("inputfile", "UTF-8");
+////        lines.add("Mike 8.99");
+//        for (String line : lines) {
+//            ArrayList<String> partsOfLine = splitOnSpace(line);
+//            System.out.print("Customer: " + partsOfLine.get(0) + "  ");
+//      //      System.out.println("Balance: " + partsOfLine.get(1));
+//            writer.println(line);
+//        }
+//        writer.close();
     }
 
     public static ArrayList<String> splitOnSpace(String line) throws IOException {
@@ -143,16 +142,17 @@ public class Customer implements Consumer, Loadable, Savable {
 
     @Override
     public void save(String s) throws IOException {
-        List<String> lines = Files.readAllLines(Paths.get("inputfile"));
-        PrintWriter writer = new PrintWriter("inputfile", "UTF-8");
-        lines.add(s);
-        for (String line : lines) {
-            ArrayList<String> partsOfLine = splitOnSpace(line);
-            System.out.print("Customer: " + partsOfLine.get(0) + "  ");
-            //    System.out.println("Balance: " + partsOfLine.get(1));
-            writer.println(line);
-        }
-        writer.close();
+//        List<String> lines = Files.readAllLines(Paths.get("inputfile"));
+//        PrintWriter writer = new PrintWriter("inputfile", "UTF-8");
+//        lines.add(s);
+//        for (String line : lines) {
+//            ArrayList<String> partsOfLine = splitOnSpace(line);
+//            System.out.print("Customer: " + partsOfLine.get(0) + "  ");
+//            //    System.out.println("Balance: " + partsOfLine.get(1));
+//            writer.println(line);
+//        }
+//        writer.close();
+//    }
     }
 }
 
