@@ -17,6 +17,8 @@ public class BeefBurgerTest {
     private ArrayList<Customer> customers;
     private ArrayList<BeefBurger> beefBurgers;
     private Menu burgerMenu;
+    private Menu beefBurgerMenu;
+    private Menu mainMenu;
 
     @BeforeEach
     public void runBefore(){
@@ -27,6 +29,8 @@ public class BeefBurgerTest {
         customers = new ArrayList<>();
         beefBurgers = new ArrayList<>();
         burgerMenu = new BeefBurgerMenu();
+        beefBurgerMenu = new BeefBurgerMenu();
+        mainMenu = new MainMenu();
     }
 
 
@@ -55,6 +59,8 @@ public class BeefBurgerTest {
 
     @Test
     public void testRemoveCustomer(){
+        mainMenu.displayMenu();
+        beefBurgerMenu.displayMenu();
         beefBurger1.addCustomer(customer1);
         beefBurger1.removeCustomer(customer1);
         assertFalse(customers.contains(customer1));

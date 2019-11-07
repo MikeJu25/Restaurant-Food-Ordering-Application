@@ -11,16 +11,18 @@ import java.nio.file.Paths;
 import java.util.*;
 
 import static model.BeefBurger.printAngusBeefBurgerInfo;
+import static model.Name.checkNameLegal;
 
 public class MakeOrder {
     private Order order = new Order();
-    public static ArrayList<String> names = new ArrayList<String>();
+   // public static ArrayList<String> names = new ArrayList<String>();
     private static Scanner input;
     private Customer customer;
     private Customers customers;
     private Menu mainMenu;
     private Menu burgerMenu;
     private Menu beefBurgerMenu;
+    private Name name;
     // private Map<String, Double> customer;
 
     public MakeOrder() {
@@ -28,6 +30,7 @@ public class MakeOrder {
         mainMenu = new MainMenu();
         burgerMenu = new BurgerMenu();
         beefBurgerMenu = new BeefBurgerMenu();
+        name = new Name();
     }
 
     public void startOrder() throws IOException, TooLongName, RepeatedName {
@@ -37,22 +40,22 @@ public class MakeOrder {
         if (checkNameLegal(operation)) {
             customer = new Customer(operation, 0);
             customer.save(operation);
-            checkName(customer, customers);
+            name.checkName(customer, customers);
             makeOrderMainMenu();
         }
     }
 
-    public static boolean checkNameLegal(String s) throws TooLongName, RepeatedName {
-        //names = new ArrayList<String>();
-        if (s.length() > 10) {
-            throw new TooLongName();
-        } else {
-            if (names.contains(s)) {
-                throw new RepeatedName();
-            }
-        }
-        return true;
-    }
+//    public static boolean checkNameLegal(String s) throws TooLongName, RepeatedName {
+//        //names = new ArrayList<String>();
+//        if (s.length() > 10) {
+//            throw new TooLongName();
+//        } else {
+//            if (names.contains(s)) {
+//                throw new RepeatedName();
+//            }
+//        }
+//        return true;
+//    }
 
     public void makeOrderMainMenu() {
         boolean keepGoing = true;
@@ -90,24 +93,24 @@ public class MakeOrder {
 //        System.out.println("\tq -> quit");
 //    }
 
-    public void checkName(Customer customer, Customers customers) throws IOException {
-       // ArrayList<String> names = new ArrayList<String>();
-       // customer.extractName(customers);
-        order.addCustomer(customer);
-       // customers.load();
-        if (customers.getSize() == 0) {
-            customers.addCustomerToList(customer);
-            System.out.println("First time? Continue to order with user name: " + customer.getName(customer));
-            save(customer.getName(customer));
-        } else {
-            if (customers.checkIfContains(customer)) {
-                System.out.println("Continue to order with user name: " + customer.getName(customer));
-            } else {
-                customers.addCustomerToList(customer);
-                System.out.println("First time? Continue to order with user name: " + customer.getName(customer));
-            }
-        }
-    }
+//    public void checkName(Customer customer, Customers customers) throws IOException {
+//       // ArrayList<String> names = new ArrayList<String>();
+//       // customer.extractName(customers);
+//        order.addCustomer(customer);
+//       // customers.load();
+//        if (customers.getSize() == 0) {
+//            customers.addCustomerToList(customer);
+//            System.out.println("First time? Continue to order with user name: " + customer.getName(customer));
+//            save(customer.getName(customer));
+//        } else {
+//            if (customers.checkIfContains(customer)) {
+//                System.out.println("Continue to order with user name: " + customer.getName(customer));
+//            } else {
+//                customers.addCustomerToList(customer);
+//                System.out.println("First time? Continue to order with user name: " + customer.getName(customer));
+//            }
+//        }
+//    }
 
 
     public void makeOrderBeefBurger() {
