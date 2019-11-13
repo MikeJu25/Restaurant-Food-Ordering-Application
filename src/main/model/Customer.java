@@ -15,23 +15,27 @@ public class Customer implements Consumer, Loadable, Savable {
     private ArrayList<BeefBurger> beefBurgers;
 
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) {
-//            return true;
-//        }
-//        if (o == null || getClass() != o.getClass()) {
-//            return false;
-//        }
-//        Customer customer = (Customer) o;
-//        return Objects.equals(name, customer.name);
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        int result = name.hashCode();
-//        return result * 31;
-//    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Customer customer = (Customer) o;
+        return Objects.equals(name, customer.name);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name.hashCode();
+        return result * 31;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
 
     public void addBeefBurger(BeefBurger beefBurger) {
         if (!beefBurgers.contains(beefBurger)) {

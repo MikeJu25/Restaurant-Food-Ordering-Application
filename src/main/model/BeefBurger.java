@@ -4,14 +4,13 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 public class BeefBurger extends Burger {
-
+    private String name;
+    private double price;
     public ArrayList<Customer> customers = new ArrayList<>();
 
-//    public void angusBeefBurger() {
-//        printName1();
-//        printPrice1();
-//        printIngredient1();
-//        printPopularity1();
+//    public BeefBurger(String name, double price) {
+//        this.name = name;
+//        this.price = price;
 //    }
 
     public void addCustomer(Customer customer) {

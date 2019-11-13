@@ -23,6 +23,7 @@ public class MakeOrder {
     private Menu burgerMenu;
     private Menu beefBurgerMenu;
     private Name name;
+    private KitchenPedal kitchenPedal;
     // private Map<String, Double> customer;
 
     public MakeOrder() {
@@ -31,10 +32,12 @@ public class MakeOrder {
         burgerMenu = new BurgerMenu();
         beefBurgerMenu = new BeefBurgerMenu();
         name = new Name();
+        kitchenPedal = new KitchenPedal();
+        input = new Scanner(System.in);
     }
 
     public void startOrder() throws IOException, TooLongName, RepeatedName {
-        input = new Scanner(System.in);
+     //   order.addObserver(kitchenPedal);
         print();
         String operation = input.nextLine();
         if (checkNameLegal(operation)) {
@@ -182,8 +185,8 @@ public class MakeOrder {
 
     public void pressY() {
         System.out.println("you've successfully ordered Angus Beef Burger");
+        order.addObserver(kitchenPedal);
         order.addOrderedFood(customer,"Angus Beef Burger");
-
         makeOrderBeefBurger();
     }
 
@@ -307,12 +310,12 @@ public class MakeOrder {
 
     public static void save(String s) throws IOException {
         List<String> lines = Files.readAllLines(Paths.get("inputfile"));
-        PrintWriter writer = new PrintWriter("outputfile", "UTF-8");
+        PrintWriter writer = new PrintWriter("inputfile", "UTF-8");
         lines.add(s);
         for (String line : lines) {
             ArrayList<String> partsOfLine = splitOnSpace(line);
             System.out.print("Customer: " + partsOfLine.get(0) + "  ");
-            //    System.out.println("Balance: " + partsOfLine.get(1));
+                System.out.println("Balance: " + partsOfLine.get(1));
             writer.println(line);
         }
         writer.close();

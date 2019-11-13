@@ -1,9 +1,11 @@
 package ui;
 // how can customer choose the amount their food want to be
 
+import com.sun.tools.corba.se.idl.constExpr.Or;
 import exception.RepeatedName;
 import exception.TooLongName;
 import model.*;
+import network.ReadWebPageEx;
 
 import java.io.IOException;
 import java.util.*;
@@ -11,10 +13,16 @@ import java.util.*;
 public class Main {
 
     public static ArrayList<String> names = new ArrayList<String>();
+//    public static KitchenPedal kitchenPedal = new KitchenPedal();
+//    public static Order order = new Order();
 
     public static void main(String[] args) throws IOException, TooLongName, RepeatedName {
        // MakeOrder.load();
+        SingletonHolder.getInstance();
+        ReadWebPageEx.getWelcomeLetter();
+        ReadWebPageEx.getWeather();
         MakeOrder makeOrder = new MakeOrder();
+     //   order.addObserver(kitchenPedal);
         try {
             makeOrder.startOrder();
         } catch (TooLongName tooLongName) {

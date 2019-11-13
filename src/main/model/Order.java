@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Order {
+public class Order extends Subject {
     private Map<Customer, ArrayList<String>> order = new HashMap<>();
+    private KitchenPedal kitchenPedal = new KitchenPedal();
 
     public void addCustomer(Customer customer) {
         order.put(customer,new ArrayList<>());
@@ -16,15 +17,17 @@ public class Order {
     }
 
     public void addOrderedFood(Customer customer, String foodName) {
-        ArrayList<String> food = order.get(customer);
-        food.add(foodName);
+        ArrayList<String> foods = order.get(customer);
+        foods.add(foodName);
+        notifyObserver(foodName);
     }
 
     public void printOrder(Customer customer) {
-        ArrayList<String> food = order.get(customer);
-        for (String str: food) {
+        ArrayList<String> foods = order.get(customer);
+        for (String str: foods) {
             System.out.println(str);
         }
+        kitchenPedal.update();
     }
 
 }
