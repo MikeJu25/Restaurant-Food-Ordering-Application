@@ -3,21 +3,21 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GoldVIP extends VIP {
-    private List<VIP> vips;
+public class GoldVip extends Vip {
+    private List<Vip> vips;
 
-    public GoldVIP(Customer customer) {
+    public GoldVip(Customer customer) {
         super(customer);
         vips = new ArrayList<>();
     }
 
-    public void addNewMembers(VIP vip) {
+    public void addNewMembers(Vip vip) {
         vips.add(vip);
     }
 
     public double accumulatedBalance() {
         double result = 0;
-        for (VIP vip : vips) {
+        for (Vip vip : vips) {
             result += vip.getVipBalance();
         }
         return result;

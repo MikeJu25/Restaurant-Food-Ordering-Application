@@ -1,14 +1,14 @@
 package model;
 
-public class SilverVIP extends VIP {
+public class SilverVip extends Vip {
 
-    public SilverVIP(Customer customer) {
+    public SilverVip(Customer customer) {
         super(customer);
     }
 
     public void promoteToSilver(Customer customer) {
         if (getVipBalance() >= 1000 && getVipBalance() >= 3000) {
-            new SilverVIP(customer);
+            new SilverVip(customer);
         }
         if (getVipBalance() >= 3000) {
             promoteToGold(customer);
@@ -16,6 +16,6 @@ public class SilverVIP extends VIP {
     }
 
     public void promoteToGold(Customer customer) {
-        new GoldVIP(customer);
+        new GoldVip(customer);
     }
 }

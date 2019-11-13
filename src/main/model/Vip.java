@@ -1,9 +1,9 @@
 package model;
 
-public abstract class VIP {
+public abstract class Vip {
     protected Customer customer;
 
-    public VIP(Customer customer) {
+    public Vip(Customer customer) {
         this.customer = customer;
     }
 
