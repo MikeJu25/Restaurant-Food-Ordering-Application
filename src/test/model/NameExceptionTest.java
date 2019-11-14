@@ -18,6 +18,7 @@ public class NameExceptionTest {
         str = "Jack";
         try {
             checkNameLegal(str);
+
         } catch (TooLongName tooLongName) {
             fail("The name is legal");
         } catch (RepeatedName repeatedName) {

@@ -11,6 +11,10 @@ public class GoldVip extends Vip {
         vips = new ArrayList<>();
     }
 
+    public List<Vip> getVips() {
+        return vips;
+    }
+
     public void addNewMembers(Vip vip) {
         vips.add(vip);
     }
@@ -20,6 +24,15 @@ public class GoldVip extends Vip {
         for (Vip vip : vips) {
             result += vip.getVipBalance();
         }
-        return result;
+        return result + getVipBalance();
     }
+
+    public Boolean promoteToGold(Customer customer) {
+        if (customer.getBalance() >= 3000) {
+            new GoldVip(customer);
+            return true;
+        }
+        return false;
+    }
+
 }

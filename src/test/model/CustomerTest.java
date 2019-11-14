@@ -4,13 +4,11 @@ import model.Customer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 
 import java.io.IOException;
 import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CustomerTest {
     private Customer customer1;
@@ -60,12 +58,11 @@ public class CustomerTest {
     }
 
     @Test
-    public void testSave(){
+    public void testSaveAndLoad(){
         try {
-            customer1.load();
             customer1.save("Mike");
         } catch (IOException e) {
-            e.printStackTrace();
+            fail();
         }
     }
 

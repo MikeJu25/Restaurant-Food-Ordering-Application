@@ -6,16 +6,11 @@ public class SilverVip extends Vip {
         super(customer);
     }
 
-    public void promoteToSilver(Customer customer) {
-        if (getVipBalance() >= 1000 && getVipBalance() >= 3000) {
+    public Boolean promoteToSilver(Customer customer) {
+        if (customer.getBalance() >= 1000) {
             new SilverVip(customer);
+            return true;
         }
-        if (getVipBalance() >= 3000) {
-            promoteToGold(customer);
-        }
-    }
-
-    public void promoteToGold(Customer customer) {
-        new GoldVip(customer);
+        return false;
     }
 }
