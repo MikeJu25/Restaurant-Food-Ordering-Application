@@ -36,12 +36,10 @@ public class Customers {
     }
 
     public void load() throws IOException {
-
         List<String> lines = Files.readAllLines(Paths.get("inputfile"));
         if (!(lines.size() == 0)) {
             for (String line : lines) {
                 ArrayList<String> partsOfLine = splitOnSpace(line);
-
                 addCustomerToList(new Customer(partsOfLine.get(0), Double.parseDouble(partsOfLine.get(1))));
             }
         }

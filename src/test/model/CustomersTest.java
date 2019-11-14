@@ -5,9 +5,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class CustomersTest {
@@ -17,7 +19,7 @@ public class CustomersTest {
     @BeforeEach
     public void runBefore(){
         customers = new Customers();
-        customer = new Customer("Mike",0);
+        customer = new Customer("Yangxi",0);
     }
 
     @Test
@@ -35,9 +37,10 @@ public class CustomersTest {
 
     @Test
     void testLoadAndSave() throws IOException {
+        List<String> lines = Files.readAllLines(Paths.get("inputfile"));
         customers.addCustomerToList(customer);
         customers.save();
         customers.load();
-        assertTrue(customers.checkIfContains(customer));
+        assertTrue(lines.contains("Yangxi 0.0"));
     }
 }
