@@ -36,13 +36,13 @@ public class Customers {
     }
 
     public void load() throws IOException {
-        List<String> lines = Files.readAllLines(Paths.get("inputfile"));
-        if (!(lines.size() == 0)) {
-            for (String line : lines) {
-                ArrayList<String> partsOfLine = splitOnSpace(line);
-                addCustomerToList(new Customer(partsOfLine.get(0), Double.parseDouble(partsOfLine.get(1))));
-            }
-        }
+//        List<String> lines = Files.readAllLines(Paths.get("inputfile"));
+//        if (!(lines.size() == 0)) {
+//            for (String line : lines) {
+//                ArrayList<String> partsOfLine = splitOnSpace(line);
+//                addCustomerToList(new Customer(partsOfLine.get(0), Double.parseDouble(partsOfLine.get(1))));
+//            }
+//        }
     }
 
 //    for (int i = 0; i < lines.size(); i++) {
@@ -53,12 +53,13 @@ public class Customers {
 ////            }
 
     public void save() throws IOException {
-        PrintWriter writer = new PrintWriter("inputfile", "UTF-8");
-        for (Customer c : customers) {
-            writer.println(c.name + " " + c.getBalance());
-        }
-        writer.close();
-
+//        PrintWriter writer = new PrintWriter("inputfile", "UTF-8");
+//        for (Customer c : customers) {
+//            writer.println(c.name + " " + c.getBalance());
+//        }
+//        writer.close();
+//
+//    }
     }
 }
 

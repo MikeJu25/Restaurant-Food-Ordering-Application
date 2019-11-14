@@ -28,21 +28,22 @@ public class Name {
     public void checkName(Customer customer, Customers customers) throws IOException {
         // ArrayList<String> names = new ArrayList<String>();
         // customer.extractName(customers);
-        order.addCustomer(customer);
-        customers.load();
-        if (customers.getSize() == 0) {
-            customers.addCustomerToList(customer);
-            System.out.println("First time? Continue to order with user name: " + customer.getName(customer));
-            customers.save();
-        } else {
-            if (customers.checkIfContains(customer)) {
-                System.out.println("Continue to order with user name: " + customer.getName(customer));
-                customers.save();
-            } else {
-                customers.addCustomerToList(customer);
-                System.out.println("First time? Continue to order with user name: " + customer.getName(customer));
-                customers.save();
-            }
-        }
+//        order.addCustomer(customer);
+//        customers.load();
+//        if (customers.getSize() == 0) {
+//            customers.addCustomerToList(customer);
+//            System.out.println("First time? Continue to order with user name: " + customer.getName(customer));
+//            customers.save();
+//        } else {
+//            if (customers.checkIfContains(customer)) {
+//                System.out.println("Continue to order with user name: " + customer.getName(customer));
+//                customers.save();
+//            } else {
+//                customers.addCustomerToList(customer);
+//                System.out.println("First time? Continue to order with user name: " + customer.getName(customer));
+//                customers.save();
+//            }
+//        }
+//    }
     }
 }
