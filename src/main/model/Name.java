@@ -11,7 +11,7 @@ import static ui.MakeOrder.save;
 
 public class Name {
     public static ArrayList<String> names = new ArrayList<String>();
-    private Order order = new Order();
+    private Order order = new Order(new KitchenPedal());
 
     public static boolean checkNameLegal(String s) throws TooLongName, RepeatedName {
         //names = new ArrayList<String>();

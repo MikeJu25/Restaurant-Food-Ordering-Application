@@ -17,7 +17,7 @@ public class OrderTest {
 
     @BeforeEach
     void runBefore() {
-        order = new Order();
+        order = new Order(new KitchenPedal());
         customer = new Customer("Mike",0);
     }
 
