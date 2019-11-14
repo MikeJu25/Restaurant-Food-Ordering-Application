@@ -9,7 +9,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static model.Customer.splitOnSpace;
+import static ui.MakeOrder.splitOnSpace;
+
 
 public class Customers {
     private Set<Customer> customers;

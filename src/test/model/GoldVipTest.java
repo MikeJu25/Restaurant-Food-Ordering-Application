@@ -3,8 +3,8 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class GoldVipTest {
     private GoldVip goldVip;
@@ -14,8 +14,8 @@ public class GoldVipTest {
 
     @BeforeEach
     void runBefore() {
-        customer1 = new Customer("Mike", 12);
-        customer2 = new Customer("Ki",22);
+        customer1 = new Customer("Mike", 1200);
+        customer2 = new Customer("Ki",3022);
         goldVip = new GoldVip(customer2);
         silverVip = new SilverVip(customer1);
     }
@@ -28,12 +28,12 @@ public class GoldVipTest {
     @Test
     void testAccumulatedBalance() {
         goldVip.addNewMembers(silverVip);
-        assertEquals(goldVip.accumulatedBalance(),34);
+        assertEquals(goldVip.accumulatedBalance(),4222);
     }
 
     @Test
     void getVipBalance() {
-        assertEquals(silverVip.getVipBalance(),12);
+        assertEquals(silverVip.getVipBalance(),1200);
        // assertEquals(goldVip.getVipBalance(),12);
     }
 
@@ -43,5 +43,9 @@ public class GoldVipTest {
         assertTrue(goldVip.getVips().contains(silverVip));
     }
 
-
+    @Test
+    void testPromoteToGold() {
+        assertFalse(goldVip.promoteToGold(customer1));
+        assertTrue(goldVip.promoteToGold(customer2));
+    }
 }

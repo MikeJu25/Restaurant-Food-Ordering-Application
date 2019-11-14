@@ -44,7 +44,6 @@ public class MakeOrder {
         String operation = input.nextLine();
         if (checkNameLegal(operation)) {
             customer = new Customer(operation, 0);
-            customer.save(operation);
             name.checkName(customer, customers);
             makeOrderMainMenu();
         }

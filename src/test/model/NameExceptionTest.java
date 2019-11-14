@@ -56,4 +56,18 @@ public class NameExceptionTest {
             //expected
         }
     }
+
+    @Test
+    public void testRepeatedName() {
+        str = new String();
+        str = "sd";
+        names.add("sd");
+        try {
+            checkNameLegal(str);
+        } catch (TooLongName tooLongName) {
+            fail("not thrown");
+        } catch (RepeatedName repeatedName) {
+
+        }
+    }
 }

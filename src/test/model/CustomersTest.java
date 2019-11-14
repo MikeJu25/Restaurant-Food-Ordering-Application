@@ -3,6 +3,9 @@ package model;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -28,5 +31,13 @@ public class CustomersTest {
         assertEquals(customers.getSize(),0);
         customers.addCustomerToList(customer);
         assertEquals(customers.getSize(),1);
+    }
+
+    @Test
+    void testLoadAndSave() throws IOException {
+        customers.addCustomerToList(customer);
+        customers.save();
+        customers.load();
+        assertTrue(customers.checkIfContains(customer));
     }
 }

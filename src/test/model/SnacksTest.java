@@ -10,10 +10,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class SnacksTest {
 
     private Food snacks;
+    private Singleton singleton;
 
     @BeforeEach
     public void runBefore(){
         snacks = new Snacks();
+        singleton = new Singleton("Mike");
+        SingletonHolder singletonHolder = new SingletonHolder();
     }
 
     @Test
@@ -30,6 +33,7 @@ public class SnacksTest {
     public void testPrintIngredient1() {
         assertEquals("Ingredient: High-quality Chicken Tenders, Salt, Plant Oil",
                 snacks.printIngredient1());
+        SingletonHolder.getInstance();
     }
 
 //    @Test
