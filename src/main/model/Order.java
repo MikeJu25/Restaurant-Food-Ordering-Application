@@ -8,6 +8,10 @@ public class Order extends Subject {
     private Map<Customer, ArrayList<String>> order = new HashMap<>();
     private KitchenPedal kitchenPedal = new KitchenPedal();
 
+    public Order(Observer observer) {
+        addObserver(observer);
+    }
+
     public void addCustomer(Customer customer) {
         order.put(customer,new ArrayList<>());
     }

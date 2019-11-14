@@ -3,6 +3,7 @@ package ui;
 import exception.RepeatedName;
 import exception.TooLongName;
 import model.*;
+import model.Observer;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,7 +15,7 @@ import static model.BeefBurger.printAngusBeefBurgerInfo;
 import static model.Name.checkNameLegal;
 
 public class MakeOrder {
-    private Order order = new Order();
+    private Order order;
    // public static ArrayList<String> names = new ArrayList<String>();
     private static Scanner input;
     private Customer customer;
@@ -34,6 +35,7 @@ public class MakeOrder {
         name = new Name();
         kitchenPedal = new KitchenPedal();
         input = new Scanner(System.in);
+        order = new Order(kitchenPedal);
     }
 
     public void startOrder() throws IOException, TooLongName, RepeatedName {
@@ -185,7 +187,7 @@ public class MakeOrder {
 
     public void pressY() {
         System.out.println("you've successfully ordered Angus Beef Burger");
-        order.addObserver(kitchenPedal);
+     //   order.addObserver(kitchenPedal);
         order.addOrderedFood(customer,"Angus Beef Burger");
         makeOrderBeefBurger();
     }
@@ -315,7 +317,7 @@ public class MakeOrder {
         for (String line : lines) {
             ArrayList<String> partsOfLine = splitOnSpace(line);
             System.out.print("Customer: " + partsOfLine.get(0) + "  ");
-                System.out.println("Balance: " + partsOfLine.get(1));
+            System.out.println("Balance: " + partsOfLine.get(1));
             writer.println(line);
         }
         writer.close();
