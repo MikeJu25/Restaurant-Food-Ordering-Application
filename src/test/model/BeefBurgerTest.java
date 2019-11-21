@@ -28,9 +28,9 @@ public class BeefBurgerTest {
         customer2 = new Customer("Mi",0);
         customers = new ArrayList<>();
         beefBurgers = new ArrayList<>();
-        burgerMenu = new BeefBurgerMenu();
-        beefBurgerMenu = new BeefBurgerMenu();
-        mainMenu = new MainMenu();
+//        burgerMenu = new BeefBurgerMenu();
+//        beefBurgerMenu = new BeefBurgerMenu();
+//        mainMenu = new MainMenu();
     }
 
 

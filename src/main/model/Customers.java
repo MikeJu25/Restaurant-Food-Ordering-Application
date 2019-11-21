@@ -13,13 +13,13 @@ import static ui.MakeOrder.splitOnSpace;
 
 
 public class Customers {
-    private Set<Customer> customers;
+    private static List<Customer> customers;
 
     public Customers() {
-        customers = new HashSet<>();
+        customers = new ArrayList<>();
     }
 
-    public void addCustomerToList(Customer customer) {
+    public static void addCustomerToList(Customer customer) {
         customers.add(customer);
     }
 
@@ -31,18 +31,43 @@ public class Customers {
 //        return customers;
 //    }
 
-    public boolean checkIfContains(Customer customer) {
+    public boolean checkIfContains(String customer) {
+        //get a set of string of all the names in the customers array, then check if that contains string customer
         return customers.contains(customer);
     }
 
+    public double getCustomerBalance(Customer customer) {
+        if (customers.contains(customer)) {
+            return customer.getBalance();
+        }
+        return 0;
+    }
+
+    public static ArrayList<String> getAllCustomersName() {
+        ArrayList<String> names = new ArrayList<>();
+        for (Customer customer : customers) {
+            names.add(customer.getName());
+        }
+        return  names;
+    }
+
+    public static Customer getCustomerWithName(String customerName) {
+        for (int i = 0; i < customers.size(); i++) {
+            if (customers.get(i).getName().equals(customerName)) {
+                return customers.get(i);
+            }
+        }
+        return null;
+    }
+
     public void load() throws IOException {
-//        List<String> lines = Files.readAllLines(Paths.get("inputfile"));
-//        if (!(lines.size() == 0)) {
-//            for (String line : lines) {
-//                ArrayList<String> partsOfLine = splitOnSpace(line);
-//                addCustomerToList(new Customer(partsOfLine.get(0), Double.parseDouble(partsOfLine.get(1))));
-//            }
-//        }
+        List<String> lines = Files.readAllLines(Paths.get("inputfile"));
+        if (!(lines.size() == 0)) {
+            for (String line : lines) {
+                ArrayList<String> partsOfLine = splitOnSpace(line);
+                addCustomerToList(new Customer(partsOfLine.get(0), Double.parseDouble(partsOfLine.get(1))));
+            }
+        }
     }
 
 //    for (int i = 0; i < lines.size(); i++) {
@@ -53,13 +78,13 @@ public class Customers {
 ////            }
 
     public void save() throws IOException {
-//        PrintWriter writer = new PrintWriter("inputfile", "UTF-8");
-//        for (Customer c : customers) {
-//            writer.println(c.name + " " + c.getBalance());
-//        }
-//        writer.close();
-//
-//    }
+        PrintWriter writer = new PrintWriter("inputfile", "UTF-8");
+        for (Customer c : customers) {
+            writer.println(c.name + " " + c.getBalance());
+        }
+        writer.close();
+
     }
+
 }
 

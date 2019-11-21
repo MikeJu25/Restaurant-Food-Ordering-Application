@@ -2,6 +2,7 @@ package ui;
 // how can customer choose the amount their food want to be
 
 import exception.RepeatedName;
+import exception.SelectionNotValid;
 import exception.TooLongName;
 import model.*;
 import network.ReadWebPageEx;
@@ -28,7 +29,10 @@ public class Main {
             System.out.println("Please input your user name less than 10 characters");
         } catch (RepeatedName repeatedName) {
             System.out.println("This name has been used");
+        } catch (SelectionNotValid selectionNotValid) {
+            System.out.println("Selection not valid");
         } finally {
+           // System.out.println("Thank you for ordering with automatic ordering machine!");
             makeOrder.startOrder();
         }
     }

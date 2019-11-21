@@ -1,7 +1,7 @@
 package model;
 
-public class BurgerMenu extends Menu {
-    public void displayMenu() {
+public class BurgerMenu {
+    public static void displayMenu() {
         System.out.println("\nSelect from:");
         System.out.println("\tb -> Beef Burger");
         System.out.println("\tc -> Chicken Burger");

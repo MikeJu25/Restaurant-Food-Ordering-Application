@@ -21,6 +21,6 @@ public interface Consumer {
     //REQUIRES: the consumer is a new customer
     //MODIFIES: consumer
     //EFFECTS: get the name of the consumer
-    String getName(Customer customer);
+    String getName();
 }
 

@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Order extends Subject {
-    private Map<Customer, ArrayList<String>> order = new HashMap<>();
-    private KitchenPedal kitchenPedal = new KitchenPedal();
+    private static Map<Customer, ArrayList<String>> order = new HashMap<>();
+    private KitchenPanel kitchenPanel = new KitchenPanel();
 
     public Order(Observer observer) {
         addObserver(observer);
@@ -20,18 +20,22 @@ public class Order extends Subject {
         return order.get(customer);
     }
 
-    public void addOrderedFood(Customer customer, String foodName) {
+    public static void addOrderedFood(Customer customer, String foodName) {
         ArrayList<String> foods = order.get(customer);
         foods.add(foodName);
-        notifyObserver(foodName);
+      //  notifyObserver(foodName);
     }
 
-    public void printOrder(Customer customer) {
+    public static void printOrder(Customer customer) {
         ArrayList<String> foods = order.get(customer);
-        for (String str: foods) {
-            System.out.println(str);
+        for (String str : foods) {
+            System.out.println("You ordered: " + str);
         }
-        kitchenPedal.update();
+      //  kitchenPanel.update();
     }
-
 }
+
+//        if (foods.contains(str)) {
+//        System.out.println(str + " * 2");
+//        }
+//        System.out.println(str);

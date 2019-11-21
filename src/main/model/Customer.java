@@ -11,7 +11,7 @@ import static ui.MakeOrder.splitOnSpace;
 
 public class Customer implements Consumer {
     public String name;
-    private double balance = 0;
+    public double balance = 0;
     private ArrayList<BeefBurger> beefBurgers;
 
 
@@ -106,8 +106,8 @@ public class Customer implements Consumer {
     @Override
     //REQUIRE: customer is not new customer
     //EFFECTS: return the name of a customer account
-    public String getName(Customer customer) {
-        return customer.name;
+    public String getName() {
+        return this.name;
     }
 
 

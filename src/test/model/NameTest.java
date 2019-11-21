@@ -26,23 +26,23 @@ public class NameTest {
         name2 = new Name();
     }
 
-    @Test
-    void testCheckNameEmptyCustomers() throws IOException {
-        name1.checkName(customer,customers);
-        assertTrue(customers.checkIfContains(customer));
-    }
-
-    @Test
-    void testCheckNameNotCustomers() throws IOException {
-        customers.addCustomerToList(new Customer("kk",12));
-        name1.checkName(customer,customers);
-        assertTrue(customers.checkIfContains(customer));
-    }
-
-    @Test
-    void testCheckNameOldCustomer() throws IOException {
-        customers.addCustomerToList(customer);
-        name1.checkName(customer,customers);
-        assertTrue(customers.checkIfContains(customer));
-    }
+//    @Test
+//    void testCheckNameEmptyCustomers() throws IOException {
+//        name1.checkName(customer,customers);
+//        assertTrue(customers.checkIfContains(customer));
+//    }
+//
+//    @Test
+//    void testCheckNameNotCustomers() throws IOException {
+//        customers.addCustomerToList(new Customer("kk",12));
+//        name1.checkName(customer,customers);
+//        assertTrue(customers.checkIfContains(customer));
+//    }
+//
+//    @Test
+//    void testCheckNameOldCustomer() throws IOException {
+//        customers.addCustomerToList(customer);
+//        name1.checkName(customer,customers);
+//        assertTrue(customers.checkIfContains(customer));
+//    }
 }

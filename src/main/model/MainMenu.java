@@ -1,7 +1,7 @@
 package model;
 
-public class MainMenu extends Menu {
-    public void displayMenu() {
+public class MainMenu {
+    public static void displayMenu() {
         System.out.println("\nSelect from:");
         System.out.println("\tb -> Burger");
         System.out.println("\ts -> Snacks");
