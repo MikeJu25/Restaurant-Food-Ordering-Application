@@ -7,6 +7,15 @@ public class Combo implements Food, Drinks {
     }
 
 
+    @Override
+    public String getName() {
+        return null;
+    }
+
+    @Override
+    public double getPrice() {
+        return 0;
+    }
 
     @Override
     public String printPrice1() {

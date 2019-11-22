@@ -22,8 +22,8 @@ public class BeefBurgerTest {
 
     @BeforeEach
     public void runBefore(){
-        beefBurger1 = new BeefBurger();
-        beefBurger2 = new BeefBurger();
+        beefBurger1 = new BeefBurger("fd",0);
+        beefBurger2 = new BeefBurger("dsaf",2);
         customer1 = new Customer("Mike",0);
         customer2 = new Customer("Mi",0);
         customers = new ArrayList<>();

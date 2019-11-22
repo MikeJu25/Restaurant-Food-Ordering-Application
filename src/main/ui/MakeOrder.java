@@ -6,29 +6,31 @@ import exception.TooLongName;
 import model.*;
 
 import javax.security.sasl.SaslException;
+import javax.swing.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
-
-import static model.BeefBurger.printAngusBeefBurgerInfo;
 import static model.Name.checkNameLegal;
 
-public class MakeOrder {
+public class MakeOrder extends JPanel {
     private Order order;
     // public static ArrayList<String> names = new ArrayList<String>();
     private static Scanner input1;
     private static Scanner input2;
-    private static Customer customer;
+    private static Scanner input3;
     private Customers customers;
-    private Menu mainMenu;
-    private Menu burgerMenu;
-    private Menu beefBurgerMenu;
+    public static double totalPrice = 0;
+//    private Menu mainMenu;
+//    private Menu burgerMenu;
+//    private Menu beefBurgerMenu;
+    private static Customer customer;
     private Name name;
     private KitchenPanel kitchenPanel;
-    private SilverVip silverVip;
-    private GoldVip goldVip;
+    private static ArrayList<Food> foods;
+//    private SilverVip silverVip;
+//    private GoldVip goldVip;
     // private Map<String, Double> customer;
 
     public MakeOrder() {
@@ -41,9 +43,13 @@ public class MakeOrder {
         input1 = new Scanner(System.in);
         input2 = new Scanner(System.in);
         order = new Order(kitchenPanel);
-        silverVip = new SilverVip(customer);
-        goldVip = new GoldVip(customer);
+        input3 = new Scanner(System.in);
+        foods = new ArrayList<>();
+//        silverVip = new SilverVip(customer);
+//        goldVip = new GoldVip(customer);
     }
+
+
 
     public void startOrder() throws IOException, TooLongName, RepeatedName, SelectionNotValid {
      //   order.addObserver(kitchenPedal);
@@ -148,7 +154,8 @@ public class MakeOrder {
             } else if (command.equals("r")) {
                 makeOrderBurger();
             } else if (command.equals("p")) {
-                Order.printOrder(customer);
+               // Order.printOrder(customer);
+                printOrder();
             } else {
                 System.out.println("Selection not valid...");
             }
@@ -157,6 +164,29 @@ public class MakeOrder {
         // keepGoing = false;
         // System.out.println("\nThank you for ordering with automatic machine, goodbye!");
     }
+
+    public static void printOrder() {
+        for (Food food: foods) {
+            totalPrice = totalPrice + food.getPrice();
+        }
+        for (Food food : foods) {
+            System.out.println("You ordered: " + food.getName());
+        }
+        System.out.println("Your total is: " + totalPrice);
+        System.out.println("How would you like to pay? Pay here or pay at the front desk? (here or front)");
+        String operation = input3.nextLine();
+        operation.toLowerCase();
+        if (operation.equals("here")) {
+            System.out.println("Please use pin pad to pay for your order");
+        } else {
+            if (operation.equals("front")) {
+                System.out.println("Please take your receipt to the front desk to finalize your payment");
+            } else {
+        //        throw new SelectionNotValid();
+            }
+        }
+    }
+
 
 
     // Food beefBurger = new BeefBurger();
@@ -182,7 +212,7 @@ public class MakeOrder {
         boolean keepGoing = true;
         String command = null;
         while (keepGoing) {
-            printAngusBeefBurgerInfo();
+            AngusBeefBurger.printAngusBeefBurgerInfo();
             System.out.println("Do you want Angus Beef Burger?( y or n )");
             command = input1.next();
             command = command.toLowerCase();
@@ -207,7 +237,8 @@ public class MakeOrder {
     public static void pressY() {
         System.out.println("you've successfully ordered Angus Beef Burger");
         //   order.addObserver(kitchenPedal);
-        Order.addOrderedFood(customer, "Angus Beef Burger");
+        // Order.addOrderedFood(customer, new AngusBeefBurger());
+        foods.add(new AngusBeefBurger());
         makeOrderBeefBurger();
     }
 
@@ -229,7 +260,6 @@ public class MakeOrder {
 
 
     public static void makeOrderBurger() {
-        Burger b = new BeefBurger();
         boolean keepGoing = true;
         while (keepGoing) {
             BurgerMenu.displayMenu();
@@ -283,7 +313,7 @@ public class MakeOrder {
 
         if (operation.equals("Yes")) {
             Snacks.printOrder();
-            Order.addOrderedFood(customer, "chickenStripes");
+        //    Order.addOrderedFood(customer, "chickenStripes");
         } else {
             say();
         }

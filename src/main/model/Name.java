@@ -59,6 +59,7 @@ public class Name {
         command = command.toLowerCase();
         if (command.equals("y")) {
             System.out.println("Continue to order with user name: " + customerName);
+           // order.addCustomer(Customers.getCustomerWithName(customerName));
             return Customers.getCustomerWithName(customerName);
         } else if (command.equals("n")) {
             System.out.println("This name has been registered. Enter another one to make a new account");
@@ -78,7 +79,7 @@ public class Name {
         Customer customer = new Customer(customerName,0);
         Customers.addCustomerToList(customer);
         System.out.println("Account registered with user name " + customerName);
-
+        MakeOrder.makeOrderMainMenu();
     }
 
 //    customer.balance = customers.getCustomerBalance(customer);;

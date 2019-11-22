@@ -1,6 +1,13 @@
 package model;
 
 public interface Food {
+    String name = "";
+    String price = "";
+    String popularity = "";
+
+    String getName();
+
+    double getPrice();
 
     String printPrice1();
 

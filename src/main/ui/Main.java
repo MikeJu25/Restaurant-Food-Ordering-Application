@@ -23,7 +23,9 @@ public class Main {
         ReadWebPageEx.getWeather();
         MakeOrder makeOrder = new MakeOrder();
      //   order.addObserver(kitchenPedal);
+       // new LoginUI();
         try {
+            //new LoginUI();
             makeOrder.startOrder();
         } catch (TooLongName tooLongName) {
             System.out.println("Please input your user name less than 10 characters");
@@ -32,7 +34,7 @@ public class Main {
         } catch (SelectionNotValid selectionNotValid) {
             System.out.println("Selection not valid");
         } finally {
-           // System.out.println("Thank you for ordering with automatic ordering machine!");
+            System.out.println("Thank you for ordering with automatic ordering machine!");
             makeOrder.startOrder();
         }
     }

@@ -8,10 +8,10 @@ public class BeefBurger extends Burger {
     private double price;
     public ArrayList<Customer> customers = new ArrayList<>();
 
-//    public BeefBurger(String name, double price) {
-//        this.name = name;
-//        this.price = price;
-//    }
+    public BeefBurger(String name, double price) {
+        this.name = name;
+        this.price = price;
+    }
 
     public void addCustomer(Customer customer) {
         if (!customers.contains(customer)) {
@@ -20,18 +20,28 @@ public class BeefBurger extends Burger {
         }
     }
 
-    public static void printAngusBeefBurgerInfo() {
-        BeefBurger bb = new BeefBurger();
-        System.out.println(bb.printPrice1());
-        System.out.println(bb.printIngredient1());
-        System.out.println(bb.printPopularity1());
-    }
+//    public static void printAngusBeefBurgerInfo() {
+//        BeefBurger bb = new BeefBurger();
+//        System.out.println(bb.printPrice1());
+//        System.out.println(bb.printIngredient1());
+//        System.out.println(bb.printPopularity1());
+//    }
 
     public void removeCustomer(Customer customer) {
         if (customers.contains(customer)) {
             customers.remove(customer);
             customer.removeBeefBurger(this);
         }
+    }
+
+    @Override
+    public String getName() {
+        return null;
+    }
+
+    @Override
+    public double getPrice() {
+        return 0;
     }
 
     @Override

@@ -2,6 +2,16 @@ package model;
 
 public class ChickenBurger extends Burger {
     @Override
+    public String getName() {
+        return null;
+    }
+
+    @Override
+    public double getPrice() {
+        return 0;
+    }
+
+    @Override
     public String printPrice1() {
         return ("$17.39");
     }

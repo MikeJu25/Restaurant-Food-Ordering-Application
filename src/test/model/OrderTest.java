@@ -20,7 +20,7 @@ public class OrderTest {
     @Test
     void testAddOrderedFood(){
         order.addCustomer(customer);
-        order.addOrderedFood(customer,"angus beef burger");
+        order.addOrderedFood(customer,new AngusBeefBurger());
         order.printOrder(customer);
         assertTrue(order.getOrderedFood(customer).contains("angus beef burger"));
     }

@@ -22,7 +22,7 @@ public class CustomerTest {
     public void runBefore() {
         customer1 = new Customer("Mike", 0);
         customer2 = new Customer("Mi", 100);
-        beefBurger = new BeefBurger();
+        beefBurger = new BeefBurger("dsfa",0);
         beefBurgers = new ArrayList<>();
     }
 

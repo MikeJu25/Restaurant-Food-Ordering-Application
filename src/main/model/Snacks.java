@@ -39,6 +39,16 @@ public class Snacks implements Food {
     }
 
     @Override
+    public String getName() {
+        return null;
+    }
+
+    @Override
+    public double getPrice() {
+        return 0;
+    }
+
+    @Override
     public String printPrice1() {
         return ("Price: $5.99");
     }

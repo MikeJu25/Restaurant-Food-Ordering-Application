@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Order extends Subject {
-    private static Map<Customer, ArrayList<String>> order = new HashMap<>();
+    private static Map<Customer, ArrayList<Food>> order = new HashMap<>();
     private KitchenPanel kitchenPanel = new KitchenPanel();
 
     public Order(Observer observer) {
@@ -20,17 +20,22 @@ public class Order extends Subject {
         return order.get(customer);
     }
 
-    public static void addOrderedFood(Customer customer, String foodName) {
-        ArrayList<String> foods = order.get(customer);
-        foods.add(foodName);
+    public static void addOrderedFood(Customer customer, Food food) {
+        ArrayList<Food> foods = order.get(customer);
+        foods.add(food);
       //  notifyObserver(foodName);
     }
 
     public static void printOrder(Customer customer) {
-        ArrayList<String> foods = order.get(customer);
-        for (String str : foods) {
-            System.out.println("You ordered: " + str);
+        ArrayList<Food> foods = order.get(customer);
+        double totalPrice = 0;
+        for (Food food: foods) {
+            totalPrice = totalPrice + food.getPrice();
         }
+        for (Food food : foods) {
+            System.out.println("You ordered: " + food.getName());
+        }
+        System.out.println("Your total is: " + totalPrice);
       //  kitchenPanel.update();
     }
 }

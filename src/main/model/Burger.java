@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public abstract class Burger implements Food {
 
-    protected static ArrayList<String> order = new ArrayList<String>();
+ //   protected static ArrayList<String> order = new ArrayList<String>();
 
     public Burger() {
         printIngredient1();
