@@ -1,7 +1,9 @@
 package ui;
 
 import exception.RepeatedName;
+import exception.SelectionNotValid;
 import exception.TooLongName;
+import model.Customer;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -12,12 +14,15 @@ import static model.Name.checkNameLegal;
 
 public class LoginUI extends JFrame implements ActionListener {
 
+    public static String userName;
+
     private JPanel panel;
     private JLabel userLabel;
     private JLabel passwordLabel;
     private JLabel message;
-    private JTextField userNameText;
+    public static JTextField userNameText;
     private JButton submit;
+    private JLabel tooLongNameWarning;
     //private Frame frame = new Frame();
 
     LoginUI() {
@@ -26,24 +31,22 @@ public class LoginUI extends JFrame implements ActionListener {
 
         // Username Label
         userLabel = new JLabel();
-        userLabel.setText("User Name :");
+        userLabel.setText("Your Name :");
         userNameText = new JTextField();
 
         // Password Label
 
-        passwordLabel = new JLabel();
-        passwordLabel.setText("Password :");
-       // passwordText = new JPasswordField();
-
+        // passwordText = new JPasswordField();
+        tooLongNameWarning = new JLabel();
+        tooLongNameWarning.setText("Your input name is too long, change to another one");
         // Submit
 
         submit = new JButton("SUBMIT");
 
-        panel = new JPanel(new GridLayout(3, 1));
+        panel = new JPanel(new GridLayout(2, 1));
         panel.add(userLabel);
         panel.add(userNameText);
-        panel.add(passwordLabel);
-       // panel.add(passwordText);
+        // panel.add(passwordText);
 
         message = new JLabel();
         panel.add(message);
@@ -64,23 +67,26 @@ public class LoginUI extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        String userName = userNameText.getText();
+        userName = userNameText.getText();
         try {
             if (checkNameLegal(userName)) {
-                //customer = new Customer(operation, 0);
-                //dispose();
+
+               // MidiSynth.play(2,3,44);
                 MembershipUI ms = new MembershipUI(this);
                 remove(panel);
                 add(ms);
                 pack();
+//                this.dispose();
             }
         } catch (TooLongName tooLongName) {
-            tooLongName.printStackTrace();
+            setSize(450, 350);
+            panel.add(tooLongNameWarning);
+            pack();
         } catch (RepeatedName repeatedName) {
             repeatedName.printStackTrace();
         }
-    }
 
+    }
 }
 
 //try {

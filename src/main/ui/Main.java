@@ -23,7 +23,7 @@ public class Main {
         ReadWebPageEx.getWeather();
         MakeOrder makeOrder = new MakeOrder();
      //   order.addObserver(kitchenPedal);
-       // new LoginUI();
+        new LoginUI();
         try {
             //new LoginUI();
             makeOrder.startOrder();
