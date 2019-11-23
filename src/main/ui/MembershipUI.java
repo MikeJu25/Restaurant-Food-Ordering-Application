@@ -16,6 +16,7 @@ import static ui.MakeOrder.makeOrderMainMenu;
 
 public class MembershipUI extends JFrame implements ActionListener {
     private JPanel panel;
+    private static JFrame frame;
     //    private JLabel yesLable;
 //    private JLabel noLable;
     private JLabel message;
@@ -30,15 +31,11 @@ public class MembershipUI extends JFrame implements ActionListener {
 
 //    public static void showMembershipUI() {
 //        //Create and set up the window.
-
+//
 //        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //
 //        //Add content to the window.
 //        frame.add(new MembershipUI());
-//
-//        //Display the window.
-//        frame.pack();
-//        frame.setVisible(true);
 //    }
 
     public MembershipUI(JFrame frame) {

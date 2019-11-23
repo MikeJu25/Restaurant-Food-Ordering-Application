@@ -8,7 +8,7 @@ import java.net.URL;
 
 
 public class ReadWebPageEx {
-    public static void getWelcomeLetter() throws MalformedURLException, IOException {
+    public static String getWelcomeLetter() throws MalformedURLException, IOException {
 
         BufferedReader br = null;
 
@@ -20,6 +20,7 @@ public class ReadWebPageEx {
             String line;
 
             StringBuilder sb = new StringBuilder();
+            String welcomeLetter = sb.toString();
 
             while ((line = br.readLine()) != null) {
 
@@ -27,7 +28,7 @@ public class ReadWebPageEx {
                 sb.append(System.lineSeparator());
             }
 
-            System.out.println(sb);
+            return welcomeLetter;
         } finally {
 
             if (br != null) {

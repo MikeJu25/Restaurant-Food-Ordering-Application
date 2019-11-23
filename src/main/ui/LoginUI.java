@@ -63,6 +63,7 @@ public class LoginUI extends JFrame implements ActionListener {
         setSize(450, 350);
         setVisible(true);
 
+
     }
 
     @Override
@@ -74,6 +75,7 @@ public class LoginUI extends JFrame implements ActionListener {
                // MidiSynth.play(2,3,44);
                 MembershipUI ms = new MembershipUI(this);
                 remove(panel);
+             //   MembershipUI.showMembershipUI(this);
                 add(ms);
                 pack();
 //                this.dispose();
