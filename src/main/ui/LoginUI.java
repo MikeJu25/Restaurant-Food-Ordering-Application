@@ -15,7 +15,6 @@ import static model.Name.checkNameLegal;
 public class LoginUI extends JFrame implements ActionListener {
 
     public static String userName;
-
     private JPanel panel;
     private JLabel userLabel;
     private JLabel passwordLabel;
@@ -31,7 +30,7 @@ public class LoginUI extends JFrame implements ActionListener {
 
         // Username Label
         userLabel = new JLabel();
-        userLabel.setText("Your Name :");
+        userLabel.setText("Welcome! Please in put your Name :");
         userNameText = new JTextField();
 
         // Password Label
@@ -43,7 +42,7 @@ public class LoginUI extends JFrame implements ActionListener {
 
         submit = new JButton("SUBMIT");
 
-        panel = new JPanel(new GridLayout(2, 1));
+        panel = new JPanel(new GridLayout(3, 1));
         panel.add(userLabel);
         panel.add(userNameText);
         // panel.add(passwordText);
@@ -59,10 +58,9 @@ public class LoginUI extends JFrame implements ActionListener {
         add(panel, BorderLayout.CENTER);
         pack();
 
-        setTitle("Welcome! Please input your name here");
-        setSize(450, 350);
+        setTitle("Name Input");
+        setSize(450, 250);
         setVisible(true);
-
 
     }
 
@@ -73,15 +71,16 @@ public class LoginUI extends JFrame implements ActionListener {
             if (checkNameLegal(userName)) {
 
                // MidiSynth.play(2,3,44);
-                MembershipUI ms = new MembershipUI(this);
-                remove(panel);
+                new MembershipUI(this);
+              //  remove(panel);
+                dispose();
              //   MembershipUI.showMembershipUI(this);
-                add(ms);
-                pack();
+              //  add(ms);
+              //  pack();
 //                this.dispose();
             }
         } catch (TooLongName tooLongName) {
-            setSize(450, 350);
+           // setSize(450, 350);
             panel.add(tooLongNameWarning);
             pack();
         } catch (RepeatedName repeatedName) {

@@ -16,7 +16,7 @@ import static ui.MakeOrder.makeOrderMainMenu;
 
 public class MembershipUI extends JFrame implements ActionListener {
     private JPanel panel;
-    private static JFrame frame;
+   // private static JFrame frame;
     //    private JLabel yesLable;
 //    private JLabel noLable;
     private JLabel message;
@@ -61,7 +61,9 @@ public class MembershipUI extends JFrame implements ActionListener {
         visitor.addActionListener(this);
         add(panel, BorderLayout.CENTER);
 
-        frame.pack();
+        setTitle("Name Input");
+        setSize(450, 250);
+        setVisible(true);
 
 
 //        this.frame = frame;
@@ -77,7 +79,7 @@ public class MembershipUI extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton jbutton = (JButton) e.getSource();
-        System.out.println(jbutton.getText());
+       // System.out.println(jbutton.getText());
         if (jbutton.getText() == "Membership") {
             try {
                 checkName(LoginUI.userName, customers);
@@ -87,8 +89,8 @@ public class MembershipUI extends JFrame implements ActionListener {
             makeOrderMainMenu();
         }
         if (jbutton.getText() == "Visitor") {
-            LoginUI logIn = new LoginUI();
-            add(logIn);
+            dispose();
+            new MenuUI();
         }
 
     }
