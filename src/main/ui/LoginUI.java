@@ -69,11 +69,10 @@ public class LoginUI extends JFrame implements ActionListener {
         userName = userNameText.getText();
         try {
             if (checkNameLegal(userName)) {
-
+                dispose();
                // MidiSynth.play(2,3,44);
                 new MembershipUI(this);
               //  remove(panel);
-                dispose();
              //   MembershipUI.showMembershipUI(this);
               //  add(ms);
               //  pack();

@@ -14,9 +14,9 @@ public class FinishOrderUI extends JFrame {
         img = Toolkit.getDefaultToolkit().getImage(url);
 
         this.setContentPane(new JPanel() {
-            @Override
-            public void paintComponent(Graphics g) {
-                super.paintComponent(g);
+                    @Override
+                    public void paintComponent(Graphics g) {
+                        super.paintComponent(g);
                 g.drawImage(img, 175, 75, null);
             }
         });

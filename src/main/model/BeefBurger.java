@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 
 public class BeefBurger extends Burger {
     private String name;
