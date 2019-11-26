@@ -7,6 +7,7 @@ import model.Customer;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 import javax.swing.*;
 
 import static model.Name.checkNameLegal;
@@ -84,6 +85,8 @@ public class LoginUI extends JFrame implements ActionListener {
             pack();
         } catch (RepeatedName repeatedName) {
             repeatedName.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
     }

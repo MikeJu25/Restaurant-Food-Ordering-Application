@@ -1,11 +1,13 @@
 package ui;
 
 import model.AngusBeefBurger;
+import model.Food;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class MenuUI extends JFrame implements ActionListener {
     private JPanel panelMainMenu;
@@ -13,11 +15,14 @@ public class MenuUI extends JFrame implements ActionListener {
     private JPanel angusBeefBurgerMenu;
     private JLabel price;
     private JLabel ingredient;
+    private JLabel addToCartMessage;
   //  private JLabel burger;
     private JButton burger;
     private JButton angusBeefBurger;
     private JButton addToCart;
     private JButton backToBeefBurger;
+    private JButton readyToPay;
+    private static ArrayList<Food> foods = new ArrayList<>();
 
     public MenuUI() {
         panelMainMenu = new JPanel();
@@ -28,6 +33,9 @@ public class MenuUI extends JFrame implements ActionListener {
         price = new JLabel("Price: $23.99");
         addToCart = new JButton("Add to cart");
         backToBeefBurger = new JButton("Return");
+        ingredient = new JLabel(AngusBeefBurger.ingredient);
+        addToCartMessage = new JLabel("You've successfully ordered Angus Beef Burger");
+        readyToPay = new JButton("Ready to pay");
 
         burger.setText("Burger Menu");
         angusBeefBurger.setText("Angus Beef Burger");
@@ -35,16 +43,20 @@ public class MenuUI extends JFrame implements ActionListener {
         add(panelMainMenu);
         panelMainMenu.add(burger);
         panelBurgerMenu.add(angusBeefBurger);
+        panelBurgerMenu.add(readyToPay);
         angusBeefBurgerMenu.add(price);
+        angusBeefBurgerMenu.add(ingredient);
         angusBeefBurgerMenu.add(addToCart);
         angusBeefBurgerMenu.add(backToBeefBurger);
 
         panelMainMenu.setLayout(new GridLayout(4,1));
         panelBurgerMenu.setLayout(new GridLayout(4,1));
-        angusBeefBurgerMenu.setLayout(new GridLayout(3,1));
+        angusBeefBurgerMenu.setLayout(new GridLayout(5,1));
         burger.addActionListener(this);
         angusBeefBurger.addActionListener(this);
         backToBeefBurger.addActionListener(this);
+        addToCart.addActionListener(this);
+        readyToPay.addActionListener(this);
 
 
         setTitle("Main Menu");
@@ -52,6 +64,14 @@ public class MenuUI extends JFrame implements ActionListener {
         setVisible(true);
 
 
+    }
+
+    public static double totalPriceCalculator() {
+        double totalPrice  = 0;
+        for (Food food: foods) {
+            totalPrice = totalPrice + food.getPrice();
+        }
+        return totalPrice;
     }
 
 
@@ -77,6 +97,15 @@ public class MenuUI extends JFrame implements ActionListener {
             add(panelBurgerMenu);
             setTitle("Burger Menu");
             pack();
+        }
+        if (jbutton.getText() == "Add to cart") {
+            foods.add(new AngusBeefBurger());
+            angusBeefBurgerMenu.add(addToCartMessage);
+            pack();
+        }
+        if (jbutton.getText() == "Ready to pay") {
+            dispose();
+            new PayUI();
         }
     }
 }

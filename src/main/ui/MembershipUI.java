@@ -17,16 +17,21 @@ import static ui.MakeOrder.makeOrderMainMenu;
 public class MembershipUI extends JFrame implements ActionListener {
     private JPanel panel1;
     private JPanel panel2;
+    private JPanel panel3;
     // private static JFrame frame;
     //    private JLabel yesLable;
 //    private JLabel noLable;
     private JLabel message;
     private JLabel firstTimeMessage;
+    private JLabel isThisYourAccountMessage;
+    private JLabel hasBeenRegistered;
+    private JLabel nameSuggestion;
     private JButton membership;
     private JButton visitor;
-    private JButton yes;
-    private JButton no;
-    private Name name;
+    private JButton makeChoiceToContinue;
+    private JButton stillVisitor;
+    private JButton continueToOrder;
+    private JButton notMyAccount;
     private Customers customers;
 
 
@@ -39,9 +44,21 @@ public class MembershipUI extends JFrame implements ActionListener {
 //        frame.add(new MembershipUI());
 //    }
 
-    public MembershipUI(JFrame frame) {
+    public MembershipUI(JFrame frame) throws IOException {
         panel1 = new JPanel();
         panel2 = new JPanel();
+        panel3 = new JPanel();
+
+        makeChoiceToContinue = new JButton("That's it! I want this user name and ready to order");
+        stillVisitor = new JButton("I don't want this name. I just wanna see my menu");
+        continueToOrder = new JButton("Continue");
+        notMyAccount = new JButton("This is not my account");
+        hasBeenRegistered = new JLabel("Sorry, this user name has been registered");
+        nameSuggestion = new JLabel();
+        customers = new Customers();
+
+
+        isThisYourAccountMessage = new JLabel();
 
         frame.add(panel1);
         message = new JLabel();
@@ -49,20 +66,29 @@ public class MembershipUI extends JFrame implements ActionListener {
         firstTimeMessage = new JLabel();
         membership = new JButton("Membership");
         visitor = new JButton("Visitor");
-        yes = new JButton("Yes");
-        no = new JButton("No");
-        customers = new Customers();
 
 
         panel1.setLayout(new GridLayout(0, 1));
         panel1.setSize(new Dimension(10, 10));
-        panel2.setLayout(new GridLayout(2, 1));
+        panel2.setLayout(new GridLayout(3, 1));
+        panel2.setSize(new Dimension(10, 10));
+        panel3.setLayout(new GridLayout(4, 1));
+        panel3.setSize(new Dimension(10, 10));
+        panel3.add(hasBeenRegistered);
+        legalNameSuggestion();
+        panel3.add(nameSuggestion);
+        panel3.add(makeChoiceToContinue);
+        panel3.add(stillVisitor);
         panel1.add(message);
         panel1.add(membership);
         panel1.add(visitor);
 
         membership.addActionListener(this);
         visitor.addActionListener(this);
+        makeChoiceToContinue.addActionListener(this);
+        stillVisitor.addActionListener(this);
+        continueToOrder.addActionListener(this);
+        notMyAccount.addActionListener(this);
         add(panel1, BorderLayout.CENTER);
 
         setTitle("Identification Verification");
@@ -80,24 +106,62 @@ public class MembershipUI extends JFrame implements ActionListener {
 //        changeTheLabel.addActionListener(this);
     }
 
+
+    public void legalNameSuggestion() throws IOException {
+        customers.load();
+        String goodName = "";
+        for (int i = 2; i <= 20000; ) {
+            if (!Customers.getAllCustomersName().contains(LoginUI.userName + i)) {
+                goodName = LoginUI.userName + i;
+                nameSuggestion.setText("This is our suggestions: " + goodName);
+                break;
+            } else {
+                i++;
+            }
+        }
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton jbutton = (JButton) e.getSource();
         // System.out.println(jbutton.getText());
         if (jbutton.getText() == "Membership") {
             try {
-                // checkName(LoginUI.userName, customers);
                 checkName(LoginUI.userName, customers);
+                // checkName(LoginUI.userName, customers);
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
         }
+        // new CheckNameUI();
         if (jbutton.getText() == "Visitor") {
             dispose();
             new MenuUI();
         }
-
+        if (jbutton.getText() == "Continue") {
+            dispose();
+            new MenuUI();
+        }
+        if (jbutton.getText() == "This is not my account") {
+            remove(panel2);
+            add(panel3);
+            pack();
+        }
+        if (jbutton.getText() == "That's it! I want this user name and ready to order") {
+            try {
+                customers.save();
+                dispose();
+                new MenuUI();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+        if (jbutton.getText() == "I don't want this name. I just wanna see my menu") {
+            dispose();
+            new MenuUI();
+        }
     }
+
 
     public void checkName(String customerName, Customers customers) throws IOException {
         // ArrayList<String> names = new ArrayList<String>();
@@ -116,26 +180,28 @@ public class MembershipUI extends JFrame implements ActionListener {
             if (Customers.getAllCustomersName().contains(customerName)) {
                 Customer customer = ifContains(customerName);
                 remove(panel1);
-                firstTimeMessage.setText("First time? Continue to order with user name: " + customer.getName());
-                add(panel2);
+                firstTimeMessage.setText("Continue to order with user name: " + customer.getName());
+                add(panel2, BorderLayout.CENTER);
                 panel2.add(firstTimeMessage);
+                panel2.add(continueToOrder);
+                panel2.add(notMyAccount);
                 pack();
                 // pack();
                 //System.out.println("Your current account balance: " + customer.getBalance());
-//            } else {
-//                System.out.println("Create an account and continue to order with user name: " + customerName);
-//                Customer newCustomer = new Customer(customerName, 0);
-//                Customers.addCustomerToList(newCustomer);
-//                customers.save();
-//            }
+            } else {
+                System.out.println("Create an account and continue to order with user name: " + customerName);
+                Customer newCustomer = new Customer(customerName, 0);
+                Customers.addCustomerToList(newCustomer);
+                customers.save();
             }
         }
     }
 
+
     public Customer ifContains(String customerName) throws SelectionNotValid, IOException {
-//        System.out.println("Is this your account: " + customerName);
-//        panel1.add(yes);
-//        panel1.add(no);
+        //System.out.println("Is this your account: " + customerName);
+        isThisYourAccountMessage.setText("Is this your account: " + customerName);
+
 //        if (command.equals("y")) {
 //            System.out.println("Continue to order with user name: " + customerName);
 //            // order.addCustomer(Customers.getCustomerWithName(customerName));
@@ -151,8 +217,6 @@ public class MembershipUI extends JFrame implements ActionListener {
 //        } else {
 //            throw new SelectionNotValid();
 //        }
-        return null;
-////    }
-//    }
+        return new Customer("Mike", 12);
     }
 }
