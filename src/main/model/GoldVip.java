@@ -27,9 +27,10 @@ public class GoldVip extends Vip {
         return result + getVipBalance();
     }
 
-    public Boolean promoteToGold(Customer customer) {
-        if (customer.getBalance() >= 3000) {
+    public static Boolean promoteToGold(Customer customer) {
+        if (customer.getBalance() >= 100) {
             new GoldVip(customer);
+            System.out.println("You are enjoying Gold VIP price");
             return true;
         }
         return false;

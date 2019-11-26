@@ -302,12 +302,12 @@ public class MakeOrder extends JPanel {
 //    }
 
     public static void makeOrderSnacks() {
-        Food chickenStripes = new Snacks();
+      //  Food chickenStripes = new Snacks();
         String operation = "";
         System.out.println("Do you want a chickenStripes?(Yes or No)");
-        chickenStripes.printPrice1();
-        chickenStripes.printIngredient1();
-        chickenStripes.printPopularity1();
+//        chickenStripes.printPrice1();
+//        chickenStripes.printIngredient1();
+//        chickenStripes.printPopularity1();
         Scanner scanner = new Scanner(System.in);
         operation = scanner.nextLine();
 

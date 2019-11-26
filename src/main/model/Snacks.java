@@ -1,6 +1,8 @@
 package model;
 
 public class Snacks implements Food {
+    private String name;
+    private double price;
 
 
 //    public void chickenStripes() {
@@ -34,18 +36,23 @@ public class Snacks implements Food {
 //
 //    }
 
+    public Snacks(String name, double price) {
+        this.name = name;
+        this.price = price;
+    }
+
     public static String printOrder() {
         return ("You've successfully ordered chicken stripes!");
     }
 
     @Override
     public String getName() {
-        return null;
+        return name;
     }
 
     @Override
     public double getPrice() {
-        return 0;
+        return price;
     }
 
     @Override

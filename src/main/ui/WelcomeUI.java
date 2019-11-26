@@ -43,7 +43,7 @@ public class WelcomeUI extends JFrame implements ActionListener {
 //            }
 //        });
 
-
+    //    setLocationRelativeTo(null);
         producer = new JLabel();
         producer.setText("Producer: Mike Ju");
         panel.add(producer);
@@ -80,7 +80,7 @@ public class WelcomeUI extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         // remove(panel);
-        playSound("buzzer.wav");
+      //  playSound("buzzer.wav");
         dispose();
         new LoginUI();
         //add(loginUI);

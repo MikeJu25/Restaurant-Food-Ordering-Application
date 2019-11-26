@@ -1,15 +1,15 @@
 package model;
 
-public class AngusBeefBurger extends BeefBurger {
-    public static final double price = 23.99;
+public class ChickenStripe extends Snacks {
+    public static final double price = 9.99;
     public static final String name = "Angus Beef Burger";
     public static final String ingredient = "Angus beef, butter, exclusive chess, oat bread cover";
 
-    public AngusBeefBurger() {
+    public ChickenStripe() {
         super(name, price);
     }
 
-    public static void printAngusBeefBurgerInfo() {
+    public static void printChickenStripeIngr() {
         System.out.println("Price: " + price);
         System.out.println("Ingredient: " + ingredient);
     }
@@ -24,3 +24,5 @@ public class AngusBeefBurger extends BeefBurger {
         return price;
     }
 }
+
+

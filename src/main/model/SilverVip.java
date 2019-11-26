@@ -7,9 +7,9 @@ public class SilverVip extends Vip {
     }
 
     public static Boolean promoteToSilver(Customer customer) {
-        if (customer.getBalance() >= 1000) {
+        if (customer.getBalance() >= 30) {
             new SilverVip(customer);
-            System.out.println("Congratulation! You've been promoted to Silver VIP!");
+            System.out.println("You are enjoying Silver VIP price");
             return true;
         }
         return false;

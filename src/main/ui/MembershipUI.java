@@ -62,7 +62,7 @@ public class MembershipUI extends JFrame implements ActionListener {
         backToEnter = new JButton("I don't like this user name. Get me back to re-enter a new name");
 
         customers.load();
-
+     //   setLocationRelativeTo(null);
 
         isThisYourAccountMessage = new JLabel();
 
@@ -142,6 +142,7 @@ public class MembershipUI extends JFrame implements ActionListener {
         }
         // new CheckNameUI();
         if (jbutton.getText() == "Visitor") {
+            customer = new Customer(LoginUI.userName,0);
             dispose();
             new MainMenuUI();
         }
@@ -212,8 +213,8 @@ public class MembershipUI extends JFrame implements ActionListener {
                 panel2.add(createAnAccountMsg);
                 panel2.add(continueToOrder);
                 pack();
-                Customer newCustomer = new Customer(customerName, 0);
-                Customers.addCustomerToList(newCustomer);
+                customer = new Customer(customerName, 0);
+              //  Customers.addCustomerToList(customer);
                 customers.save(customer);
             }
         }

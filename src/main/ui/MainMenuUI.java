@@ -2,6 +2,8 @@ package ui;
 
 import model.AngusBeefBurger;
 import model.Food;
+import model.GoldVip;
+import model.SilverVip;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,7 +18,8 @@ public class MainMenuUI extends JFrame implements ActionListener {
     private JLabel price;
     private JLabel ingredient;
     private JLabel addToCartMessage;
-  //  private JLabel burger;
+    //  private JLabel burger;
+    private JButton snack;
     private JButton burger;
     private JButton angusBeefBurger;
     private JButton addToCart;
@@ -36,12 +39,14 @@ public class MainMenuUI extends JFrame implements ActionListener {
         ingredient = new JLabel(AngusBeefBurger.ingredient);
         addToCartMessage = new JLabel("You've successfully ordered Angus Beef Burger");
         readyToPay = new JButton("Ready to pay");
+        snack = new JButton("Snack");
 
         burger.setText("Burger Menu");
         angusBeefBurger.setText("Angus Beef Burger");
 
         add(panelMainMenu);
         panelMainMenu.add(burger);
+        panelMainMenu.add(snack);
         panelBurgerMenu.add(angusBeefBurger);
         panelBurgerMenu.add(readyToPay);
         angusBeefBurgerMenu.add(price);
@@ -49,14 +54,15 @@ public class MainMenuUI extends JFrame implements ActionListener {
         angusBeefBurgerMenu.add(addToCart);
         angusBeefBurgerMenu.add(backToBeefBurger);
 
-        panelMainMenu.setLayout(new GridLayout(4,1));
-        panelBurgerMenu.setLayout(new GridLayout(4,1));
-        angusBeefBurgerMenu.setLayout(new GridLayout(5,1));
+        panelMainMenu.setLayout(new GridLayout(4, 1));
+        panelBurgerMenu.setLayout(new GridLayout(4, 1));
+        angusBeefBurgerMenu.setLayout(new GridLayout(5, 1));
         burger.addActionListener(this);
         angusBeefBurger.addActionListener(this);
         backToBeefBurger.addActionListener(this);
         addToCart.addActionListener(this);
         readyToPay.addActionListener(this);
+        snack.addActionListener(this);
 
 
         setTitle("Main Menu");
@@ -67,11 +73,18 @@ public class MainMenuUI extends JFrame implements ActionListener {
     }
 
     public static double totalPriceCalculator() {
-        double totalPrice  = 0;
-        for (Food food: foods) {
-            totalPrice = totalPrice + food.getPrice();
+        double totalPrice = 0;
+        for (Food food : foods) {
+            totalPrice += food.getPrice();
         }
-        return totalPrice;
+        if (SilverVip.promoteToSilver(MembershipUI.customer)) {
+            return Math.round(totalPrice * 0.85);
+        }
+        if (GoldVip.promoteToGold(MembershipUI.customer)) {
+            return Math.round(totalPrice * 0.7);
+        } else {
+            return totalPrice;
+        }
     }
 
 
@@ -106,6 +119,10 @@ public class MainMenuUI extends JFrame implements ActionListener {
         if (jbutton.getText() == "Ready to pay") {
             dispose();
             new PayUI();
+        }
+        if (jbutton.getText() == "Snack") {
+            dispose();
+            new SnackMenuUI();
         }
     }
 }

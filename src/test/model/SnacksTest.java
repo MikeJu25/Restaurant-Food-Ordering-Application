@@ -14,7 +14,7 @@ public class SnacksTest {
 
     @BeforeEach
     public void runBefore(){
-        snacks = new Snacks();
+       // snacks = new Snacks();
         singleton = new Singleton("Mike");
         SingletonHolder singletonHolder = new SingletonHolder();
     }
