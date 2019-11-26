@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class MenuUI extends JFrame implements ActionListener {
+public class MainMenuUI extends JFrame implements ActionListener {
     private JPanel panelMainMenu;
     private JPanel panelBurgerMenu;
     private JPanel angusBeefBurgerMenu;
@@ -22,9 +22,9 @@ public class MenuUI extends JFrame implements ActionListener {
     private JButton addToCart;
     private JButton backToBeefBurger;
     private JButton readyToPay;
-    private static ArrayList<Food> foods = new ArrayList<>();
+    public static ArrayList<Food> foods = new ArrayList<>();
 
-    public MenuUI() {
+    public MainMenuUI() {
         panelMainMenu = new JPanel();
         panelBurgerMenu = new JPanel();
         angusBeefBurgerMenu = new JPanel();

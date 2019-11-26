@@ -39,7 +39,7 @@ public class CustomersTest {
     void testLoadAndSave() throws IOException {
         List<String> lines = Files.readAllLines(Paths.get("inputfile"));
         customers.addCustomerToList(customer);
-        customers.save();
+       // customers.save();
         customers.load();
         assertTrue(lines.contains("Yangxi 0.0"));
     }

@@ -39,7 +39,7 @@ public class Name {
             Customer firstCustomer = new Customer(customerName,0);
             Customers.addCustomerToList(firstCustomer);
             System.out.println("First time? Continue to order with user name: " + firstCustomer.getName());
-            customers.save();
+          //  customers.save();
         } else {
             if (Customers.getAllCustomersName().contains(customerName)) {
                 Customer customer = ifContains(customerName);
@@ -48,7 +48,7 @@ public class Name {
                 System.out.println("Create an account and continue to order with user name: " + customerName);
                 Customer newCustomer = new Customer(customerName,0);
                 Customers.addCustomerToList(newCustomer);
-                customers.save();
+            //    customers.save();
             }
         }
     }

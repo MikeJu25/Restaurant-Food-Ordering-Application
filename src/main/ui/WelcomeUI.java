@@ -6,8 +6,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.IOException;
-import java.net.URL;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.AudioSystem;
+
 
 public class WelcomeUI extends JFrame implements ActionListener {
     private JPanel panel;
@@ -16,6 +20,7 @@ public class WelcomeUI extends JFrame implements ActionListener {
     private JButton continueLogIn;
     private CardLayout cardLayout;
     private Container container;
+
 //    private Image img;
 //    private String theUrl = "http://images.clipartpanda.com/apple-20clip-20art-nicubunu_Apple_Clipart_Free.png";
 //    private URL url = new URL(theUrl);
@@ -25,7 +30,7 @@ public class WelcomeUI extends JFrame implements ActionListener {
         add(panel);
         information = new JLabel();
         information.setText(ReadWebPageEx.getWelcomeLetter());
-        cardLayout = new CardLayout(30,40);
+        cardLayout = new CardLayout(30, 40);
         container = getContentPane();
         container.setLayout(cardLayout);
 //        img = Toolkit.getDefaultToolkit().getImage(url);
@@ -42,12 +47,12 @@ public class WelcomeUI extends JFrame implements ActionListener {
         producer = new JLabel();
         producer.setText("Producer: Mike Ju");
         panel.add(producer);
-        panel.setLayout(new GridLayout(2,1));
+        panel.setLayout(new GridLayout(2, 1));
         setTitle("Welcome to the CPSC 210 Project for 2018W1!");
 
         continueLogIn = new JButton("Continue");
         panel.add(continueLogIn);
-      //  panel = new JPanel(new CardLayout(40, 30));
+        //  panel = new JPanel(new CardLayout(40, 30));
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -59,11 +64,23 @@ public class WelcomeUI extends JFrame implements ActionListener {
 
     }
 
+    public static void playSound(String soundName) {
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.start();
+        } catch (Exception ex) {
+            System.out.println("Error with playing sound.");
+            ex.printStackTrace();
+        }
+    }
 
 
     @Override
     public void actionPerformed(ActionEvent e) {
-       // remove(panel);
+        // remove(panel);
+        playSound("buzzer.wav");
         dispose();
         new LoginUI();
         //add(loginUI);

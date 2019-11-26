@@ -7,10 +7,10 @@ import java.net.URL;
 
 public class FinishOrderUI extends JFrame {
     private Image img;
-    private String theUrl = "https://image.shutterstock.com/image-vector/goodbye-isolated-vector-illustration-word-260nw-797705239.jpg";
-    private URL url = new URL(theUrl);
 
     public FinishOrderUI() throws IOException {
+        String theUrl = "https://image.shutterstock.com/image-vector/goodbye-isolated-vector-illustration-word-260nw-797705239.jpg";
+        URL url = new URL(theUrl);
         img = Toolkit.getDefaultToolkit().getImage(url);
 
         this.setContentPane(new JPanel() {

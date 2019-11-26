@@ -1,5 +1,7 @@
 package ui;
 
+import model.Customers;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -15,7 +17,7 @@ public class PayUI extends JFrame implements ActionListener {
 
     public PayUI() {
         panel = new JPanel();
-        totalPrice = new JLabel("Your total is " + MenuUI.totalPriceCalculator());
+        totalPrice = new JLabel("Your total is " + MainMenuUI.totalPriceCalculator());
         payAtFront = new JButton("Pay at the front desk");
         payHere = new JButton("Pay by debit or credit");
         message = new JLabel("Please take your number and pay at the front desk");
@@ -40,6 +42,15 @@ public class PayUI extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         JButton jbutton = (JButton) e.getSource();
         if (jbutton.getText() == "Pay at the front desk") {
+            Customers customers = new Customers();
+            MembershipUI.customer.balance += MainMenuUI.totalPriceCalculator();
+            try {
+                customers.load();
+                customers.removeCertainCustomer(MembershipUI.customer);
+                customers.save(MembershipUI.customer);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
             panel.removeAll();
             panel.add(message);
             pack();

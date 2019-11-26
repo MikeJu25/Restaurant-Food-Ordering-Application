@@ -26,7 +26,7 @@ public class CheckNameUI extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         JButton jbutton = (JButton) e.getSource();
         if (jbutton.getText() == "Yes") {
-            new MenuUI();
+            new MainMenuUI();
         }
     }
 }

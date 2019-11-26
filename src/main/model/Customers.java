@@ -1,5 +1,6 @@
 package model;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
@@ -68,6 +69,15 @@ public class Customers {
                 addCustomerToList(new Customer(partsOfLine.get(0), Double.parseDouble(partsOfLine.get(1))));
             }
         }
+        if (lines.size() == 0) {
+            addCustomerToList(new Customer("SomeOne", 1));
+        }
+    }
+
+    public void removeCertainCustomer(Customer customer) {
+        if (customers.contains(customer)) {
+            customers.remove(customer);
+        }
     }
 
 //    for (int i = 0; i < lines.size(); i++) {
@@ -77,11 +87,15 @@ public class Customers {
 ////                break;
 ////            }
 
-    public void save() throws IOException {
+    public void save(Customer customer) throws IOException {
         PrintWriter writer = new PrintWriter("inputfile", "UTF-8");
+       // File file = new File("inputfile");
+      //  writer.println("");
         for (Customer c : customers) {
             writer.println(c.name + " " + c.getBalance());
+          //  writer.flush();
         }
+        writer.println(customer.name + " " + customer.getBalance());
         writer.close();
 
     }
