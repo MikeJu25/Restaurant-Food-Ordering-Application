@@ -79,7 +79,7 @@ public class Name {
         Customer customer = new Customer(customerName,0);
         Customers.addCustomerToList(customer);
         System.out.println("Account registered with user name " + customerName);
-        MakeOrder.makeOrderMainMenu();
+    //    MakeOrder.makeOrderMainMenu();
     }
 
 //    customer.balance = customers.getCustomerBalance(customer);;

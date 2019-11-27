@@ -231,14 +231,13 @@ public class MembershipUI extends JFrame implements ActionListener {
         customer = ifContains(customerName);
         remove(panel1);
         firstTimeMessage.setText("Continue to order with user name: " + customer.getName());
-
         add(panel2, BorderLayout.CENTER);
         balanceMessage.setText("Your current balance is: " + customer.getBalance());
         panel2.add(firstTimeMessage);
         panel2.add(balanceMessage);
         panel2.add(continueToOrder);
         panel2.add(notMyAccount);
-        pack();
+        panel2.updateUI();
     }
 
 

@@ -26,7 +26,7 @@ public class MainMenuUI extends JFrame implements ActionListener {
     private JButton returnTo;
     private JButton backToBurger;
     private JButton readyToPay;
-    private static ArrayList<Food> foods = new ArrayList<>();
+    public static ArrayList<Food> foods = new ArrayList<>();
 
     MainMenuUI() {
         panelMainMenu = new JPanel();
