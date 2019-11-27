@@ -23,7 +23,8 @@ public class MainMenuUI extends JFrame implements ActionListener {
     private JButton burger;
     private JButton angusBeefBurger;
     private JButton addToCart;
-    private JButton backToBeefBurger;
+    private JButton returnTo;
+    private JButton backToBurger;
     private JButton readyToPay;
     public static ArrayList<Food> foods = new ArrayList<>();
 
@@ -35,11 +36,12 @@ public class MainMenuUI extends JFrame implements ActionListener {
         angusBeefBurger = new JButton();
         price = new JLabel("Price: $23.99");
         addToCart = new JButton("Add to cart");
-        backToBeefBurger = new JButton("Return");
+        returnTo = new JButton("Return");
         ingredient = new JLabel(AngusBeefBurger.ingredient);
         addToCartMessage = new JLabel("You've successfully ordered Angus Beef Burger");
         readyToPay = new JButton("Ready to pay");
         snack = new JButton("Snack");
+        backToBurger = new JButton("Back");
 
         burger.setText("Burger Menu");
         angusBeefBurger.setText("Angus Beef Burger");
@@ -49,20 +51,25 @@ public class MainMenuUI extends JFrame implements ActionListener {
         panelMainMenu.add(snack);
         panelBurgerMenu.add(angusBeefBurger);
         panelBurgerMenu.add(readyToPay);
+        panelBurgerMenu.add(returnTo);
         angusBeefBurgerMenu.add(price);
         angusBeefBurgerMenu.add(ingredient);
         angusBeefBurgerMenu.add(addToCart);
-        angusBeefBurgerMenu.add(backToBeefBurger);
+        angusBeefBurgerMenu.add(backToBurger);
+       // panelMainMenu.add(returnTo);
+
+        setLocation(500,300);
 
         panelMainMenu.setLayout(new GridLayout(4, 1));
         panelBurgerMenu.setLayout(new GridLayout(4, 1));
         angusBeefBurgerMenu.setLayout(new GridLayout(5, 1));
         burger.addActionListener(this);
         angusBeefBurger.addActionListener(this);
-        backToBeefBurger.addActionListener(this);
+        returnTo.addActionListener(this);
         addToCart.addActionListener(this);
         readyToPay.addActionListener(this);
         snack.addActionListener(this);
+        backToBurger.addActionListener(this);
 
 
         setTitle("Main Menu");
@@ -100,17 +107,23 @@ public class MainMenuUI extends JFrame implements ActionListener {
             pack();
         }
         if (jbutton.getText() == "Angus Beef Burger") {
-            remove(panelBurgerMenu);
-            add(angusBeefBurgerMenu);
-            setTitle("Angus Beef Burger");
-            pack();
+            makeItShorter2();
         }
         if (jbutton.getText() == "Return") {
-            remove(angusBeefBurgerMenu);
-            add(panelBurgerMenu);
-            setTitle("Burger Menu");
-            pack();
+            dispose();
+            new MainMenuUI();
         }
+        morePossibility(jbutton);
+    }
+
+    private void makeItShorter2() {
+        remove(panelBurgerMenu);
+        add(angusBeefBurgerMenu);
+        setTitle("Angus Beef Burger");
+        pack();
+    }
+
+    private void morePossibility(JButton jbutton) {
         if (jbutton.getText() == "Add to cart") {
             foods.add(new AngusBeefBurger());
             angusBeefBurgerMenu.add(addToCartMessage);
@@ -124,5 +137,15 @@ public class MainMenuUI extends JFrame implements ActionListener {
             dispose();
             new SnackMenuUI();
         }
+        if (jbutton.getText() == "Back") {
+            makeItShorter();
+        }
+    }
+
+    private void makeItShorter() {
+        remove(angusBeefBurgerMenu);
+        add(panelBurgerMenu);
+        setTitle("Burger Menu");
+        pack();
     }
 }

@@ -59,7 +59,7 @@ public class MembershipUI extends JFrame implements ActionListener {
         customers = new Customers();
         balanceMessage = new JLabel();
         createAnAccountMsg = new JLabel();
-        backToEnter = new JButton("I don't like this user name. Get me back to re-enter a new name");
+        backToEnter = new JButton("I don't like this user name. Get me back to reenter a new name");
 
         customers.load();
      //   setLocationRelativeTo(null);
@@ -102,6 +102,8 @@ public class MembershipUI extends JFrame implements ActionListener {
         setTitle("Identification Verification");
         setSize(450, 250);
         setVisible(true);
+
+        setLocation(500,300);
 
 
 //        this.frame = frame;
@@ -146,25 +148,19 @@ public class MembershipUI extends JFrame implements ActionListener {
             dispose();
             new MainMenuUI();
         }
+        morePossibility(jbutton);
+    }
+
+    private void morePossibility(JButton jbutton) {
         if (jbutton.getText() == "Continue") {
             dispose();
             new MainMenuUI();
         }
         if (jbutton.getText() == "This is not my account") {
-            remove(panel2);
-            add(panel3);
-            pack();
+            ifNotAccount();
         }
         if (jbutton.getText() == "That's it! I want this user name and ready to order") {
-            try {
-              //  Customers.addCustomerToList(new Customer(goodName,0));
-                customer = new Customer(goodName,0);
-                customers.save(customer);
-                dispose();
-                new MainMenuUI();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
+            ifNameSatisfied();
         }
         if (jbutton.getText() == "I don't want this name. I just wanna see my menu") {
             dispose();
@@ -174,6 +170,23 @@ public class MembershipUI extends JFrame implements ActionListener {
             dispose();
             new LoginUI();
 
+        }
+    }
+
+    private void ifNotAccount() {
+        remove(panel2);
+        add(panel3);
+        pack();
+    }
+
+    private void ifNameSatisfied() {
+        try {
+            customer = new Customer(goodName,0);
+            customers.save(customer);
+            dispose();
+            new MainMenuUI();
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
     }
 
@@ -193,31 +206,39 @@ public class MembershipUI extends JFrame implements ActionListener {
             customers.save(customer);
         } else {
             if (Customers.getAllCustomersName().contains(customerName)) {
-                customer = ifContains(customerName);
-                remove(panel1);
-                firstTimeMessage.setText("Continue to order with user name: " + customer.getName());
-
-                add(panel2, BorderLayout.CENTER);
-                balanceMessage.setText("Your current balance is: " + customer.getBalance());
-                panel2.add(firstTimeMessage);
-                panel2.add(balanceMessage);
-                panel2.add(continueToOrder);
-                panel2.add(notMyAccount);
-                pack();
+                ifOldCustomer(customerName);
                 // pack();
                 //System.out.println("Your current account balance: " + customer.getBalance());
             } else {
-                createAnAccountMsg.setText("Create an account and continue to order with user name: " + customerName);
-                remove(panel1);
-                add(panel2);
-                panel2.add(createAnAccountMsg);
-                panel2.add(continueToOrder);
-                pack();
-                customer = new Customer(customerName, 0);
-              //  Customers.addCustomerToList(customer);
-                customers.save(customer);
+                ifNewCustomer(customerName, customers);
             }
         }
+    }
+
+    private void ifNewCustomer(String customerName, Customers customers) throws IOException {
+        createAnAccountMsg.setText("Create an account and continue to order with user name: " + customerName);
+        remove(panel1);
+        add(panel2);
+        panel2.add(createAnAccountMsg);
+        panel2.add(continueToOrder);
+        pack();
+        customer = new Customer(customerName, 0);
+        //  Customers.addCustomerToList(customer);
+        customers.save(customer);
+    }
+
+    private void ifOldCustomer(String customerName) throws IOException {
+        customer = ifContains(customerName);
+        remove(panel1);
+        firstTimeMessage.setText("Continue to order with user name: " + customer.getName());
+
+        add(panel2, BorderLayout.CENTER);
+        balanceMessage.setText("Your current balance is: " + customer.getBalance());
+        panel2.add(firstTimeMessage);
+        panel2.add(balanceMessage);
+        panel2.add(continueToOrder);
+        panel2.add(notMyAccount);
+        pack();
     }
 
 

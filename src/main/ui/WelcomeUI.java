@@ -43,7 +43,7 @@ public class WelcomeUI extends JFrame implements ActionListener {
 //            }
 //        });
 
-    //    setLocationRelativeTo(null);
+        setLocation(500,300);
         producer = new JLabel();
         producer.setText("Producer: Mike Ju");
         panel.add(producer);

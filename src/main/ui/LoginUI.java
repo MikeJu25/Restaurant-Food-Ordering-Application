@@ -42,6 +42,7 @@ public class LoginUI extends JFrame implements ActionListener {
         // Submit
 
         submit = new JButton("SUBMIT");
+        setLocation(500,300);
 
         panel = new JPanel(new GridLayout(3, 1));
         panel.add(userLabel);
@@ -68,6 +69,9 @@ public class LoginUI extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         userName = userNameText.getText();
+        if (userName == " ") {
+            panel.add(tooLongNameWarning);
+        }
         try {
             if (checkNameLegal(userName)) {
                 dispose();

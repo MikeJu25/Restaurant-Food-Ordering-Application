@@ -21,8 +21,9 @@ public class SnackMenuUI extends JFrame implements ActionListener {
     private JButton chickenBurger;
     private JButton classicalChickenBurger;
     private JButton addToCart;
-    private JButton backToSnack;
+    private JButton returnTo;
     private JButton readyToPay;
+    private JButton backToSnack;
     
     public SnackMenuUI() {
         panel = new JPanel();
@@ -34,8 +35,9 @@ public class SnackMenuUI extends JFrame implements ActionListener {
         ingredient = new JLabel(ChickenStripe.ingredient);
         addToCartMessage = new JLabel("You've successfully ordered chicken stripe");
         readyToPay = new JButton("Ready to pay");
-        backToSnack = new JButton("Return");
+        returnTo = new JButton("Return");
         addToCart = new JButton("Add to cart");
+        backToSnack = new JButton("Back");
 
         panel.setLayout(new GridLayout(4,1));
         chickenStripePanel.setLayout(new GridLayout(5,1));
@@ -52,7 +54,9 @@ public class SnackMenuUI extends JFrame implements ActionListener {
 //        classicalChickenBurger = new JButton("Classical Chicken Burger");
         
         panel.add(chickenStripe);
+        panel.add(returnTo);
         panel.add(readyToPay);
+
       //  panel.add(chickenBurger);
         
         chickenStripe.addActionListener(this);
@@ -61,11 +65,13 @@ public class SnackMenuUI extends JFrame implements ActionListener {
 //        classicalChickenBurger.addActionListener(this);
         addToCart.addActionListener(this);
         readyToPay.addActionListener(this);
+        returnTo.addActionListener(this);
         backToSnack.addActionListener(this);
 
         setTitle("Snack Menu");
         setSize(450, 250);
         setVisible(true);
+        setLocation(500,300);
 
     }
     
@@ -83,11 +89,22 @@ public class SnackMenuUI extends JFrame implements ActionListener {
             chickenStripePanel.add(addToCartMessage);
             pack();
         }
+        morePossiblity(jbutton);
+    }
+
+    private void morePossiblity(JButton jbutton) {
         if (jbutton.getText() == "Ready to pay") {
             dispose();
             new PayUI();
         }
         if (jbutton.getText() == "Return") {
+//            remove(chickenStripePanel);
+//            add(panel);
+//            pack();
+            dispose();
+            new MainMenuUI();
+        }
+        if (jbutton.getText() == "Back") {
             remove(chickenStripePanel);
             add(panel);
             pack();
