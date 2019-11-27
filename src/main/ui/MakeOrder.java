@@ -33,7 +33,7 @@ public class MakeOrder extends JPanel {
 //    private GoldVip goldVip;
     // private Map<String, Double> customer;
 
-    public MakeOrder() {
+    MakeOrder() {
         customers = new Customers();
         //mainMenu = new MainMenu();
        // burgerMenu = new BurgerMenu();
@@ -51,28 +51,28 @@ public class MakeOrder extends JPanel {
 
 
 
-    public void startOrder() throws IOException, TooLongName, RepeatedName, SelectionNotValid {
-     //   order.addObserver(kitchenPedal);
-        print();
-        String operation = input1.nextLine();
-        if (checkNameLegal(operation)) {
-            //customer = new Customer(operation, 0);
-            System.out.println("Do you want to order with member or visitor (m or v)");
-            String operation2 = input2.next();
-           // operation2.toLowerCase();
-            if (operation2.equals("m")) {
-                name.checkName(operation, customers);
-                makeOrderMainMenu();
-            }
-            if (operation2.equals("v")) {
-                Customer customer = new Customer(operation,0);
-                order.addCustomer(customer);
-                makeOrderMainMenu();
-            } else {
-                throw new SelectionNotValid();
-            }
-        }
-    }
+//    public void startOrder() throws IOException, TooLongName, RepeatedName, SelectionNotValid {
+//     //   order.addObserver(kitchenPedal);
+//        print();
+//        String operation = input1.nextLine();
+//        if (checkNameLegal(operation)) {
+//            //customer = new Customer(operation, 0);
+//            System.out.println("Do you want to order with member or visitor (m or v)");
+//            String operation2 = input2.next();
+//           // operation2.toLowerCase();
+//            if (operation2.equals("m")) {
+//                name.checkName(operation, customers);
+//                makeOrderMainMenu();
+//            }
+//            if (operation2.equals("v")) {
+//                Customer customer = new Customer(operation,0);
+//                order.addCustomer(customer);
+//                makeOrderMainMenu();
+//            } else {
+//                throw new SelectionNotValid();
+//            }
+//        }
+//    }
 
 //    public static boolean checkNameLegal(String s) throws TooLongName, RepeatedName {
 //        //names = new ArrayList<String>();
@@ -86,30 +86,30 @@ public class MakeOrder extends JPanel {
 //        return true;
 //    }
 
-    public static void makeOrderMainMenu() {
-        boolean keepGoing = true;
-        String command = null;
-        // init();
-        while (keepGoing) {
-            MainMenu.displayMenu();
-            command = input1.next();
-            command = command.toLowerCase();
-
-            if (command.equals("b")) {
-                makeOrderBurger();
-            } else if (command.equals("s")) {
-                makeOrderSnacks();
-//            else if(command.equals("d"))
-//                ();
-            } else if (command.equals("q")) {
-                SilverVip.promoteToSilver(customer);
-                keepGoing = false;
-            } else {
-                System.out.println("Selection not valid...");
-            }
-        }
-        //  System.out.println("\nThank you for ordering with automatic machine, goodbye!");
-    }
+//    public static void makeOrderMainMenu() {
+//        boolean keepGoing = true;
+//        String command = null;
+//        // init();
+//        while (keepGoing) {
+//            MainMenu.displayMenu();
+//            command = input1.next();
+//            command = command.toLowerCase();
+//
+//            if (command.equals("b")) {
+//                makeOrderBurger();
+//            } else if (command.equals("s")) {
+//                makeOrderSnacks();
+////            else if(command.equals("d"))
+////                ();
+//            } else if (command.equals("q")) {
+//                SilverVip.promoteToSilver(customer);
+//                keepGoing = false;
+//            } else {
+//                System.out.println("Selection not valid...");
+//            }
+//        }
+//        //  System.out.println("\nThank you for ordering with automatic machine, goodbye!");
+//    }
 
 
 //    private static void displayMenu() {
@@ -141,7 +141,7 @@ public class MakeOrder extends JPanel {
 //    }
 
 
-    public static void makeOrderBeefBurger() {
+    private static void makeOrderBeefBurger() {
         boolean keepGoing = true;
         while (keepGoing) {
             BeefBurgerMenu.displayMenu();
@@ -155,7 +155,7 @@ public class MakeOrder extends JPanel {
                 makeOrderBurger();
             } else if (command.equals("p")) {
                // Order.printOrder(customer);
-                printOrder();
+                //printOrder();
             } else {
                 System.out.println("Selection not valid...");
             }
@@ -165,27 +165,27 @@ public class MakeOrder extends JPanel {
         // System.out.println("\nThank you for ordering with automatic machine, goodbye!");
     }
 
-    public static void printOrder() {
-        for (Food food: foods) {
-            totalPrice = totalPrice + food.getPrice();
-        }
-        for (Food food : foods) {
-            System.out.println("You ordered: " + food.getName());
-        }
-        System.out.println("Your total is: " + totalPrice);
-        System.out.println("How would you like to pay? Pay here or pay at the front desk? (here or front)");
-        String operation = input3.nextLine();
-        operation.toLowerCase();
-        if (operation.equals("here")) {
-            System.out.println("Please use pin pad to pay for your order");
-        } else {
-            if (operation.equals("front")) {
-                System.out.println("Please take your receipt to the front desk to finalize your payment");
-            } else {
-        //        throw new SelectionNotValid();
-            }
-        }
-    }
+//    public static void printOrder() {
+//        for (Food food: foods) {
+//            totalPrice = totalPrice + food.getPrice();
+//        }
+//        for (Food food : foods) {
+//            System.out.println("You ordered: " + food.getName());
+//        }
+//        System.out.println("Your total is: " + totalPrice);
+//        System.out.println("How would you like to pay? Pay here or pay at the front desk? (here or front)");
+//        String operation = input3.nextLine();
+//        operation.toLowerCase();
+//        if (operation.equals("here")) {
+//            System.out.println("Please use pin pad to pay for your order");
+//        } else {
+//            if (operation.equals("front")) {
+//                System.out.println("Please take your receipt to the front desk to finalize your payment");
+//            } else {
+//        //        throw new SelectionNotValid();
+//            }
+//        }
+//    }
 
 
 
@@ -208,7 +208,7 @@ public class MakeOrder extends JPanel {
 //        }
 
 
-    public static void makeOrderAngusBeefBurger() {
+    private static void makeOrderAngusBeefBurger() {
         boolean keepGoing = true;
         String command = null;
         while (keepGoing) {
@@ -234,7 +234,7 @@ public class MakeOrder extends JPanel {
 //        System.out.println(bb.printPopularity1());
 //    }
 
-    public static void pressY() {
+    private static void pressY() {
         System.out.println("you've successfully ordered Angus Beef Burger");
         //   order.addObserver(kitchenPedal);
         // Order.addOrderedFood(customer, new AngusBeefBurger());
@@ -259,7 +259,7 @@ public class MakeOrder extends JPanel {
 //    }
 
 
-    public static void makeOrderBurger() {
+    private static void makeOrderBurger() {
         boolean keepGoing = true;
         while (keepGoing) {
             BurgerMenu.displayMenu();
@@ -270,7 +270,7 @@ public class MakeOrder extends JPanel {
             } else if (command.equals("q")) {
                 keepGoing = false;
             } else if (command.equals("r")) {
-                makeOrderMainMenu();
+             //   makeOrderMainMenu();
             } else if (command.equals("p")) {
                 Order.printOrder(customer);
             } else {
@@ -301,7 +301,7 @@ public class MakeOrder extends JPanel {
 //        System.out.println("\tq -> quit");
 //    }
 
-    public static void makeOrderSnacks() {
+    private static void makeOrderSnacks() {
       //  Food chickenStripes = new Snacks();
         String operation = "";
         System.out.println("Do you want a chickenStripes?(Yes or No)");
@@ -315,69 +315,69 @@ public class MakeOrder extends JPanel {
             Snacks.printOrder();
         //    Order.addOrderedFood(customer, "chickenStripes");
         } else {
-            say();
+           // say();
         }
 
     }
 
-    public void makeOrderChickenBurger() {
-        String operation = "";
-        System.out.println("Do you want some chicken burgers?(Yes or No)");
-        Scanner scanner = new Scanner(System.in);
-        operation = scanner.nextLine();
+//    public void makeOrderChickenBurger() {
+//        String operation = "";
+//        System.out.println("Do you want some chicken burgers?(Yes or No)");
+//        Scanner scanner = new Scanner(System.in);
+//        operation = scanner.nextLine();
+//
+//        if (operation.equals("Yes")) {
+//            ChickenBurger.printOrder();
+//            System.out.println("Do you want classical chicken burgers?(Yes or No)");
+//            operation = scanner.nextLine();
+//            if (operation.equals("Yes")) {
+//                ChickenBurger.printOrder1();
+//            }
+//        } else {
+//            makeOrderSnacks();
+//        }
+//
+//
+//    }
 
-        if (operation.equals("Yes")) {
-            ChickenBurger.printOrder();
-            System.out.println("Do you want classical chicken burgers?(Yes or No)");
-            operation = scanner.nextLine();
-            if (operation.equals("Yes")) {
-                ChickenBurger.printOrder1();
-            }
-        } else {
-            makeOrderSnacks();
-        }
+//    public static void load() throws IOException {
+//        List<String> lines = Files.readAllLines(Paths.get("inputfile"));
+//        PrintWriter writer = new PrintWriter("outputfile", "UTF-8");
+////        lines.add("Mike 8.99");
+//        for (String line : lines) {
+//            ArrayList<String> partsOfLine = splitOnSpace(line);
+//            System.out.print("Customer: " + partsOfLine.get(0) + "  ");
+//            //      System.out.println("Balance: " + partsOfLine.get(1));
+//            writer.println(line);
+//        }
+//        writer.close();
+//    }
+//
+//    public static ArrayList<String> splitOnSpace(String line) throws IOException {
+//        String[] splits = line.split(" ");
+//        return new ArrayList<>(Arrays.asList(splits));
+//
+//    }
+
+//    public static void save(String s) throws IOException {
+//        List<String> lines = Files.readAllLines(Paths.get("inputfile"));
+//        PrintWriter writer = new PrintWriter("inputfile", "UTF-8");
+//        lines.add(s);
+//        for (String line : lines) {
+//            ArrayList<String> partsOfLine = splitOnSpace(line);
+//            System.out.print("Customer: " + partsOfLine.get(0) + "  ");
+//            System.out.println("Balance: " + partsOfLine.get(1));
+//            writer.println(line);
+//        }
+//        writer.close();
+//    }
 
 
-    }
-
-    public static void load() throws IOException {
-        List<String> lines = Files.readAllLines(Paths.get("inputfile"));
-        PrintWriter writer = new PrintWriter("outputfile", "UTF-8");
-//        lines.add("Mike 8.99");
-        for (String line : lines) {
-            ArrayList<String> partsOfLine = splitOnSpace(line);
-            System.out.print("Customer: " + partsOfLine.get(0) + "  ");
-            //      System.out.println("Balance: " + partsOfLine.get(1));
-            writer.println(line);
-        }
-        writer.close();
-    }
-
-    public static ArrayList<String> splitOnSpace(String line) throws IOException {
-        String[] splits = line.split(" ");
-        return new ArrayList<>(Arrays.asList(splits));
-
-    }
-
-    public static void save(String s) throws IOException {
-        List<String> lines = Files.readAllLines(Paths.get("inputfile"));
-        PrintWriter writer = new PrintWriter("inputfile", "UTF-8");
-        lines.add(s);
-        for (String line : lines) {
-            ArrayList<String> partsOfLine = splitOnSpace(line);
-            System.out.print("Customer: " + partsOfLine.get(0) + "  ");
-            System.out.println("Balance: " + partsOfLine.get(1));
-            writer.println(line);
-        }
-        writer.close();
-    }
-
-
-    public static void print() {
+    private static void print() {
         System.out.println("Welcome! Please input your name here");
     }
 
-    public static void say() {
+    private static void say() {
         System.out.println("You've done! Wait for your meal at front desk");
     }
 }

@@ -25,7 +25,7 @@ public class SnackMenuUI extends JFrame implements ActionListener {
     private JButton readyToPay;
     private JButton backToSnack;
     
-    public SnackMenuUI() {
+    SnackMenuUI() {
         panel = new JPanel();
         chickenStripePanel = new JPanel();
 //        panelBeefBurgerMenu.add(angusBeefBurger);

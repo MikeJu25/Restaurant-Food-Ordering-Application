@@ -45,7 +45,7 @@ public class MembershipUI extends JFrame implements ActionListener {
 //        frame.add(new MembershipUI());
 //    }
 
-    public MembershipUI(JFrame frame) throws IOException {
+    MembershipUI(JFrame frame) throws IOException {
         panel1 = new JPanel();
         panel2 = new JPanel();
         panel3 = new JPanel();
@@ -117,7 +117,7 @@ public class MembershipUI extends JFrame implements ActionListener {
     }
 
 
-    public void legalNameSuggestion() throws IOException {
+    private void legalNameSuggestion() throws IOException {
        // customers.load();
         for (int i = 2; i <= 20000; ) {
             if (!Customers.getAllCustomersName().contains(LoginUI.userName + i)) {
@@ -191,7 +191,7 @@ public class MembershipUI extends JFrame implements ActionListener {
     }
 
 
-    public void checkName(String customerName, Customers customers) throws IOException {
+    private void checkName(String customerName, Customers customers) throws IOException {
         // ArrayList<String> names = new ArrayList<String>();
         // customer.extractName(customers);
         //order.addCustomer(customer);

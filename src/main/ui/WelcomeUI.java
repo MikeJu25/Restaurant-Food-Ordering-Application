@@ -25,7 +25,7 @@ public class WelcomeUI extends JFrame implements ActionListener {
 //    private String theUrl = "http://images.clipartpanda.com/apple-20clip-20art-nicubunu_Apple_Clipart_Free.png";
 //    private URL url = new URL(theUrl);
 
-    public WelcomeUI() throws IOException {
+    WelcomeUI() throws IOException {
         panel = new JPanel();
         add(panel);
         information = new JLabel();

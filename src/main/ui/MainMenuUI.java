@@ -26,9 +26,9 @@ public class MainMenuUI extends JFrame implements ActionListener {
     private JButton returnTo;
     private JButton backToBurger;
     private JButton readyToPay;
-    public static ArrayList<Food> foods = new ArrayList<>();
+    static ArrayList<Food> foods = new ArrayList<>();
 
-    public MainMenuUI() {
+    MainMenuUI() {
         panelMainMenu = new JPanel();
         panelBurgerMenu = new JPanel();
         angusBeefBurgerMenu = new JPanel();
@@ -79,7 +79,7 @@ public class MainMenuUI extends JFrame implements ActionListener {
 
     }
 
-    public static double totalPriceCalculator() {
+    static double totalPriceCalculator() {
         double totalPrice = 0;
         for (Food food : foods) {
             totalPrice += food.getPrice();

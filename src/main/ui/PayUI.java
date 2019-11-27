@@ -15,7 +15,7 @@ public class PayUI extends JFrame implements ActionListener {
     private JButton payHere;
     private JButton payAtFront;
 
-    public PayUI() {
+    PayUI() {
         panel = new JPanel();
         totalPrice = new JLabel("Your total is " + MainMenuUI.totalPriceCalculator());
         payAtFront = new JButton("Pay at the front desk");
