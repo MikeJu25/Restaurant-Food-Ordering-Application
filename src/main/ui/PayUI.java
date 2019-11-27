@@ -22,7 +22,7 @@ public class PayUI extends JFrame implements ActionListener {
         payHere = new JButton("Pay by debit or credit");
         message = new JLabel("Please take your number and pay at the front desk");
 
-        setLocation(500,300);
+        setLocation(500, 300);
         add(panel);
         panel.add(totalPrice);
         panel.add(payAtFront);
@@ -32,7 +32,7 @@ public class PayUI extends JFrame implements ActionListener {
         setSize(450, 250);
         setVisible(true);
 
-        panel.setLayout(new GridLayout(4,1));
+        panel.setLayout(new GridLayout(4, 1));
 
         payHere.addActionListener(this);
         payAtFront.addActionListener(this);
@@ -56,10 +56,10 @@ public class PayUI extends JFrame implements ActionListener {
     }
 
     private void ifPayAtFront(Customers customers) {
-      //  try {
-         //   customers.load();
-            customers.removeCertainCustomer(MembershipUI.customer);
-           // customers.save(MembershipUI.customer);
+        //  try {
+        //   customers.load();
+        customers.removeCertainCustomer(MembershipUI.customer);
+        // customers.save(MembershipUI.customer);
 //        } catch (IOException ex) {
 //            ex.printStackTrace();
 //        }
@@ -74,10 +74,10 @@ public class PayUI extends JFrame implements ActionListener {
     }
 
     private void ifPayByCard(Customers customers) {
-     //   try {
+        //   try {
         //    customers.load();
-            customers.removeCertainCustomer(MembershipUI.customer);
-           // customers.save(MembershipUI.customer);
+        customers.removeCertainCustomer(MembershipUI.customer);
+        // customers.save(MembershipUI.customer);
 //        } catch (IOException ex) {
 //            ex.printStackTrace();
 //        }
