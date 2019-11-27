@@ -1,4 +1,4 @@
 package exception;
 
-public class SelectionNotValid extends RuntimeException {
-}
+//public class SelectionNotValid extends RuntimeException {
+//}

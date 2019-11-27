@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -42,5 +43,29 @@ public class CustomersTest {
        // customers.save();
         customers.load();
         assertTrue(lines.contains("Yangxi 0.0"));
+    }
+
+    @Test
+    void testGetCustomreWithName() {
+        Customers.addCustomerToList(customer);
+        Customers.addCustomerToList(new Customer("Mikew",44));
+        assertEquals(Customers.getCustomerWithName("Yangxi"),customer);
+    }
+
+    @Test
+    void testGetAllCustomerName() {
+        Customers.addCustomerToList(customer);
+        Customers.addCustomerToList(new Customer("YUE",10));
+        List<String> names = new ArrayList<>();
+        names = Customers.getAllCustomersName();
+        assertTrue(names.contains("YUE"));
+        assertTrue(names.contains("Yangxi"));
+    }
+
+    @Test
+    void testRemoveCertainCustomer() {
+        Customers.addCustomerToList(customer);
+        customers.removeCertainCustomer(customer);
+        assertFalse(customers.checkIfContains("Yangxi"));
     }
 }

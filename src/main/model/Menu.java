@@ -1,5 +1,5 @@
 package model;
 
 public abstract class Menu {
-    public abstract void displayMenu();
+    abstract void displayMenu();
 }

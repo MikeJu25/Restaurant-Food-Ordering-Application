@@ -1,6 +1,4 @@
 package model;
-
-import exception.RepeatedName;
 import exception.TooLongName;
 import org.junit.jupiter.api.Test;
 
@@ -21,8 +19,9 @@ public class NameExceptionTest {
 
         } catch (TooLongName tooLongName) {
             fail("The name is legal");
-        } catch (RepeatedName repeatedName) {
-            fail("this name hasn't been used");
+//        } catch (RepeatedName repeatedName) {
+//            fail("this name hasn't been used");
+//        }
         }
     }
 
@@ -35,8 +34,9 @@ public class NameExceptionTest {
             fail("exception not thrown");
         } catch (TooLongName tooLongName) {
             //expected;
-        } catch (RepeatedName repeatedName) {
-            fail("this name hasn't been used");
+//        } catch (RepeatedName repeatedName) {
+//            fail("this name hasn't been used");
+//        }
         }
     }
 
@@ -49,11 +49,12 @@ public class NameExceptionTest {
         names.add("sd");
         try {
             checkNameLegal(str);
-          //  fail("exception not thrown");
+            //  fail("exception not thrown");
         } catch (TooLongName tooLongName) {
             fail("The name is legal");
-        } catch (RepeatedName repeatedName) {
-            //expected
+//        } catch (RepeatedName repeatedName) {
+//            //expected
+//        }
         }
     }
 
@@ -66,8 +67,9 @@ public class NameExceptionTest {
             checkNameLegal(str);
         } catch (TooLongName tooLongName) {
             fail("not thrown");
-        } catch (RepeatedName repeatedName) {
-
+//            } catch (RepeatedName repeatedName) {
+//
+//            }
         }
     }
 }

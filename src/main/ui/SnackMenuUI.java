@@ -49,6 +49,8 @@ public class SnackMenuUI extends JFrame implements ActionListener {
         
         add(panel);
         chickenStripe = new JButton("Chicken Stripe");
+        chickenStripePanel.setPreferredSize(new Dimension(450,250));
+        panel.setPreferredSize(new Dimension(450,250));
 //        angusBeefBurger = new JButton("Angus Beef Burger");
 //        chickenBurger = new JButton("Chicken Burger");
 //        classicalChickenBurger = new JButton("Classical Chicken Burger");
@@ -77,12 +79,17 @@ public class SnackMenuUI extends JFrame implements ActionListener {
     
     
     @Override
-    //
+    //EFFECTS: if chicken stripe is clicked, remove snack menu and enter into a chicken stripe menu; if add to cart
+    //         is clicked, add chicken stripe to foods and print add successful message; otherwise, call more
+    //         possibility to react to more button choices
     public void actionPerformed(ActionEvent e) {
+        WelcomeUI.playSound("./data/buzzer.wav");
         JButton jbutton = (JButton) e.getSource();
         if (jbutton.getText() == "Chicken Stripe") {
             remove(panel);
             add(chickenStripePanel);
+//            chickenStripePanel.updateUI();
+//            panel.updateUI();
             pack();
         }
         if (jbutton.getText() == "Add to cart") {

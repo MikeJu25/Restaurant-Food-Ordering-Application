@@ -5,12 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import static ui.MakeOrder.splitOnSpace;
+import java.util.*;
 
 
 public class Customers {
@@ -32,10 +27,10 @@ public class Customers {
 //        return customers;
 //    }
 
-//    public boolean checkIfContains(String customer) {
-//        //get a set of string of all the names in the customers array, then check if that contains string customer
-//        return customers.contains(customer);
-//    }
+    boolean checkIfContains(String customer) {
+        //get a set of string of all the names in the customers array, then check if that contains string customer
+        return customers.contains(customer);
+    }
 //
 //    public double getCustomerBalance(Customer customer) {
 //        if (customers.contains(customer)) {
@@ -111,6 +106,12 @@ public class Customers {
         }
         writer.println(customer.name + " " + customer.getBalance());
         writer.close();
+
+    }
+
+    private static ArrayList<String> splitOnSpace(String line) throws IOException {
+        String[] splits = line.split(" ");
+        return new ArrayList<>(Arrays.asList(splits));
 
     }
 

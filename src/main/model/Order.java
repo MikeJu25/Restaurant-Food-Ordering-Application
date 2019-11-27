@@ -12,20 +12,22 @@ public class Order extends Subject {
         addObserver(observer);
     }
 
-    public void addCustomer(Customer customer) {
+    void addCustomer(Customer customer) {
         order.put(customer,new ArrayList<>());
     }
 
-    public ArrayList getOrderedFood(Customer customer) {
+    ArrayList getOrderedFood(Customer customer) {
         return order.get(customer);
     }
 
-    public static void addOrderedFood(Customer customer, Food food) {
+    static void addOrderedFood(Customer customer, Food food) {
         ArrayList<Food> foods = order.get(customer);
         foods.add(food);
       //  notifyObserver(foodName);
     }
 
+    // EFFECTS: calculate the total price of a customer's order by adding the price of
+    //          all foods in the map of key of that customer
     public static void printOrder(Customer customer) {
         ArrayList<Food> foods = order.get(customer);
         double totalPrice = 0;

@@ -46,12 +46,15 @@ public class MainMenuUI extends JFrame implements ActionListener {
         burger.setText("Burger Menu");
         angusBeefBurger.setText("Angus Beef Burger");
 
+        angusBeefBurgerMenu.setPreferredSize(new Dimension(450,250));
+    //    panelBurgerMenu.setPreferredSize(new Dimension(450,250));
+
         add(panelMainMenu);
         panelMainMenu.add(burger);
         panelMainMenu.add(snack);
         panelBurgerMenu.add(angusBeefBurger);
-        panelBurgerMenu.add(readyToPay);
         panelBurgerMenu.add(returnTo);
+        panelBurgerMenu.add(readyToPay);
         angusBeefBurgerMenu.add(price);
         angusBeefBurgerMenu.add(ingredient);
         angusBeefBurgerMenu.add(addToCart);
@@ -62,6 +65,7 @@ public class MainMenuUI extends JFrame implements ActionListener {
 
         panelMainMenu.setLayout(new GridLayout(4, 1));
         panelBurgerMenu.setLayout(new GridLayout(4, 1));
+       // panelBurgerMenu.setPreferredSize(new Dimension(450,250));
         angusBeefBurgerMenu.setLayout(new GridLayout(5, 1));
         burger.addActionListener(this);
         angusBeefBurger.addActionListener(this);
@@ -79,7 +83,7 @@ public class MainMenuUI extends JFrame implements ActionListener {
 
     }
 
-    public static double totalPriceCalculator() {
+    static double totalPriceCalculator() {
         double totalPrice = 0;
         for (Food food : foods) {
             totalPrice += food.getPrice();
@@ -96,13 +100,18 @@ public class MainMenuUI extends JFrame implements ActionListener {
 
 
     @Override
+    // EFFECTS: if Burger Menu is clicked, remove main menu panel and create a new burger menu; if angus beef burger
+    //          is clicked, remove burger menu and create a new angus beef burger menu panel; if return is clicked,
+    //          remove angus beef burger menu and create a new burger menu panel; otherwise, call more possibility
+    //          method to react to more different choices
     public void actionPerformed(ActionEvent e) {
+        WelcomeUI.playSound("./data/buzzer.wav");
         JButton jbutton = (JButton) e.getSource();
         if (jbutton.getText() == "Burger Menu") {
             remove(panelMainMenu);
             add(panelBurgerMenu);
             setTitle("Burger Menu");
-            setSize(450, 250);
+          //  setSize(450, 250);
             setVisible(true);
             pack();
         }

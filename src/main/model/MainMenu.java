@@ -1,7 +1,7 @@
 package model;
 
 public class MainMenu {
-    public static void displayMenu() {
+    private static void displayMenu() {
         System.out.println("\nSelect from:");
         System.out.println("\tb -> Burger");
         System.out.println("\ts -> Snacks");

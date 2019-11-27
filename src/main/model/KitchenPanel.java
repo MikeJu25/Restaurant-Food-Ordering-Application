@@ -18,20 +18,21 @@ public class KitchenPanel implements Observer {
         // System.out.println("Customer has ordered: " + foodName);
     }
 
-    public void update() {
-        String result = "";
-        for (String foodName : foodNames) {
-            for (int i = 0; i < foodNames.size(); i++) {
-                for (int j = i + 1; j < foodNames.size(); j++) {
-                    if (foodNames.get(i) == foodNames.get(j)) {
-                        result = foodNames.get(i);
-                    } else {
-                        System.out.println("Customer has ordered: " + foodName);
-                    }
-                }
-            }
-        }
-        System.out.println("Customer has ordered: " + result + " * 2");
-    }
+    // EFFECTS: print out what and how many foods have been ordered
+//    public void update() {
+//        String result = "";
+//        for (String foodName : foodNames) {
+//            for (int i = 0; i < foodNames.size(); i++) {
+//                for (int j = i + 1; j < foodNames.size(); j++) {
+//                    if (foodNames.get(i) == foodNames.get(j)) {
+//                        result = foodNames.get(i);
+//                    } else {
+//                        System.out.println("Customer has ordered: " + foodName);
+//                    }
+//                }
+//            }
+//        }
+//        System.out.println("Customer has ordered: " + result + " * 2");
+//    }
 }
 

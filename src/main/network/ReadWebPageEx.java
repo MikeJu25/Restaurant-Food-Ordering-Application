@@ -37,6 +37,7 @@ public class ReadWebPageEx {
         }
     }
 
+    // EFFECTS: use apikey to get the weather information by printing a link to the weather report
     public static void getWeather() {
         String apikey = "90c5fff597152874eee403f77040518d";
         String londonWeatherQuery = "https://api.openweathermap.org/data/2.5/weather?q=London,uk&mode=html&APPID=";

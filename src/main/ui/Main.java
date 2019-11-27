@@ -1,8 +1,6 @@
 package ui;
 // how can customer choose the amount their food want to be
 
-import exception.RepeatedName;
-import exception.SelectionNotValid;
 import exception.TooLongName;
 import model.*;
 import network.ReadWebPageEx;
@@ -16,7 +14,7 @@ public class Main {
 //    public static KitchenPedal kitchenPedal = new KitchenPedal();
 //    public static Order order = new Order();
 
-    public static void main(String[] args) throws IOException, TooLongName, RepeatedName {
+    public static void main(String[] args) throws IOException, TooLongName {
        // MakeOrder.load();
         SingletonHolder.getInstance();
         ReadWebPageEx.getWelcomeLetter();

@@ -1,7 +1,6 @@
 package ui;
 
-import exception.RepeatedName;
-import exception.SelectionNotValid;
+
 import exception.TooLongName;
 import model.*;
 
@@ -353,11 +352,7 @@ public class MakeOrder extends JPanel {
 //        writer.close();
 //    }
 //
-    public static ArrayList<String> splitOnSpace(String line) throws IOException {
-        String[] splits = line.split(" ");
-        return new ArrayList<>(Arrays.asList(splits));
 
-    }
 
 //    public static void save(String s) throws IOException {
 //        List<String> lines = Files.readAllLines(Paths.get("inputfile"));

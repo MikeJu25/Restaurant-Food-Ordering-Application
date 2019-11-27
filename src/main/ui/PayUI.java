@@ -40,7 +40,10 @@ public class PayUI extends JFrame implements ActionListener {
 
 
     @Override
+    // EFFECTS: if Pay at the front desk is clicked, call method ifPayAtFront; if Pay by debit or credit is clicked,
+    //          call method if pay by card
     public void actionPerformed(ActionEvent e) {
+        WelcomeUI.playSound("./data/buzzer.wav");
         JButton jbutton = (JButton) e.getSource();
         Customers customers = new Customers();
         MembershipUI.customer.balance += MainMenuUI.totalPriceCalculator();

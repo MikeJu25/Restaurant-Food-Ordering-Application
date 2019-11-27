@@ -1,13 +1,12 @@
 package ui;
 
-import exception.RepeatedName;
-import exception.SelectionNotValid;
 import exception.TooLongName;
 import model.Customer;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
+import java.util.Objects;
 import javax.swing.*;
 
 import static model.Name.checkNameLegal;
@@ -15,7 +14,7 @@ import static model.Name.checkNameLegal;
 
 public class LoginUI extends JFrame implements ActionListener {
 
-    public static String userName;
+    static String userName;
     private JPanel panel;
     private JLabel userLabel;
     private JLabel passwordLabel;
@@ -23,6 +22,7 @@ public class LoginUI extends JFrame implements ActionListener {
     private static JTextField userNameText;
     private JButton submit;
     private JLabel tooLongNameWarning;
+    private JLabel emptyNameWarning;
     //private Frame frame = new Frame();
 
     LoginUI() {
@@ -39,6 +39,7 @@ public class LoginUI extends JFrame implements ActionListener {
         // passwordText = new JPasswordField();
         tooLongNameWarning = new JLabel();
         tooLongNameWarning.setText("Your input name is too long, change to another one");
+        emptyNameWarning = new JLabel("Please enter a valid name");
         // Submit
 
         submit = new JButton("SUBMIT");
@@ -67,10 +68,13 @@ public class LoginUI extends JFrame implements ActionListener {
     }
 
     @Override
+    // EFFECTS: When submit is clicked, if input is null, print the error message to the panel; if input is longer
+    //          than 10 characters, print the warning message to the panel; otherwise get into a new membership UI
     public void actionPerformed(ActionEvent ae) {
         userName = userNameText.getText();
-        if (userName == " ") {
-            panel.add(tooLongNameWarning);
+        WelcomeUI.playSound("./data/buzzer.wav");
+        if (Objects.equals(userName, "")) {
+            panel.add(emptyNameWarning);
         }
         try {
             if (checkNameLegal(userName)) {
@@ -87,8 +91,8 @@ public class LoginUI extends JFrame implements ActionListener {
            // setSize(450, 350);
             panel.add(tooLongNameWarning);
             pack();
-        } catch (RepeatedName repeatedName) {
-            repeatedName.printStackTrace();
+//        } catch (RepeatedName repeatedName) {
+//           // repeatedName.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

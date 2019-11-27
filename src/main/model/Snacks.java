@@ -36,7 +36,7 @@ public class Snacks implements Food {
 //
 //    }
 
-    public Snacks(String name, double price) {
+    Snacks(String name, double price) {
         this.name = name;
         this.price = price;
     }

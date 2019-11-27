@@ -1,6 +1,5 @@
 package ui;
 
-import exception.SelectionNotValid;
 import model.Customer;
 import model.Customers;
 
@@ -78,6 +77,9 @@ public class MembershipUI extends JFrame implements ActionListener {
         panel1.setSize(new Dimension(10, 10));
         panel2.setLayout(new GridLayout(4, 1));
         panel2.setSize(new Dimension(10, 10));
+        panel2.setPreferredSize(new Dimension(450,250));
+        panel3.setPreferredSize(new Dimension(450,250));
+        panel1.setPreferredSize(new Dimension(450,250));
         panel3.setLayout(new GridLayout(5, 1));
         panel3.setSize(new Dimension(10, 10));
         panel3.add(hasBeenRegistered);
@@ -131,7 +133,12 @@ public class MembershipUI extends JFrame implements ActionListener {
     }
 
     @Override
+    // EFFECTS: if membership button is clicked, call checkName method to check if input username is
+    //          already in the customers list; if visitor is clciked, create a new customer with name
+    //          as username and get into MainMenu; otherwise, call morePossibility method to react to more
+    //          button choices
     public void actionPerformed(ActionEvent e) {
+        WelcomeUI.playSound("./data/buzzer.wav");
         JButton jbutton = (JButton) e.getSource();
         // System.out.println(jbutton.getText());
         if (jbutton.getText() == "Membership") {
@@ -221,7 +228,8 @@ public class MembershipUI extends JFrame implements ActionListener {
         add(panel2);
         panel2.add(createAnAccountMsg);
         panel2.add(continueToOrder);
-        pack();
+        panel2.updateUI();
+      //  pack();
         customer = new Customer(customerName, 0);
         //  Customers.addCustomerToList(customer);
         customers.save(customer);
@@ -241,7 +249,7 @@ public class MembershipUI extends JFrame implements ActionListener {
     }
 
 
-    private Customer ifContains(String customerName) throws SelectionNotValid, IOException {
+    private Customer ifContains(String customerName) throws IOException {
         //System.out.println("Is this your account: " + customerName);
         isThisYourAccountMessage.setText("Is this your account: " + customerName);
 

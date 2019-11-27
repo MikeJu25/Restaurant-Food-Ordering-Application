@@ -15,8 +15,8 @@ public class SilverVipTest {
     @BeforeEach
     void runBefore() {
         goldVip = new GoldVip(customer2);
-        customer1 = new Customer("Mike", 120);
-        customer2 = new Customer("Ki",1200);
+        customer1 = new Customer("Mike", 12);
+        customer2 = new Customer("Ki",33);
         silverVip = new SilverVip(customer1);
     }
 
@@ -27,8 +27,8 @@ public class SilverVipTest {
 
     @Test
     void testPromoteToSilver() {
-        assertFalse(goldVip.promoteToGold(customer1));
-        assertFalse(silverVip.promoteToSilver(customer1));
-        assertTrue(silverVip.promoteToSilver(customer2));
+       assertTrue(SilverVip.promoteToSilver(customer2));
+       assertFalse(SilverVip.promoteToSilver(customer1));
+       assertFalse(SilverVip.vips.contains(new SilverVip(customer2)));
     }
 }
