@@ -64,18 +64,18 @@ public class Customers {
     // MODIFIES: this
     // EFFECTS: load the inputfile and extract all customers into a
     //          customers list based on the information stored in the file
-    public void load() throws IOException {
-        List<String> lines = Files.readAllLines(Paths.get("inputfile"));
-        if (!(lines.size() == 0)) {
-            for (String line : lines) {
-                ArrayList<String> partsOfLine = splitOnSpace(line);
-                addCustomerToList(new Customer(partsOfLine.get(0), Double.parseDouble(partsOfLine.get(1))));
-            }
-        }
-//        if (lines.size() == 0) {
-//            addCustomerToList(new Customer("SomeOne", 1));
+//    public void load() throws IOException {
+//        List<String> lines = Files.readAllLines(Paths.get("inputfile"));
+//        if (!(lines.size() == 0)) {
+//            for (String line : lines) {
+//                ArrayList<String> partsOfLine = splitOnSpace(line);
+//                addCustomerToList(new Customer(partsOfLine.get(0), Double.parseDouble(partsOfLine.get(1))));
+//            }
 //        }
-    }
+////        if (lines.size() == 0) {
+////            addCustomerToList(new Customer("SomeOne", 1));
+////        }
+//    }
 
     // REQUIRES: the file is not empty
     // MODIFIES: this
@@ -96,24 +96,24 @@ public class Customers {
     // REQUIRES: customers are not empty
     // EFFECTS: extract all customers in customers list and put them into inputfile which is further
     //          stored under name and balance tags
-    public void save(Customer customer) throws IOException {
-        PrintWriter writer = new PrintWriter("inputfile", "UTF-8");
-       // File file = new File("inputfile");
-      //  writer.println("");
-        for (Customer c : customers) {
-            writer.println(c.name + " " + c.getBalance());
-          //  writer.flush();
-        }
-        writer.println(customer.name + " " + customer.getBalance());
-        writer.close();
+//    public void save(Customer customer) throws IOException {
+//        PrintWriter writer = new PrintWriter("inputfile", "UTF-8");
+//       // File file = new File("inputfile");
+//      //  writer.println("");
+//        for (Customer c : customers) {
+//            writer.println(c.name + " " + c.getBalance());
+//          //  writer.flush();
+//        }
+//        writer.println(customer.name + " " + customer.getBalance());
+//        writer.close();
+//
+//    }
 
-    }
-
-    private static ArrayList<String> splitOnSpace(String line) throws IOException {
-        String[] splits = line.split(" ");
-        return new ArrayList<>(Arrays.asList(splits));
-
-    }
+//    private static ArrayList<String> splitOnSpace(String line) throws IOException {
+//        String[] splits = line.split(" ");
+//        return new ArrayList<>(Arrays.asList(splits));
+//
+//    }
 
 }
 

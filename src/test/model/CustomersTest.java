@@ -43,7 +43,7 @@ public class CustomersTest {
         List<String> lines = Files.readAllLines(Paths.get("inputfile"));
         customers.addCustomerToList(customer);
        // customers.save();
-        customers.load();
+      //  customers.load();
         assertTrue(lines.contains("Yangxi 0.0"));
     }
 
@@ -74,9 +74,9 @@ public class CustomersTest {
 
     @Test
     void testSaveAndLoad() throws IOException {
-        customers.load();
-        customers.save(customer);
-        customers.load();
+//        customers.load();
+//        customers.save(customer);
+//        customers.load();
         assertTrue(Customers.customers.contains(customer));
         assertFalse(Customers.customers.contains(customer2));
     }

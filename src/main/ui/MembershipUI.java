@@ -8,6 +8,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import static model.Customers.addCustomerToList;
 
 public class MembershipUI extends JFrame implements ActionListener {
     private JPanel panel1;
@@ -60,8 +68,8 @@ public class MembershipUI extends JFrame implements ActionListener {
         createAnAccountMsg = new JLabel();
         backToEnter = new JButton("I don't like this user name. Get me back to reenter a new name");
 
-        customers.load();
-     //   setLocationRelativeTo(null);
+      //  customers.load();
+        //   setLocationRelativeTo(null);
 
         isThisYourAccountMessage = new JLabel();
 
@@ -77,9 +85,9 @@ public class MembershipUI extends JFrame implements ActionListener {
         panel1.setSize(new Dimension(10, 10));
         panel2.setLayout(new GridLayout(4, 1));
         panel2.setSize(new Dimension(10, 10));
-        panel2.setPreferredSize(new Dimension(450,250));
-        panel3.setPreferredSize(new Dimension(450,250));
-        panel1.setPreferredSize(new Dimension(450,250));
+        panel2.setPreferredSize(new Dimension(450, 250));
+        panel3.setPreferredSize(new Dimension(450, 250));
+        panel1.setPreferredSize(new Dimension(450, 250));
         panel3.setLayout(new GridLayout(5, 1));
         panel3.setSize(new Dimension(10, 10));
         panel3.add(hasBeenRegistered);
@@ -105,7 +113,7 @@ public class MembershipUI extends JFrame implements ActionListener {
         setSize(450, 250);
         setVisible(true);
 
-        setLocation(500,300);
+        setLocation(500, 300);
 
 
 //        this.frame = frame;
@@ -120,7 +128,7 @@ public class MembershipUI extends JFrame implements ActionListener {
 
 
     private void legalNameSuggestion() throws IOException {
-       // customers.load();
+        // customers.load();
         for (int i = 2; i <= 20000; ) {
             if (!Customers.getAllCustomersName().contains(LoginUI.userName + i)) {
                 goodName = LoginUI.userName + i;
@@ -151,7 +159,7 @@ public class MembershipUI extends JFrame implements ActionListener {
         }
         // new CheckNameUI();
         if (jbutton.getText() == "Visitor") {
-            customer = new Customer(LoginUI.userName,0);
+            customer = new Customer(LoginUI.userName, 0);
             dispose();
             new MainMenuUI();
         }
@@ -187,14 +195,15 @@ public class MembershipUI extends JFrame implements ActionListener {
     }
 
     private void ifNameSatisfied() {
-        try {
-            customer = new Customer(goodName,0);
-            customers.save(customer);
-            dispose();
-            new MainMenuUI();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+//        try {
+        customer = new Customer(goodName, 0);
+        //  customers.save(customer);
+        dispose();
+        new MainMenuUI();
+//        } catch (IOException ex) {
+//            ex.printStackTrace();
+//        }
+        //      }
     }
 
 
@@ -205,12 +214,12 @@ public class MembershipUI extends JFrame implements ActionListener {
         if (customers.getSize() == 0) {
             //make object here and add to customer list
             customer = new Customer(customerName, 0);
-            Customers.addCustomerToList(customer);
+            addCustomerToList(customer);
             firstTimeMessage.setText("First time? Continue to order with user name: " + customer.getName());
             panel1.add(firstTimeMessage);
-            Customers.addCustomerToList(customer);
+            addCustomerToList(customer);
             // System.out.println("First time? Continue to order with user name: " + firstCustomer.getName());
-            customers.save(customer);
+          //  customers.save(customer);
         } else {
             if (Customers.getAllCustomersName().contains(customerName)) {
                 ifOldCustomer(customerName);
@@ -229,10 +238,10 @@ public class MembershipUI extends JFrame implements ActionListener {
         panel2.add(createAnAccountMsg);
         panel2.add(continueToOrder);
         panel2.updateUI();
-      //  pack();
+        //  pack();
         customer = new Customer(customerName, 0);
         //  Customers.addCustomerToList(customer);
-        customers.save(customer);
+       // customers.save(customer);
     }
 
     private void ifOldCustomer(String customerName) throws IOException {
@@ -269,4 +278,36 @@ public class MembershipUI extends JFrame implements ActionListener {
 //            throw new SelectionNotValid();
 //        }
     }
+
+//    public void load() throws IOException {
+//        List<String> lines = Files.readAllLines(Paths.get("inputfile"));
+//        if (!(lines.size() == 0)) {
+//            for (String line : lines) {
+//                ArrayList<String> partsOfLine = splitOnSpace(line);
+//                addCustomerToList(new Customer(partsOfLine.get(0), Double.parseDouble(partsOfLine.get(1))));
+//            }
+//        }
+////        if (lines.size() == 0) {
+////            addCustomerToList(new Customer("SomeOne", 1));
+////        }
+//    }
+//
+//    public void save(Customer customer) throws IOException {
+//        PrintWriter writer = new PrintWriter("inputfile", "UTF-8");
+//        // File file = new File("inputfile");
+//        //  writer.println("");
+//        for (Customer c : customers) {
+//            writer.println(c.name + " " + c.getBalance());
+//            //  writer.flush();
+//        }
+//        writer.println(customer.name + " " + customer.getBalance());
+//        writer.close();
+//
+//    }
+//
+//    private static ArrayList<String> splitOnSpace(String line) throws IOException {
+//        String[] splits = line.split(" ");
+//        return new ArrayList<>(Arrays.asList(splits));
+//
+//    }
 }

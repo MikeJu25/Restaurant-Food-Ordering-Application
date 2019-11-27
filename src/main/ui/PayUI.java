@@ -56,13 +56,13 @@ public class PayUI extends JFrame implements ActionListener {
     }
 
     private void ifPayAtFront(Customers customers) {
-        try {
-            customers.load();
+      //  try {
+         //   customers.load();
             customers.removeCertainCustomer(MembershipUI.customer);
-            customers.save(MembershipUI.customer);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+           // customers.save(MembershipUI.customer);
+//        } catch (IOException ex) {
+//            ex.printStackTrace();
+//        }
         panel.removeAll();
         panel.add(message);
         pack();
@@ -74,13 +74,13 @@ public class PayUI extends JFrame implements ActionListener {
     }
 
     private void ifPayByCard(Customers customers) {
-        try {
-            customers.load();
+     //   try {
+        //    customers.load();
             customers.removeCertainCustomer(MembershipUI.customer);
-            customers.save(MembershipUI.customer);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+           // customers.save(MembershipUI.customer);
+//        } catch (IOException ex) {
+//            ex.printStackTrace();
+//        }
         panel.removeAll();
         message.setText("Please use pin pad to complete your payment");
         panel.add(message);
