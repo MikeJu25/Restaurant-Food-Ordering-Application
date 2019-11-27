@@ -20,7 +20,7 @@ public class LoginUI extends JFrame implements ActionListener {
     private JLabel userLabel;
     private JLabel passwordLabel;
     private JLabel message;
-    public static JTextField userNameText;
+    private static JTextField userNameText;
     private JButton submit;
     private JLabel tooLongNameWarning;
     //private Frame frame = new Frame();
