@@ -6,16 +6,18 @@ import java.util.List;
 public class Subject {
     private List<Observer> observers;
 
-    public Subject() {
+    Subject() {
         observers = new ArrayList<>();
     }
 
-    public void addObserver(Observer o) {
+    void addObserver(Observer o) {
         if (!observers.contains(o)) {
             observers.add(o);
         }
     }
 
+    // REQUIRES: observers are empty
+    // EFFECTS: call update method on every observer in observers
     public void notifyObserver(String foodName) {
         for (Observer o : observers) {
             o.update(foodName);

@@ -9,7 +9,7 @@ public class ChickenStripe extends Snacks {
         super(name, price);
     }
 
-    public static void printChickenStripeIngr() {
+    static void printChickenStripeIngr() {
         System.out.println("Price: " + price);
         System.out.println("Ingredient: " + ingredient);
     }

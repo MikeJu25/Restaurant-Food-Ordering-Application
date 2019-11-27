@@ -15,6 +15,8 @@ public class Customer implements Consumer {
 
 
     @Override
+    // MODIFIES: o
+    // EFFECTS: overwrite equals method
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -27,6 +29,7 @@ public class Customer implements Consumer {
     }
 
     @Override
+    // EFFECTS: overwrite hasCode method
     public int hashCode() {
         int result = name.hashCode();
         return result * 31;
@@ -36,14 +39,14 @@ public class Customer implements Consumer {
         return balance;
     }
 
-    public void addBeefBurger(BeefBurger beefBurger) {
+    void addBeefBurger(BeefBurger beefBurger) {
         if (!beefBurgers.contains(beefBurger)) {
             beefBurgers.add(beefBurger);
             beefBurger.addCustomer(this);
         }
     }
 
-    public void removeBeefBurger(BeefBurger beefBurger) {
+    void removeBeefBurger(BeefBurger beefBurger) {
         if (beefBurgers.contains(beefBurger)) {
             beefBurgers.remove(beefBurger);
             beefBurger.removeCustomer(this);

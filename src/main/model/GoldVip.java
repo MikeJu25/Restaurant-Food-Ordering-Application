@@ -4,22 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GoldVip extends Vip {
-    private List<Vip> vips;
+   // private static List<Vip> vips;
 
-    public GoldVip(Customer customer) {
+    GoldVip(Customer customer) {
         super(customer);
         vips = new ArrayList<>();
     }
 
-    public List<Vip> getVips() {
+    List<Vip> getVips() {
         return vips;
     }
 
-    public void addNewMembers(Vip vip) {
+    void addNewMembers(Vip vip) {
         vips.add(vip);
     }
 
-    public double accumulatedBalance() {
+    double accumulatedBalance() {
         double result = 0;
         for (Vip vip : vips) {
             result += vip.getVipBalance();
@@ -27,10 +27,13 @@ public class GoldVip extends Vip {
         return result + getVipBalance();
     }
 
+    // EFFECTS: return true if the customer meets the requirement to be promoted as a gold VIP,
+    //          if true make that customer as a gold VIP and add to vips list
     public static Boolean promoteToGold(Customer customer) {
         if (customer.getBalance() >= 100) {
-            new GoldVip(customer);
+            Vip newGoldVIP = new GoldVip(customer);
             System.out.println("You are enjoying Gold VIP price");
+            vips.add(newGoldVIP);
             return true;
         }
         return false;

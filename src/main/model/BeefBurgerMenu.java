@@ -1,7 +1,7 @@
 package model;
 
 public class BeefBurgerMenu {
-    public static void displayMenu() {
+    private static void displayMenu() {
         System.out.println("\nSelect from:");
         System.out.println("\ta -> Angus Beef Burger");
         System.out.println("\tr -> Return");

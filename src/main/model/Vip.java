@@ -1,13 +1,16 @@
 package model;
 
+import java.util.List;
+
 public abstract class Vip {
     protected Customer customer;
+    protected static List<Vip> vips;
 
-    public Vip(Customer customer) {
+    Vip(Customer customer) {
         this.customer = customer;
     }
 
-    public double getVipBalance() {
+    double getVipBalance() {
         return customer.getBalance();
     }
 }

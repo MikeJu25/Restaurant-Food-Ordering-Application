@@ -144,7 +144,7 @@ public class MakeOrder extends JPanel {
     private static void makeOrderBeefBurger() {
         boolean keepGoing = true;
         while (keepGoing) {
-            BeefBurgerMenu.displayMenu();
+         //   BeefBurgerMenu.displayMenu();
             String command = input1.next();
             command = command.toLowerCase();
             if (command.equals("a")) {
@@ -212,7 +212,7 @@ public class MakeOrder extends JPanel {
         boolean keepGoing = true;
         String command = null;
         while (keepGoing) {
-            AngusBeefBurger.printAngusBeefBurgerInfo();
+         //   AngusBeefBurger.printAngusBeefBurgerInfo();
             System.out.println("Do you want Angus Beef Burger?( y or n )");
             command = input1.next();
             command = command.toLowerCase();
@@ -262,7 +262,7 @@ public class MakeOrder extends JPanel {
     private static void makeOrderBurger() {
         boolean keepGoing = true;
         while (keepGoing) {
-            BurgerMenu.displayMenu();
+          //  BurgerMenu.displayMenu();
             String command = input1.next();
             command = command.toLowerCase();
             if (command.equals("b")) {

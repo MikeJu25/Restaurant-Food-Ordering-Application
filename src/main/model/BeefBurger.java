@@ -7,12 +7,12 @@ public class BeefBurger extends Burger {
     private double price;
     public ArrayList<Customer> customers = new ArrayList<>();
 
-    public BeefBurger(String name, double price) {
+    BeefBurger(String name, double price) {
         this.name = name;
         this.price = price;
     }
 
-    public void addCustomer(Customer customer) {
+    void addCustomer(Customer customer) {
         if (!customers.contains(customer)) {
             customers.add(customer);
             customer.addBeefBurger(this);
@@ -26,7 +26,7 @@ public class BeefBurger extends Burger {
 //        System.out.println(bb.printPopularity1());
 //    }
 
-    public void removeCustomer(Customer customer) {
+    void removeCustomer(Customer customer) {
         if (customers.contains(customer)) {
             customers.remove(customer);
             customer.removeBeefBurger(this);
@@ -103,7 +103,7 @@ public class BeefBurger extends Burger {
 //    }
 
 
-    public static String printOrder1() {
+    static String printOrder1() {
         return "You've successfully ordered angus beef burgers";
     }
 }

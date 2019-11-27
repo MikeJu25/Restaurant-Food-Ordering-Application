@@ -47,7 +47,7 @@ public class Combo implements Food, Drinks {
 //
 //    }
 
-    public void combo1() {
+    void combo1() {
         printPrice1();
         printIngredient1();
         printPopularity1();

@@ -77,6 +77,7 @@ public class SnackMenuUI extends JFrame implements ActionListener {
     
     
     @Override
+    //
     public void actionPerformed(ActionEvent e) {
         JButton jbutton = (JButton) e.getSource();
         if (jbutton.getText() == "Chicken Stripe") {

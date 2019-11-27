@@ -64,7 +64,7 @@ public class WelcomeUI extends JFrame implements ActionListener {
 
     }
 
-    public static void playSound(String soundName) {
+    private static void playSound(String soundName) {
         try {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
             Clip clip = AudioSystem.getClip();
@@ -80,7 +80,7 @@ public class WelcomeUI extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         // remove(panel);
-      //  playSound("buzzer.wav");
+        playSound("./data/buzzer.wav");
         dispose();
         new LoginUI();
         //add(loginUI);

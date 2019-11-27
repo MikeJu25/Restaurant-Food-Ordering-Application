@@ -241,7 +241,7 @@ public class MembershipUI extends JFrame implements ActionListener {
     }
 
 
-    public Customer ifContains(String customerName) throws SelectionNotValid, IOException {
+    private Customer ifContains(String customerName) throws SelectionNotValid, IOException {
         //System.out.println("Is this your account: " + customerName);
         isThisYourAccountMessage.setText("Is this your account: " + customerName);
 

@@ -9,7 +9,7 @@ public class AngusBeefBurger extends BeefBurger {
         super(name, price);
     }
 
-    public static void printAngusBeefBurgerInfo() {
+    private static void printAngusBeefBurgerInfo() {
         System.out.println("Price: " + price);
         System.out.println("Ingredient: " + ingredient);
     }

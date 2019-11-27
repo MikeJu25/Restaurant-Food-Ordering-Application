@@ -32,18 +32,20 @@ public class Customers {
 //        return customers;
 //    }
 
-    public boolean checkIfContains(String customer) {
-        //get a set of string of all the names in the customers array, then check if that contains string customer
-        return customers.contains(customer);
-    }
+//    public boolean checkIfContains(String customer) {
+//        //get a set of string of all the names in the customers array, then check if that contains string customer
+//        return customers.contains(customer);
+//    }
+//
+//    public double getCustomerBalance(Customer customer) {
+//        if (customers.contains(customer)) {
+//            return customer.getBalance();
+//        }
+//        return 0;
+//    }
 
-    public double getCustomerBalance(Customer customer) {
-        if (customers.contains(customer)) {
-            return customer.getBalance();
-        }
-        return 0;
-    }
-
+    // REQUIRES: customers list is not empty
+    // EFFECTS: return names of all customers in the customer list
     public static ArrayList<String> getAllCustomersName() {
         ArrayList<String> names = new ArrayList<>();
         for (Customer customer : customers) {
@@ -52,6 +54,8 @@ public class Customers {
         return  names;
     }
 
+    // REQUIRES: customers list is not empty
+    // EFFECTS: return the customer with name customerName
     public static Customer getCustomerWithName(String customerName) {
         for (int i = 0; i < customers.size(); i++) {
             if (customers.get(i).getName().equals(customerName)) {
@@ -61,6 +65,10 @@ public class Customers {
         return null;
     }
 
+    // REQUIRES: file contains some lines
+    // MODIFIES: this
+    // EFFECTS: load the inputfile and extract all customers into a
+    //          customers list based on the information stored in the file
     public void load() throws IOException {
         List<String> lines = Files.readAllLines(Paths.get("inputfile"));
         if (!(lines.size() == 0)) {
@@ -74,6 +82,9 @@ public class Customers {
         }
     }
 
+    // REQUIRES: the file is not empty
+    // MODIFIES: this
+    // EFFECTS: remove customer in customers list
     public void removeCertainCustomer(Customer customer) {
         if (customers.contains(customer)) {
             customers.remove(customer);
@@ -87,6 +98,9 @@ public class Customers {
 ////                break;
 ////            }
 
+    // REQUIRES: customers are not empty
+    // EFFECTS: extract all customers in customers list and put them into inputfile which is further
+    //          stored under name and balance tags
     public void save(Customer customer) throws IOException {
         PrintWriter writer = new PrintWriter("inputfile", "UTF-8");
        // File file = new File("inputfile");
