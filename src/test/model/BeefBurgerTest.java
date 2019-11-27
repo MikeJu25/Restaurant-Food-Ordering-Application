@@ -58,6 +58,7 @@ public class BeefBurgerTest {
 
     @Test
     public void testRemoveCustomer(){
+
         mainMenu.displayMenu();
         burgerMenu.displayMenu();
         beefBurgerMenu.displayMenu();

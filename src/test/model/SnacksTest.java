@@ -14,9 +14,15 @@ public class SnacksTest {
 
     @BeforeEach
     public void runBefore(){
-       // snacks = new Snacks();
+        snacks = new Snacks("Chicken Wings",18.99);
         singleton = new Singleton("Mike");
         SingletonHolder singletonHolder = new SingletonHolder();
+    }
+
+    @Test
+    void testConstructor() {
+        assertEquals(snacks.getPrice(),18.99);
+        assertEquals(snacks.getName(),"Chicken Wings");
     }
 
     @Test

@@ -1,6 +1,5 @@
 package model;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,11 +15,14 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CustomersTest {
     private Customers customers;
     private Customer customer;
+    private Customer customer2;
+    private ArrayList<Customer> customersList = new ArrayList<>();
 
     @BeforeEach
     public void runBefore(){
         customers = new Customers();
         customer = new Customer("Yangxi",0);
+        customer2 = new Customer("Daiwei",2);
     }
 
     @Test
@@ -47,6 +49,7 @@ public class CustomersTest {
 
     @Test
     void testGetCustomreWithName() {
+       // assertEquals(Customers.getAllCustomersName(),null);
         Customers.addCustomerToList(customer);
         Customers.addCustomerToList(new Customer("Mikew",44));
         assertEquals(Customers.getCustomerWithName("Yangxi"),customer);
@@ -67,5 +70,14 @@ public class CustomersTest {
         Customers.addCustomerToList(customer);
         customers.removeCertainCustomer(customer);
         assertFalse(customers.checkIfContains("Yangxi"));
+    }
+
+    @Test
+    void testSaveAndLoad() throws IOException {
+        customers.load();
+        customers.save(customer);
+        customers.load();
+        assertTrue(Customers.customers.contains(customer));
+        assertFalse(Customers.customers.contains(customer2));
     }
 }

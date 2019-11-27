@@ -9,7 +9,7 @@ import java.util.*;
 
 
 public class Customers {
-    private static List<Customer> customers;
+    static List<Customer> customers;
 
     public Customers() {
         customers = new ArrayList<>();
@@ -72,9 +72,9 @@ public class Customers {
                 addCustomerToList(new Customer(partsOfLine.get(0), Double.parseDouble(partsOfLine.get(1))));
             }
         }
-        if (lines.size() == 0) {
-            addCustomerToList(new Customer("SomeOne", 1));
-        }
+//        if (lines.size() == 0) {
+//            addCustomerToList(new Customer("SomeOne", 1));
+//        }
     }
 
     // REQUIRES: the file is not empty
