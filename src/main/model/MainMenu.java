@@ -6,7 +6,7 @@ public class MainMenu {
 //        System.out.println("\tb -> Burger");
 //        System.out.println("\ts -> Snacks");
 //        // System.out.println("\td -> Drinks");
-//        // System.out.println("\tc -> Combo");
+//         System.out.println("\tc -> Combo");
 //        System.out.println("\tq -> quit");
 //    }
 }
