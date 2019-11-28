@@ -14,19 +14,19 @@ public class Customer implements Consumer {
     private ArrayList<BeefBurger> beefBurgers;
 
 
-    @Override
+ //   @Override
     // MODIFIES: o
     // EFFECTS: overwrite equals method
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Customer customer = (Customer) o;
-        return Objects.equals(name, customer.name);
-    }
+//    public boolean equals(Object o) {
+//        if (this == o) {
+//            return true;
+//        }
+//        if (o == null || getClass() != o.getClass()) {
+//            return false;
+//        }
+//        Customer customer = (Customer) o;
+//        return Objects.equals(name, customer.name);
+//    }
 
     @Override
     // EFFECTS: overwrite hasCode method

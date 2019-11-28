@@ -18,9 +18,9 @@ public class Subject {
 
     // REQUIRES: observers are empty
     // EFFECTS: call update method on every observer in observers
-    public void notifyObserver(String foodName) {
-        for (Observer o : observers) {
-            o.update(foodName);
-        }
-    }
+//    public void notifyObserver(String foodName) {
+//        for (Observer o : observers) {
+//            o.update(foodName);
+//        }
+//    }
 }

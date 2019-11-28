@@ -11,6 +11,7 @@ public class SnacksTest {
 
     private Food snacks;
     private Singleton singleton;
+    private Snacks chickenStripe = new ChickenStripe();
 
     @BeforeEach
     public void runBefore(){
@@ -51,6 +52,12 @@ public class SnacksTest {
     @Test
     public void testPrintPopularity1() {
         assertEquals("Star: ***", snacks.printPopularity1());
+    }
+
+    @Test
+    void testChickenStripeConstructor() {
+        assertEquals(chickenStripe.getName(),"Chicken Stripe");
+        assertEquals(chickenStripe.getPrice(),9.99);
     }
 
 //    @Test
