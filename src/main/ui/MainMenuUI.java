@@ -120,7 +120,7 @@ public class MainMenuUI extends JFrame implements ActionListener {
         }
         if (jbutton.getText() == "Return") {
             dispose();
-            new MainMenuUI();
+            new MainMenuUI();  //
         }
         morePossibility(jbutton);
     }
